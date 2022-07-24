@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 3 章 多元线性回归：估计 | 财税计量应用讲义</title>
+  <meta name="description" content="一个简单的中文书示例。" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 3 章 多元线性回归：估计 | 财税计量应用讲义" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="一个简单的中文书示例。" />
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 3 章 多元线性回归：估计 | 财税计量应用讲义" />
+  
+  <meta name="twitter:description" content="一个简单的中文书示例。" />
+  
+
+<meta name="author" content="叶兵" />
+
+
+<meta name="date" content="2022-07-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="blr.html"/>
+<link rel="next" href="mlrinf.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">财税计量应用讲义</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序言</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 导论</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#intro-corr"><i class="fa fa-check"></i><b>1.1</b> 相关和因果关系</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#intro-esti"><i class="fa fa-check"></i><b>1.2</b> 估计总体均值</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#intro-nature"><i class="fa fa-check"></i><b>1.3</b> 计量经济学的性质与经济数据</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#intro-math"><i class="fa fa-check"></i><b>1.4</b> 数学知识复习</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="blr.html"><a href="blr.html"><i class="fa fa-check"></i><b>2</b> 二元线性回归</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="blr.html"><a href="blr.html#blr-sec1"><i class="fa fa-check"></i><b>2.1</b> 二元线性回归模型的定义</a></li>
+<li class="chapter" data-level="2.2" data-path="blr.html"><a href="blr.html#blr-sec2"><i class="fa fa-check"></i><b>2.2</b> 普通最小二乘法的推导</a></li>
+<li class="chapter" data-level="2.3" data-path="blr.html"><a href="blr.html#blr-sec3"><i class="fa fa-check"></i><b>2.3</b> OLS估计量的期望和方差</a></li>
+<li class="chapter" data-level="2.4" data-path="blr.html"><a href="blr.html#blr-sec4"><i class="fa fa-check"></i><b>2.4</b> 函数形式</a></li>
+<li class="chapter" data-level="2.5" data-path="blr.html"><a href="blr.html#blr-sec5"><i class="fa fa-check"></i><b>2.5</b> 最小二乘法：再考察</a></li>
+<li class="chapter" data-level="2.6" data-path="blr.html"><a href="blr.html#blr-sec6"><i class="fa fa-check"></i><b>2.6</b> 零条件均值假设：成立吗？</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="mlr.html"><a href="mlr.html"><i class="fa fa-check"></i><b>3</b> 多元线性回归：估计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="mlr.html"><a href="mlr.html#mlr-sec1"><i class="fa fa-check"></i><b>3.1</b> 使用多元线性回归模型的动因</a></li>
+<li class="chapter" data-level="3.2" data-path="mlr.html"><a href="mlr.html#mlr-sec2"><i class="fa fa-check"></i><b>3.2</b> 多元线性回归模型的定义</a></li>
+<li class="chapter" data-level="3.3" data-path="mlr.html"><a href="mlr.html#mlr-sec3"><i class="fa fa-check"></i><b>3.3</b> OLS法的操作和解释</a></li>
+<li class="chapter" data-level="3.4" data-path="mlr.html"><a href="mlr.html#mlr-sec4"><i class="fa fa-check"></i><b>3.4</b> OLS估计量的期望</a></li>
+<li class="chapter" data-level="3.5" data-path="mlr.html"><a href="mlr.html#mlr-sec5"><i class="fa fa-check"></i><b>3.5</b> OLS估计量的方差</a></li>
+<li class="chapter" data-level="3.6" data-path="mlr.html"><a href="mlr.html#mlr-sec6"><i class="fa fa-check"></i><b>3.6</b> OLS估计量的有效性</a></li>
+<li class="chapter" data-level="3.7" data-path="mlr.html"><a href="mlr.html#mlr-sec7"><i class="fa fa-check"></i><b>3.7</b> 模型误设</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mlrinf.html"><a href="mlrinf.html"><i class="fa fa-check"></i><b>4</b> 多元线性回归：统计推断</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec1"><i class="fa fa-check"></i><b>4.1</b> 引例</a></li>
+<li class="chapter" data-level="4.2" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec2"><i class="fa fa-check"></i><b>4.2</b> OLS估计量的抽样分布</a></li>
+<li class="chapter" data-level="4.3" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec3"><i class="fa fa-check"></i><b>4.3</b> 检验对单个总体参数的假设</a></li>
+<li class="chapter" data-level="4.4" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec4"><i class="fa fa-check"></i><b>4.4</b> 多元回归能解决遗漏变量问题吗？</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dummy.html"><a href="dummy.html"><i class="fa fa-check"></i><b>5</b> 定性信息</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dummy.html"><a href="dummy.html#dummy-sec1"><i class="fa fa-check"></i><b>5.1</b> 二值变量</a></li>
+<li class="chapter" data-level="5.2" data-path="dummy.html"><a href="dummy.html#dummy-sec2"><i class="fa fa-check"></i><b>5.2</b> 虚拟变量陷阱</a></li>
+<li class="chapter" data-level="5.3" data-path="dummy.html"><a href="dummy.html#dummy-sec3"><i class="fa fa-check"></i><b>5.3</b> 分类、基准和虚拟变量</a></li>
+<li class="chapter" data-level="5.4" data-path="dummy.html"><a href="dummy.html#dummy-sec4"><i class="fa fa-check"></i><b>5.4</b> 多个虚拟变量</a></li>
+<li class="chapter" data-level="5.5" data-path="dummy.html"><a href="dummy.html#dummy-sec5"><i class="fa fa-check"></i><b>5.5</b> 更多例子</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="srdd.html"><a href="srdd.html"><i class="fa fa-check"></i><b>6</b> 清晰断点回归</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="srdd.html"><a href="srdd.html#srdd-sec1"><i class="fa fa-check"></i><b>6.1</b> 思路</a></li>
+<li class="chapter" data-level="6.2" data-path="srdd.html"><a href="srdd.html#srdd-sec1"><i class="fa fa-check"></i><b>6.2</b> 估计</a></li>
+<li class="chapter" data-level="6.3" data-path="srdd.html"><a href="srdd.html#应用"><i class="fa fa-check"></i><b>6.3</b> 应用</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mech.html"><a href="mech.html"><i class="fa fa-check"></i><b>7</b> 机制和异质性分析</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="mech.html"><a href="mech.html#mech-sec1"><i class="fa fa-check"></i><b>7.1</b> 机制分析</a></li>
+<li class="chapter" data-level="7.2" data-path="mech.html"><a href="mech.html#mech-sec2"><i class="fa fa-check"></i><b>7.2</b> 异质性分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cons.html"><a href="cons.html"><i class="fa fa-check"></i><b>8</b> 一致性</a></li>
+<li class="chapter" data-level="9" data-path="panel.html"><a href="panel.html"><i class="fa fa-check"></i><b>9</b> 面板数据模型：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="panel.html"><a href="panel.html#panel-sec1"><i class="fa fa-check"></i><b>9.1</b> 第一节</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="did.html"><a href="did.html"><i class="fa fa-check"></i><b>10</b> 基于面板数据的双重差分法：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="did.html"><a href="did.html#did-sec1"><i class="fa fa-check"></i><b>10.1</b> 第一节</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="iv.html"><a href="iv.html"><i class="fa fa-check"></i><b>11</b> 工具变量法：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="iv.html"><a href="iv.html#iv-sec1"><i class="fa fa-check"></i><b>11.1</b> 第一节</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sciwri.html"><a href="sciwri.html"><i class="fa fa-check"></i><b>12</b> 科学写作</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="sciwri.html"><a href="sciwri.html#sciwri-sec1"><i class="fa fa-check"></i><b>12.1</b> 第一节</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="exp.html"><a href="exp.html"><i class="fa fa-check"></i><b>13</b> 专题：政府支出</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="exp.html"><a href="exp.html#exp-sec1"><i class="fa fa-check"></i><b>13.1</b> 第一节</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="rev.html"><a href="rev.html"><i class="fa fa-check"></i><b>14</b> 专题：政府收入</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="rev.html"><a href="rev.html#rev-sec1"><i class="fa fa-check"></i><b>14.1</b> 第一节</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="intgovt.html"><a href="intgovt.html"><i class="fa fa-check"></i><b>15</b> 专题：政府间关系（含模糊断点回归）</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec1"><i class="fa fa-check"></i><b>15.1</b> 第一节</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="oth.html"><a href="oth.html"><i class="fa fa-check"></i><b>16</b> 其他财税问题</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="oth.html"><a href="oth.html#oth-sec1"><i class="fa fa-check"></i><b>16.1</b> 第一节</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书藉由bookdown编撰</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">财税计量应用讲义</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mlr" class="section level1" number="3">
+<h1><span class="header-section-number">第 3 章</span> 多元线性回归：估计</h1>
+<div id="mlr-sec1" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 使用多元线性回归模型的动因</h2>
+<p>二线线性回归模型：</p>
+<p><span class="math display" id="eq:3-1">\[\begin{align}
+wage=\beta_0+\beta_1educ+u(IQ,...)，Cov(educ, IQ)&gt;0 \tag{3.1}
+\end{align}\]</span></p>
+<p>问题是，受教育程度更高的人平均而言IQ更高，零条件均值假设不成立，估计量是有偏。怎么解决这个问题？</p>
+<p>造成困扰的原因是干扰项包含了IQ。既如此，直接把IQ放到自变量里面就行了：</p>
+<p><span class="math display" id="eq:3-2">\[\begin{align}
+wage=\beta_0+\beta_1educ+\beta_2IQ+u \tag{3.2}
+\end{align}\]</span></p>
+<p>这是多元线性回归模型，具体来说是三元线性回归模型，三元是educ、IQ和常数1（beta0*1）。一般地，可以把认为可能会干扰结果的遗漏变量加到自变量中。这样，它们不再被遗漏掉，以此处理遗漏变量问题。</p>
+</div>
+<div id="mlr-sec2" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 多元线性回归模型的定义</h2>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第60-61页。</p>
+<p>补充：虽然列出来了多个解释变量，但并不是说我们对于所有解释变量的系数都同等程度地关心。通常，我们会只关心其中的一个解释变量<span class="math inline">\(x_1\)</span>的系数。
+如在上面的例子中，我们仅关心educ的系数，表示教育回报率。至于IQ的系数是多少，我们不关心。把IQ加进来唯一的理由是，若不加进来，它就是遗漏变量，会导致估计结果有偏。我们把<span class="math inline">\(x_1\)</span>叫做核心解释变量，其他解释变量叫做控制变量。</p>
+<p><strong>函数形式</strong></p>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第154-161页</p>
+</div>
+<div id="mlr-sec3" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> OLS法的操作和解释</h2>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第3.2节如下小节：</p>
+<ul>
+<li>“如何得到OLS估计值”</li>
+<li>“对OLS回归方程的解释”</li>
+<li>“多元回归中‘保持其他因素不变的含义’”</li>
+<li>“OLS的拟合值和残差”</li>
+<li>“对多元回归‘排除其他变量影响’的解释”</li>
+</ul>
+<p>补充：一阶条件：</p>
+<p><span class="math display" id="eq:3-3">\[\begin{align}
+\sum_i\hat{u_i}=0 \tag{3.3}
+\end{align}\]</span></p>
+<p><span class="math display" id="eq:3-4">\[\begin{align}
+\sum_ix_{ij}\hat{u_i}=0\ for\ j=1,2,...,k \tag{3.4}
+\end{align}\]</span></p>
+<p><span class="math display" id="eq:3-5">\[\begin{align}
+\sum_i\hat{y_i}\hat{u_i}=0 \tag{3.5}
+\end{align}\]</span></p>
+<p>式<a href="mlr.html#eq:3-3">(3.3)</a>的含义：Deviations from regression line sum up to zero。也就是说，正负残差抵消掉了。</p>
+<p>式<a href="mlr.html#eq:3-4">(3.4)</a>的含义：Correlations between deviations and regressors are zero，即所有解释变量和残差不相关。</p>
+<p>式<a href="mlr.html#eq:3-5">(3.5)</a>的含义：将因变量分解成拟合值和残差这个不相关的两部分。</p>
+</div>
+<div id="mlr-sec4" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> OLS估计量的期望</h2>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第70—74页。</p>
+<p>补充：所谓准确的线性关系，是指非常熟解释变量存在准确的线性关系，即它们之间具有如下的关系：</p>
+<p><span class="math display" id="eq:3-6">\[\begin{align}
+a_0+a_1x_1+a_2x_2+…+a_kx_k=0 \tag{3.6}
+\end{align}\]</span></p>
+<p>可以用<span class="math inline">\(x_2,…x_k,constant\)</span>来表示<span class="math inline">\(x_1\)</span>。知道了前者，就知道了<span class="math inline">\(x_1\)</span>，故<span class="math inline">\(x_1\)</span>的信息是多余的。</p>
+<p>零条件均值假设表示自变量<span class="math inline">\(x_1,x_2,…,x_k\)</span>对于我预测干扰项的均值没有帮助。也就是说，任一自变量变大或变小，干扰项的均值保持不变。</p>
+<p>如果零条件均值假设成立，有下面的推论：<span class="math inline">\(Cov(x_j,u)=0,Corr(x_j,u)=0\ for\ j=1,2,…,k\)</span>。把跟干扰项不相关的变量就称为外生解释变量。跟干扰项相关的解释变量称为内生解释变量。零条件均值假设成立意味着所有解释变量都是外生解释变量。</p>
+</div>
+<div id="mlr-sec5" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> OLS估计量的方差</h2>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第3.4节除“误设模型中的方差”一小节。</p>
+</div>
+<div id="mlr-sec6" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> OLS估计量的有效性</h2>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第3.5节。</p>
+</div>
+<div id="mlr-sec7" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> 模型误设</h2>
+<p><strong>遗漏相关变量</strong></p>
+<p>Q：如果E[IQ|受教育程度=本科]&gt;E[IQ|受教育程度=高中]，那么，E[收入|受教育程度=本科]-[收入|受教育程度=高中]将过高地估计（高估）、还是过低地估计（低估）受教育程度对收入的因果影响？假设真实的情况是受教育程度由高中提高到本科将使月收入提高1000元，如估计值为1500元则为高估，估计值为800元则为低估。</p>
+<p>本科生的收入更高反映了两种影响：一个是教育的作用，另一个是本科生的IQ平均更高，而IQ高导致收入高，即收入差距一部分是由IQ差距导致的。简单求收入差值相当将高估受教育程度对收入的因果影响。</p>
+<p>用数学语言，造成正的偏误的来源有两点：受教育程度与IQ正相关，而IQ对收入有正向的因果影响。</p>
+<p>用计量语言概括此例：真实的模型是这样的：$wage=_0+_1educ+_2IQ+u <span class="math inline">\(。但我们错误估计了如下模型：\)</span>wage=_0+_1educ+w$。这属于模型误设的一种情形：遗漏相关变量。正的偏误。</p>
+<p>一般地，真实的模型为：<span class="math inline">\(y=\beta_0+\beta_1x_1+\beta_2x_2+u\)</span>。假设零条件均值假设成立。错误地估计了模型：<span class="math inline">\(y=\alpha_0+\alpha_1x_1+w\)</span>。系数<span class="math inline">\(\alpha_1\)</span>和<span class="math inline">\(\beta_1\)</span>有何联系？</p>
+<p>推导：</p>
+<div class="figure"><span style="display:block;" id="fig:chap3fig1"></span>
+<img src="figs/chap3-fig1.png" alt="Derivation for omitted variables" width="100%" height="100%" />
+<p class="caption">
+图 3.1: Derivation for omitted variables
+</p>
+</div>
+<p>估计结果：<span class="math inline">\(\alpha_1=\beta_1+\beta_2\delta_1\)</span>。而真实的因果影响为<span class="math inline">\(\beta_1\)</span>。多出来的部分<span class="math inline">\(\beta_2\delta_1\)</span>就是偏误。其中，<span class="math inline">\(delta_1\)</span>反映<span class="math inline">\(x_1\)</span>和<span class="math inline">\(x_2\)</span>的相关性。<span class="math inline">\(\beta_2\)</span>反映<span class="math inline">\(x_2\)</span>对y的因果影响。对应上面提到的两点。例：<span class="math inline">\(\beta_2\)</span>和<span class="math inline">\(\delta_1\)</span>都为正，正正得正，偏误为正，高估。</p>
+<p>Q：基于这些数学公式理解上述例子中正的偏误。</p>
+<p>例: cons&lt;-transfer+income, 遗漏income. Q: 偏误方向?</p>
+<p>例: GDP&lt;-govt expenditure+money supply, 遗漏货币供给. Q: 偏误方向?</p>
+<p>另见伍德里奇《计量经济学导论：现代观点》第五版第75-78页。</p>
+<p><strong>包含无关变量</strong></p>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第74-75页。</p>
+<p>总结：遗漏相关变量导致偏误，包含无关变量影响方差。这两个都有问题，哪个问题更小一点？遗漏相关变量问题可能更大一点。所以，一般的建议是在不确定要不要加某个变量的时候，把它给加上，这可能使得标准误变大，但OLS估计量始终是无偏的，意味着平均而言反映了因果关系。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="blr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mlrinf.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/003-mlr.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

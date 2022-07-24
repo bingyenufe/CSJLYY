@@ -1,0 +1,277 @@
+\documentclass[]{ctexbook}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[b5paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=3.5cm,rmargin=2.5cm]{geometry}
+\usepackage[unicode=true]{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\hypersetup{
+            pdftitle={财税计量应用},
+            pdfauthor={叶兵},
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=Blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+\let\oldhref\href
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\makeatletter
+\@ifundefined{Shaded}{
+}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
+\@ifpackageloaded{fancyvrb}{%
+  % https://github.com/CTeX-org/ctex-kit/issues/331
+  \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},formatcom=\xeCJKVerbAddon}%
+}{}
+\makeatother
+
+\usepackage{makeidx}
+\makeindex
+
+\urlstyle{tt}
+
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\frontmatter
+
+\title{财税计量应用}
+\author{叶兵}
+\date{2022-04-22}
+
+\begin{document}
+\maketitle
+
+
+\thispagestyle{empty}
+
+\begin{center}
+献给……
+
+呃，爱谁谁吧
+\end{center}
+
+\setlength{\abovedisplayskip}{-5pt}
+\setlength{\abovedisplayshortskip}{-5pt}
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\listoftables
+\listoffigures
+\hypertarget{ux5e8fux8a00}{%
+\chapter*{序言}\label{ux5e8fux8a00}}
+
+
+\textbf{本书的写作动机}
+
+国内本科计量经济学教学和研究严重脱节。这不是说研究高深莫测，超出了本科生的理解范围。实际上，计量经济学研究用到的主流的方法并不难理解。
+市面上不乏好的计量经济学教材，如伍德里奇（2015）、斯托克和沃森（2012）、安格里斯特和皮施克（2012）。但这些书内容芜杂，涉及到过多的数学，侧重理论，涉及应用较少。
+实有必要写这样一本书：内容可控，数学尽量简单，本科生容易理解，学习后能读懂大部分应用计量文章，并能开展简单的研究。这是本书的目的。
+本书最贴合的目标对象是公共经济学的本科生，因为书中举的大部分例子属于公共经济学领域。但由于经济学各子学科所用计量方法实无太大的差异，本书也能满足经济学大类本科生的要求。
+
+\textbf{前置知识}
+
+本书的前置知识括《概率论与数理统计》《统计学》《财政学》《公共支出管理》的知识。本书也会对涉及到的知识做简要回顾。
+
+\textbf{本书的内容}
+
+各章目次如下：
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+章序号 & 章名 \\
+\midrule
+\endhead
+第一章 & 导论 \\
+第二章 & 二元回归模型 \\
+第三章 & 多元回归分析 \\
+第四章 & 定性信息、清晰断点回归、一致性、机制和异质性分析 \\
+第五章 & 面板数据模型：计量方法及应用 \\
+第六章 & 基于面板数据的双重差分法：计量方法及应用 \\
+第七章 & 工具变量法：计量方法及应用 \\
+第八章 & 科学写作 \\
+第九章 & 应用：政府支出 \\
+第十章 & 应用：政府收入 \\
+第十一章 & 应用：政府间关系（含模糊断点回归） \\
+第十二章 & 应用：其他 \\
+\bottomrule
+\end{longtable}
+
+本书分为两部分。第一部分讲当前公共经济学领域应用计量研究中最流行的几种方法。在讲方法的时候穿插应用。在这部分，作者大量采取拿来主义的做法，凡在文献中已经有很好的表述的，只提供一个指向该文献的指针，以示对原作者知识产权的尊重。只有那些在文献中找不到表述，或文献中的表述不适合本科生的，才提供完整的文本。
+第二部分以专题的形式讲这些计量方法的应用。
+两部分涉及应用，作者都通过讲解一流英文杂志上公共经济学领域的文章展示。
+
+\textbf{软件实现}
+
+本书既名《财税计量应用》，就强调应用，要求学生能够利用专业的计量软件Stata估计各计量模型的结果。为此，我们录制了配套视频，循序渐进地教读者使用Stata进行相关操作。
+读者还可以通过以下渠道学习Stata：
+
+\begin{itemize}
+\tightlist
+\item
+  Stata帮助文档
+\item
+  陈强. 计量经济学及Stata应用{[}M{]}. 高等教育出版社, 2015
+\item
+  遇到问题在网上搜索问题的关键词
+\end{itemize}
+
+\textbf{参考文献}
+
+\begin{itemize}
+\tightlist
+\item
+  伍德里奇. 计量经济学导论(第五版){[}M{]}. 中国人民大学出版社, 2015.
+\item
+  斯托克, 沃森. 计量经济学{[}J{]}. 格致出版社, 2012.
+\item
+  安格里斯特, 皮施克. 基本无害的计量经济学：实证研究者指南{[}M{]}. 格致出版社, 2012.
+\end{itemize}
+
+\begin{flushright}
+叶兵\\
+于紫东\\
+\end{flushright}
+
+\mainmatter
+
+\hypertarget{intro}{%
+\chapter{导论}\label{intro}}
+
+图 \ref{fig:chap1fig1} 是一幅图。
+
+\hypertarget{wind}{%
+\chapter{白苹风末}\label{wind}}
+
+瞎扯几句。
+
+\hypertarget{ux5f20ux8001ux7237ux5b50}{%
+\section{张老爷子}\label{ux5f20ux8001ux7237ux5b50}}
+
+话说张老爷子写了一首诗：
+
+\begin{quote}
+姑苏开遍碧桃时，邂逅河阳女画师。\\
+红豆江南留梦影，白苹风末唱秋词。
+\end{quote}
+
+\hypertarget{ux5f6dux5927ux5c06ux9886}{%
+\section{彭大将领}\label{ux5f6dux5927ux5c06ux9886}}
+
+貌似大家都喜欢用白萍风这个意境。又如彭玉麟的对联：
+
+\begin{quote}
+凭栏看云影波光，最好是红蓼花疏、白苹秋老；\\
+把酒对琼楼玉宇，莫孤负天心月到、水面风来。
+\end{quote}
+
+嘿，玛尼玛尼哄。
+
+\hypertarget{ux5f6dux5927}{%
+\section{彭大}\label{ux5f6dux5927}}
+
+\cleardoublepage
+
+\hypertarget{appendix-ux9644ux5f55}{%
+\appendix \addcontentsline{toc}{chapter}{\appendixname}}
+
+
+\hypertarget{sound}{%
+\chapter{余音绕梁}\label{sound}}
+
+呐，到这里朕的书差不多写完了，但还有几句话要交待，所以开个附录，再啰嗦几句，各位客官稍安勿躁、扶稳坐好。
+
+\bibliography{book.bib,packages.bib}
+
+\backmatter
+\printindex
+
+\end{document}
