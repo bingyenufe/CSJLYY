@@ -118,8 +118,8 @@
 <li class="chapter" data-level="6" data-path="srdd.html"><a href="srdd.html"><i class="fa fa-check"></i><b>6</b> 清晰断点回归</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="srdd.html"><a href="srdd.html#srdd-sec1"><i class="fa fa-check"></i><b>6.1</b> 思路</a></li>
-<li class="chapter" data-level="6.2" data-path="srdd.html"><a href="srdd.html#srdd-sec1"><i class="fa fa-check"></i><b>6.2</b> 估计</a></li>
-<li class="chapter" data-level="6.3" data-path="srdd.html"><a href="srdd.html#应用"><i class="fa fa-check"></i><b>6.3</b> 应用</a></li>
+<li class="chapter" data-level="6.2" data-path="srdd.html"><a href="srdd.html#srdd-sec2"><i class="fa fa-check"></i><b>6.2</b> 估计</a></li>
+<li class="chapter" data-level="6.3" data-path="srdd.html"><a href="srdd.html#srdd-sec3"><i class="fa fa-check"></i><b>6.3</b> 应用</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="mech.html"><a href="mech.html"><i class="fa fa-check"></i><b>7</b> 机制和异质性分析</a>
 <ul>
@@ -196,7 +196,7 @@
 <p>严格地讲，两人学习计划性的差异包含两部分：第一，本身学习计划性的差异，由基因等决定。第二，奖学金对学习计划性的影响。当ε趋近于0时，两人GPA的差异趋近于0，第一部分趋近于0，两人学习计划性的差异趋近于奖学金对学习计划性的影响。</p>
 <p>有无获得奖学金在3.9处有一个从无到有的跳跃。将3.9称为（清晰）断点。将比较（清晰）断点两侧一点点的观测值的方法称为（清晰）断点回归。</p>
 </div>
-<div id="srdd-sec1" class="section level2" number="6.2">
+<div id="srdd-sec2" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> 估计</h2>
 <p>图<a href="srdd.html#fig:chap6fig1">6.1</a>是若干同学的散点图。</p>
 <div class="figure"><span style="display:block;" id="fig:chap6fig1"></span>
@@ -233,7 +233,7 @@ y=\alpha+\rho D+\beta x+u \tag{6.4}
 </ul>
 <p>这两个条件比零条件均值假设弱，且可以用统计方法验证（Q：思考验证的思路）。</p>
 </div>
-<div id="应用" class="section level2" number="6.3">
+<div id="srdd-sec3" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> 应用</h2>
 <p>中国冬日（城市）集中供暖以淮河（图<a href="srdd.html#fig:chap6fig2">6.2</a>）为界，以北政府集中供暖，以南政府不集中供暖。冬日集中供暖在人世最寒凉的时候予人温暖。同时胴体集中供暖产生空气污染物，危害人的健康，最终导致人的预期寿命减少。</p>
 <p>如何估计冬日集中供暖对预期寿命的影响？思路是比较淮河两侧一点点的城市，淮河构成断点。数学上，只需将式<a href="srdd.html#eq:6-4">(6.4)</a>中的变量重新定义即可。定义x为城市距淮河多少纬度，在淮河以北为正，以南为负。如一个城市在淮河以北2个纬度，则其x为2；另一个城市在淮河以南1.5个纬度，则其x为-1.5。定义<span class="math inline">\(D=1\ iff\ x\ge0\)</span>。</p>
@@ -306,7 +306,7 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "none"
+"collapse": "section"
 }
 });
 });

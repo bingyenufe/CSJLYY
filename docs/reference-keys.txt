@@ -69,7 +69,8 @@ dummy-sec4
 dummy-sec5
 srdd
 srdd-sec1
-应用
+srdd-sec2
+srdd-sec3
 mech
 mech-sec1
 mech-sec2
