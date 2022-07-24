@@ -185,17 +185,17 @@
 <div id="dummy-sec1" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> 二值变量</h2>
 <p>回忆OLS估计量的计算公式，不要求变量是连续的，可以是离散的，如只取两个值——1或0。称之为二值变量，或指示变量，或虚拟变量。考虑如下的二元线性回归模型：</p>
-<p><span class="math display">\[
-y=\beta_0+\beta_1D+u
-\]</span></p>
+<p><span class="math display" id="eq:5-1">\[\begin{align}
+y=\beta_0+\beta_1D+u \tag{5.1}
+\end{align}\]</span></p>
 <p><span class="math inline">\(\beta_1\)</span>表示其他因素不变，D从0增加到1，y的变化。</p>
 <p>利用OLS估计量的计算公式推出，<span class="math inline">\(\hat{\beta_1}\)</span>等于 D等于1时y的均值减去D等于0时y的均值。</p>
 <p>如果零条件均值假设成立，<span class="math inline">\(\hat{\beta_1}\)</span>是无偏的。</p>
 <p><strong>一个例子</strong></p>
 <p>中国改革的一个典型做法是先在一些地方试点，如果试点效果好，再把成功的经验推向全国。所以，考虑下面一个情形：在中国的一部分地级市进行某项财税改革的试点。考虑如下的计量模型：</p>
-<p><span class="math display">\[
-y=\beta_0+\beta_1Pilot+u
-\]</span></p>
+<p><span class="math display" id="eq:5-2">\[\begin{align}
+y=\beta_0+\beta_1Pilot+u \tag{5.2}
+\end{align}\]</span></p>
 <p>其中，y表示的是人均GDP的对数，度量经济发展水平。Pilot是一个虚拟变量，定义如下：</p>
 <p><span class="math display">\[
 Pilot=
@@ -217,9 +217,9 @@ NoPilot=
 \end{cases}
 \]</span></p>
 <p>Q：可以在计量模型中同时加入Pilot和NoPilot吗？即可以设置如下的计量模型吗？</p>
-<p><span class="math display">\[
-y=\beta_0+\beta_1Pilot+\beta_2NoPilot+u
-\]</span></p>
+<p><span class="math display" id="eq:5-3">\[\begin{align}
+y=\beta_0+\beta_1Pilot+\beta_2NoPilot+u \tag{5.3}
+\end{align}\]</span></p>
 <p><span class="math inline">\(Pilot+NoPilot=1\)</span>。存在多重共线性。因此，不能这样做。</p>
 </div>
 <div id="dummy-sec3" class="section level2" number="5.3">
@@ -237,9 +237,9 @@ y=\beta_0+\beta_1Pilot+\beta_2NoPilot+u
 <h2><span class="header-section-number">5.4</span> 多个虚拟变量</h2>
 <p>考虑另外一种试点情形：有两套试点方案，一套试点方案在一些地区实施，另一套试点方案在另一些地区实施，还有一些地区未实施任一方案，作为对照组。
 现在有两套试点方案，需要定义两个虚拟变量。记第一种试点方案得虚拟变量为Pilot1（试点此方案记为1，否则记为0），第二种试点方案的虚拟变量为Pilot2。计量模型：</p>
-<p><span class="math display">\[
-y=\beta_0+\beta_1Pilot1+\beta_2Pilot2+u
-\]</span></p>
+<p><span class="math display" id="eq:5-4">\[\begin{align}
+y=\beta_0+\beta_1Pilot1+\beta_2Pilot2+u \tag{5.4}
+\end{align}\]</span></p>
 <p><span class="math inline">\(\beta_1\)</span>和<span class="math inline">\(\beta_2\)</span>分别表示试点方案1和2的效果。</p>
 <p>β1的OLS估计量: 推行第一种试点方案的地级市y的均值-未试点的地级市y的均值。β2的OLS估计量：推行第二种试点方案的地级市y的均值-未试点的地级市y的均值。</p>
 <p>也可以从分类的角度理解，如图<a href="dummy.html#fig:chap5fig2">5.2</a>。</p>
@@ -263,9 +263,9 @@ Male=
 \end{cases}
 \]</span></p>
 <p>计量模型：</p>
-<p><span class="math display">\[
-wage=\beta_0+\beta_1Male+u
-\]</span></p>
+<p><span class="math display" id="eq:5-5">\[\begin{align}
+wage=\beta_0+\beta_1Male+u \tag{5.5}
+\end{align}\]</span></p>
 <p>Q：<span class="math inline">\(\beta_1\)</span>的含义？<span class="math inline">\(\hat{\beta_1}=?\)</span></p>
 <p>还可以用虚拟变量研究种族（汉族还是少数民族）；行业（重工业或轻工业，三大产业）；地区（东中西）。</p>
 <p><strong>另见伍德里奇《计量经济学导论：现代观点》第五版第7.1-7.3节。</strong></p>
