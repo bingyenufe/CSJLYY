@@ -213,19 +213,19 @@ No Correlation: Any change in X leads to no change in Y, or vice versa.</p>
 </blockquote>
 <p><strong>What is Causation?</strong></p>
 <blockquote>
-<p>Unlike Correlation, the relationship is not because of a coincidence. We are saying that X causes V, or vice versa. It means that the existence of one variable causes the manifestation of another.</p>
+<p>Unlike Correlation, the relationship is not because of a coincidence. We are saying that X causes Y, or vice versa. It means that the existence of one variable causes the manifestation of another.</p>
 </blockquote>
 <p>“cause”是什么意思？这里所谓导致是指其他条件不变的情况下，如果X变化，Y也随之变化，那么我们就说X导致了Y，X和Y具有因果关系（X-&gt;Y的因果关系）。在微观经济学中，需求函数就是说价格和需求之间存在负向因果关系：如果价格提高，需求会减少。隐含的假设是，价格提高的时候，其他因素（包括偏好、其他商品的价格和收入等）一概不变，这时需求才会减少。如果价格提高的时候，收入也提高，需求不一定减少。</p>
 <p><strong>What’s the difference between correlation and causation?</strong></p>
 <blockquote>
-<p>Causation explicitly applies to cases where action A Causation explicitly applies to cases where action A causes outcome B. causes outcome B. On the other hand, correlation is simply a relationship. Action A relates to Action B—but one event doesn’t necessarily cause the other event to happen.</p>
+<p>Causation explicitly applies to cases where action A causes outcome B. On the other hand, correlation is simply a relationship. Action A relates to Action B—but one event doesn’t necessarily cause the other event to happen.</p>
 </blockquote>
 <blockquote>
-<p>However, we cannot simply assume causation even if we see two events happening, seemingly together, before our eyes. One, our observations are purely anecdotal. Two, there are so many other possibilities for an association, including but not limited to:</p>
+<p>However, we cannot simply assume causation (注：A-&gt;B) even if we see two events happening, seemingly together, before our eyes. One, our observations are purely anecdotal. Two, there are so many other possibilities for an association, including but not limited to:</p>
 </blockquote>
 <ul>
 <li>反过来成立：B导致A。反向因果。</li>
-<li>A和B相关，但它们均由C所致。例：图 <a href="intro.html#fig:chap1fig1">1.1</a>。在该图中，溺死数和冰淇淋消费量是相关关系，而非因果关系。实际上，是天热导致溺死数和冰淇淋消费量同时增加。更一般地，A不影响B, C-&gt;B，A和C相关. A和B之间的相关关系完全由C导致=&gt;遗漏变量</li>
+<li>A和B相关，但它们均由C所致。例：图 <a href="intro.html#fig:chap1fig1">1.1</a>。在该图中，溺死数和冰淇淋消费量是相关关系，而非因果关系。实际上，是天热导致溺死数和冰淇淋消费量同时增加=&gt;遗漏变量</li>
 <li>另一种情形：A-&gt;B, C-&gt;B，A和C相关。 A和B之间的相关关系在部分程度上由C导致。例：A是受教育程度，B是毕业后的收入。通常，我们观测到，受教育程度更高的人的平均收入也更高。但是，其高收入并不完全由教育导致，还可能有别的因素起作用：如为受教育程度更高的人的平均IQ更高，高的IQ也会导致高收入=&gt;遗漏变量。</li>
 </ul>
 <div class="figure"><span style="display:block;" id="fig:chap1fig1"></span>
@@ -250,7 +250,7 @@ No Correlation: Any change in X leads to no change in Y, or vice versa.</p>
 <p><strong>识别因果关系</strong></p>
 <p>何为识别因果关系？把确定两个变量之间是否具有因果关系的过程叫做识别因果关系。在英文里面叫做“identification”。</p>
 <p><strong><em>识别因果关系的经典方法:随机实验法</em></strong></p>
-<p>识别因果关系的经典方法：随机实验法，在英文里面叫做random experiment。借鉴自自然科学，核心是随机分组。比如，研究肥料对作物收成的影响。这里是一种因果关系含义上的影响。隐含的假设是，只肥料这一个因素改变——肥料增加一单位，其他影响作物收成的因素（包括土地质量、降雨量、寄生物等）均保持不变，大豆的产出增加多少？用随机实验处理这个问题的思路：找到若干块土地，如100，每块土地的大小都是一样的，如1亩。将这些土地随机分成两组。因为是随机分组，所以这两组土地的情况平均来说是相同的。然后对其中一组不施肥，对另外一组施1单位的肥料。用施肥组的平均作物收成减去不施肥组的平均作物收成，看它为正还是为负，藉此判断肥料对作物收成的影响。</p>
+<p>识别因果关系的经典方法：随机实验法，在英文里面叫做random experiment。借鉴自自然科学，核心是随机分组。比如，研究肥料对作物收成的影响。这里是一种因果关系含义上的影响。隐含的假设是，只肥料这一个因素改变——肥料增加1单位，其他影响作物收成的因素（包括土地质量、降雨量、寄生物等）均保持不变，大豆的产出增加多少？用随机实验处理这个问题的思路：找到若干块土地，如100，每块土地的大小都是一样的，如1亩。将这些土地随机分成两组。因为是随机分组，所以这两组土地的情况平均来说是相同的。然后对其中一组不施肥，对另外一组施1单位的肥料。用施肥组的平均作物收成减去不施肥组的平均作物收成，看它为正还是为负，藉此判断肥料对作物收成的影响。</p>
 <p>这一差值反映了因果关系。为何？回忆：因果关系是说其他因素不变，只肥料变化作物产出如何变化。这里，因为分组是随机的，两组的情况平均而言是相同的，除肥料使用量。所以，作物收成的差异平均而言反映了施肥量的影响。</p>
 <p><strong><em>在社会科学中使用随机实验法的局限</em></strong></p>
 <p>局限其一。试看下例。教育回报率指受教育程度提高，比如说受教育程度从高中提高到大学，会使得收入如何变化？这是一个因果关系含义上的概念。隐含的假设是，受教育程度提高时其他影响收入的因素（IQ、家庭环境等）都保持不变。如果用随机实验法，做法是：找一些小孩，随机地给他们不同年限的教育，继而比较他们成年后的收入。因为他们的受教育年限是随机的，所以他们成年后的收入差异（平均而言）反映了受教育年限的差异。但是，这里存在道德伦理方面的问题：为什么给一些小孩更高的教育年限，而给另外一个小孩更低的教育年限。对此很多人不会认同。一般地，从伦理道德的角度，很多时候随机实验法在社会科学中不可行。</p>
@@ -260,7 +260,7 @@ No Correlation: Any change in X leads to no change in Y, or vice versa.</p>
 <div id="intro-esti" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> 估计总体均值</h2>
 <p>问题：如何估计一个随机变量Y的总体均值<span class="math inline">\(\mu\)</span>？</p>
-<p>随机抽样，用样本均值估计总体均值: <span class="math inline">\(\bar{y} = \frac{ \sum_{i=1}^N y_i }{N}\)</span>。例：掷硬币，掷到正面记1，掷到反面记-1，易知总体均值是0。假设我们不知道总体均值，可以随机抽取30个观测值（掷10次硬币），计算样本均值，作为总体均值的估计。</p>
+<p>随机抽样，用样本均值估计总体均值: <span class="math inline">\(\bar{y} = \frac{ \sum_{i=1}^N y_i }{N}\)</span>。例：掷硬币，掷到正面记1，掷到反面记-1，易知总体均值是0。假设我们不知道总体均值，可以随机抽取30个观测值（掷30次硬币），计算样本均值，作为总体均值的估计。</p>
 <p>样本均值具有一个良好的性质：样本均值使下面的函数达到最小值:</p>
 <p><span class="math display" id="eq:1-1">\[\begin{align}
 f(m) = \sum_{i=1}^N (y_i-m)^2 \tag{1.1}
@@ -285,11 +285,11 @@ Prob\left( \lvert \frac{ \bar{y}-\mu }{ 1 \div \sqrt{N} } \rvert \leq 1.96\right
 <ul>
 <li>第一步, 建立（计量）模型:<span class="math inline">\(\epsilon_{(i)}=Y_{(i)}-\mu\)</span>。表示抽到的第i个值对总体均值的偏离。为了简便，在不引起混淆的时候把下标i省略掉。Y是一个随机变量, <span class="math inline">\(\mu\)</span>是一个确的定值，尽管未知待估。因此，<span class="math inline">\(\epsilon\)</span>是一个随机变量，E[<span class="math inline">\(\epsilon\)</span>]=0。模型转换：Y=<span class="math inline">\(\mu\)</span>+<span class="math inline">\(\epsilon\)</span>,E(<span class="math inline">\(\epsilon\)</span>)=0。这就是Y的统计模型，或者叫计量模型。</li>
 <li>第二步，随机抽样 &lt;- 有了计量模型我们需要数据。假设抽到N个观测值。</li>
-<li>第三步, 估计总体参数<span class="math inline">\(\mu\)</span>：<span class="math inline">\(Min_m f(m) = \sum_{i=1}^N (y_i -m)^2 \Rightarrow m^*=\bar{y}\)</span>。直观的理解：进行随机抽样，抽到多个观测值。这些观测观测值应该围绕着总体均值上下波动的。有时抽到的观测值比将总体均值大，而有时抽到的观测值比总体均值小。观测数很多时，大于总体均值和小于总体均值的个数大致相当。反过来说，总体均值处于抽到的观测值的中间，总的来说离观测值的近。因此，一个自然的想法是，选择距观测值最近的数作为总体均值的估计。样本均值是总体均值的一个估计量。上式最小化距离平方和，因此称称作最小二乘法。</li>
+<li>第三步, 估计总体参数<span class="math inline">\(\mu\)</span>：<span class="math inline">\(Min_m f(m) = \sum_{i=1}^N (y_i -m)^2 \Rightarrow m^*=\bar{y}\)</span>。直观的理解：进行随机抽样，抽到多个观测值。这些观测观测值应该围绕着总体均值上下波动的。有时抽到的观测值比将总体均值大，而有时抽到的观测值比总体均值小。观测数很多时，大于总体均值和小于总体均值的个数大致相当。反过来说，总体均值处于抽到的观测值的中间，总的来说离观测值近。因此，一个自然的想法是，选择距观测值最近的数作为总体均值的估计。样本均值是总体均值的一个估计量。上式最小化平方和，因此称称作最小二乘法。</li>
 <li>第四步, 推导估计量的期望和方差, 公式已在上面给出。</li>
 <li>第五步, 构建置信区间, 进行假设检验。</li>
 </ul>
-<p>这5步其实就是计量经济学里面最核心的5步。后续的计量分析主要照此召开。</p>
+<p>这5步其实就是计量经济学里面最核心的5步。后续的计量分析主要照此展开。</p>
 </div>
 <div id="intro-nature" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> 计量经济学的性质与经济数据</h2>
