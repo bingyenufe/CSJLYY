@@ -24,7 +24,7 @@
 <meta name="author" content="叶兵" />
 
 
-<meta name="date" content="2022-09-07" />
+<meta name="date" content="2022-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -85,6 +85,10 @@
 <ul>
 <li class="chapter" data-level="2.1" data-path="blr.html"><a href="blr.html#blr-sec1"><i class="fa fa-check"></i><b>2.1</b> 二元线性回归模型的定义</a></li>
 <li class="chapter" data-level="2.2" data-path="blr.html"><a href="blr.html#blr-sec2"><i class="fa fa-check"></i><b>2.2</b> 普通最小二乘法的推导</a></li>
+<li class="chapter" data-level="2.3" data-path="blr.html"><a href="blr.html#blr-sec3"><i class="fa fa-check"></i><b>2.3</b> OLS估计量的期望和方差</a></li>
+<li class="chapter" data-level="2.4" data-path="blr.html"><a href="blr.html#blr-sec4"><i class="fa fa-check"></i><b>2.4</b> 函数形式</a></li>
+<li class="chapter" data-level="2.5" data-path="blr.html"><a href="blr.html#blr-sec5"><i class="fa fa-check"></i><b>2.5</b> 最小二乘法：再考察</a></li>
+<li class="chapter" data-level="2.6" data-path="blr.html"><a href="blr.html#blr-sec6"><i class="fa fa-check"></i><b>2.6</b> 零条件均值假设：成立吗？</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="mlr.html"><a href="mlr.html"><i class="fa fa-check"></i><b>3</b> 多元线性回归：估计</a>
 <ul>
@@ -282,8 +286,8 @@ Min_{\hat{\beta_0},\hat{\beta_1}} \sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\bet
 <p><strong>一阶条件的含义</strong></p>
 <p>一阶条件也可写成：</p>
 <p><span class="math display" id="eq:2-8">\[\begin{align}
-\sum_{i=1}^N  u_i = 0 \\
-\sum_{i=1}^N  u_i x_i = 0 \tag{2.8}
+\sum_{i=1}^N  \hat{u_i} = 0 \\
+\sum_{i=1}^N  \hat{u_i}x_i = 0 \tag{2.8}
 \end{align}\]</span></p>
 <p>含义：（1）正负偏离相抵；（2）残差与自变量不相关。Q：为什么？[提示：想想相关系数的公式]。</p>
 <p>一阶条件的直观展示如图<a href="blr.html#fig:chap2fig6">2.6</a>。仍然使用伍德里奇《计量经济学导论：现代观点》第五版例2.4的数据，绘制散点图，<span class="math inline">\(\hat{u_i}\)</span>作为纵轴，education作为横轴。</p>
@@ -294,6 +298,188 @@ Min_{\hat{\beta_0},\hat{\beta_1}} \sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\bet
 图 2.6: Calculation based on a random sample
 </p>
 </div>
+</div>
+<div id="blr-sec3" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> OLS估计量的期望和方差</h2>
+<p>问题：反过来用educ对wage做回归，可不可以？有没有意义？</p>
+<p>数学上没有问题。Stata演示结果略。经济学上没有意义。一般的结论：用变量1对变量2回归，不能保证变量2的估计系数有意义。</p>
+<p>为了使估计系数有意义，需要施加约束。什么是有意义？通常，满足下式，称有意义：</p>
+<p><span class="math display" id="eq:2-9">\[\begin{align}
+E[\hat{\beta_1}] = \beta_1 \tag{2.9}
+\end{align}\]</span></p>
+<p>含义：<span class="math inline">\(\hat{\beta_1}\)</span>是一个随机变量。我们不能保证每一次抽样得到的<span class="math inline">\(\hat{\beta_1}\)</span>都等于<span class="math inline">\(\beta_1\)</span>；通常前者不等于后者。我们希望至少保证当把这个事情重复很多遍，说我们刚才抽样500次，得到的500个<span class="math inline">\(\hat{\beta_1}\)</span>的平均值等于<span class="math inline">\(\beta_1\)</span>。或者说，上式成立；期望表示的就是平均而言。</p>
+<p>总结：平均而言，<span class="math inline">\(\hat{\beta_1}\)</span>反映/识别了因果关系。</p>
+<p>问题：施加什么条件才能使上式成立？</p>
+<p>直接思考这个问题有一定难度。可以从一个简单的问题开始考虑这个问题。如果<span class="math inline">\(E[IQ|受教育程度=本科]&gt;E[IQ|受教育程度=高中]\)</span>（受教育程度等于本科的人的IQ平均来说大于受教育程度等于高中的人的IQ），那么<span class="math inline">\(E[收入|受教育程度=本科]-E[收入|受教育程度=高中]\)</span>(本科生的收入的均值减去高中生的收入的均值)是否反映受教育程度和收入之间的因果关系？即该差值是否完全由受教育程度的差异所致？如果不能的话，将这一前提条件替换成什么条件可使这一差分反映因果关系？</p>
+<p>第一小问：本科生平均收入比高中生平均收入高，既因接受了更多的教育，又因本科生IQ平均来说比高中生高。故给定该前提条件，该差值不能反映受教育程度和收入之间的因果关系。</p>
+<p>第二小问：换成<span class="math inline">\(E[IQ|受教育程度=本科]=E[IQ|受教育程度=高中]\)</span>。我们之前担心有遗漏变量问题：本科生和高中生的IQ不相同，因此，不知道这个收入到底是受教育程度不同还是IQ不同所致。改成这一前提条件，回避了这一问题。</p>
+<p>即使如此，本科生和高中生在别的方面存在差异。如，一般来说，家庭收入越高，对小孩的教育投入越多，小孩上大学的概率越高。又如，本科生和高中生的道德品质可能有差异。等等。为此，按照上面的逻辑，我们还需要增加如下的前提条件：</p>
+<p><span class="math display" id="eq:2-10">\[\begin{align}
+E[家庭收入|受教育程度=本科]=E[家庭收入|受教育程度=高中] \\
+E[道德品质|受教育程度=本科]=E[道德品质|受教育程度=高中] \\
+... \tag{2.10}
+\end{align}\]</span></p>
+<p>问题在于，可以列出成百上千个前提条件，因为影响收入的因素众多。可不可以化繁为简，用一个简单的式子概括一系列前提条件？这个简单的式子是什么？下式符合要求：</p>
+<p><span class="math display" id="eq:2-11">\[\begin{align}
+E[u|受教育程度=本科]=E[u|受教育程度=高中] \tag{2.11}
+\end{align}\]</span></p>
+<p>干扰项的定义就是除了我们纳入模型的因素以外，未纳入模型的因素的综合影响。数学上，可以u写成IQ、家庭收入、道德品质等一众未纳入模型的因素的函数。上式表示，本科生和高中生除受教育程度以外各因素的综合影响平均而言相等，或者说给定受教育程度，除受教育程度以外各因素的综合影响的期望为一个常数。</p>
+<p>这个前提条件满足的情况下，<span class="math inline">\(E[收入|受教育程度=本科]-[收入|受教育程度=高中]\)</span>能够反映受教育程度和收入之间的因果关系。注意这只是一个假设，成不成立是另外一回事。这里只是说如果假设成立，那么我们可以得出结论。</p>
+<p>一般地，受教育程度可以取多个值，如小学、初中、高中、本科、研究生等。将前提条件换成：</p>
+<p><span class="math display" id="eq:2-12">\[\begin{align}
+E[u|educ] = Constant \tag{2.12}
+\end{align}\]</span></p>
+<p>表示，不管受教育程度取何值，除受教育程度以外各因素的综合影响平均而言均相等。</p>
+<p>这是保证OLS估计量有意义的核心假设。此外，我们还需要其他一些假设。</p>
+<p><strong>四个假设</strong></p>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第41-43页。</p>
+<p>补充：零条件均值假设与前述条件均值为常数对于估计<span class="math inline">\(\beta_1\)</span>是一回事。为什么？</p>
+<p>零条件均值假设的含义：x变化时，所有其他因素对y的综合影响平均意义上保持不变。在教育回报率的例子中，这意味着，不管受教育程度怎么变化，所有其他因素对收入的综合影响平均意义上保持不变（合理吗？）。也可以说，或者说，x对于预测其他因素对y的综合影响的均值无帮助。</p>
+<p>零条件均值假设是假设，未必是事实。如果它成立，我们可以在它基础上进行推导。但我们要检查它在现实中是否成立。</p>
+<p><strong>OLS估计量的无偏性</strong></p>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第43-45页。</p>
+<p><strong>程序模拟（续）</strong></p>
+<p>接§<a href="blr.html#blr-sec2">2.2</a>中的程序模拟。疑问：500次抽样怎么抽的？这里予以明确。假设真实的模型为：</p>
+<p><span class="math display" id="eq:2-13">\[\begin{align}
+y=x+u, x\ and\ u \sim N(0,1), x\ and\ u\ are\ independent. \tag{2.13}
+\end{align}\]</span></p>
+<p>这里，<span class="math inline">\(\beta_0=0,\beta_1=1\)</span>。</p>
+<p>抽样：以抽取第一个观测值为例，我们从一个标准正态分布里随机抽取一个<span class="math inline">\(x_1\)</span>，从另一个独立的标准正态分布里随机抽取一个<span class="math inline">\(u_1\)</span>，把它们加起来，就得到<span class="math inline">\(y_1\)</span>。由此得到第一个观测值<span class="math inline">\((x_1,y_1)\)</span>。如此，我们抽第2至30个观测值，组成一个样本。这是一次抽样。基于这一次抽样的话，计算一个<span class="math inline">\(\hat{\beta_1}\)</span>。重复这一过程，进行第2至500次抽样。每次抽样均包含30个观测值，计算一个<span class="math inline">\(\hat{\beta_1}\)</span>。共得到500个<span class="math inline">\(\hat{\beta_1}\)</span>。</p>
+<p>这一过程满足上述4个假设，包括<span class="math inline">\(E(u|x)=0\)</span>。为什么？因此：</p>
+<p><span class="math display" id="eq:2-14">\[\begin{align}
+E[\hat{\beta_1}]=1 \tag{2.14}
+\end{align}\]</span></p>
+<p>这是理论结果。是否500次抽样的<span class="math inline">\(\hat{\beta_1}\)</span>的均值约等于1？绘制500个<span class="math inline">\(\hat{\beta_1}\)</span>的直方图如图<a href="blr.html#fig:chap2fig7">2.7</a>。由图，<span class="math inline">\(\hat{\beta_1}\)</span>不尽相同的，有的时候比较小，甚至达到0.3，而有的时候比较大，甚至达到1.7。就是说由一个随机抽取的样本计算的<span class="math inline">\(\hat{\beta_1}\)</span>可能离总体参数很远。但在<span class="math inline">\(\hat{\beta_1}\)</span>等于总体参数1的概率最大。总体上，<span class="math inline">\(\hat{\beta_1}\)</span>围绕着1分布，等于极端值的概率小。</p>
+<div class="figure"><span style="display:block;" id="fig:chap2fig7"></span>
+<img src="figs/chap2-fig7.png" alt="Histogram of 500 estimates" width="100%" height="100%" />
+<p class="caption">
+图 2.7: Histogram of 500 estimates
+</p>
+</div>
+<p>图<a href="blr.html#fig:chap2fig8">2.8</a>展示了前若干个<span class="math inline">\(\hat{\beta_1}\)</span>的均值。如最右端横轴是500，纵轴表示前500次抽样的<span class="math inline">\(\hat{\beta_1}\)</span>的均值，它约等于1。</p>
+<div class="figure"><span style="display:block;" id="fig:chap2fig8"></span>
+<img src="figs/chap2-fig8.png" alt="Mean of estimates" width="100%" height="100%" />
+<p class="caption">
+图 2.8: Mean of estimates
+</p>
+</div>
+<p>这个形象的例子说明在满足4个假设的情况下，基于一个样本计算的<span class="math inline">\(\hat{\beta_1}\)</span>通常不等于<span class="math inline">\(\beta_1\)</span>，还可能离<span class="math inline">\(\beta_1\)</span>比较远。但<span class="math inline">\(\hat{\beta_1}\)</span>的均值等于总体参数。</p>
+<p><strong>零条件均值、无偏性与因果关系</strong></p>
+<p>我们很多次把我们的最小二乘回归跟因果关系联系在一起。并非牵强附会。</p>
+<p>因果关系的定义：x变化时其他因素不变，y怎么变化？反映x到y之间的因果关系。</p>
+<p>零条件均值假设：x的变化的时候，平均而言其他因素不变，这里加了个“平均而言”，因为有一个期望符号。零条件均值假设跟因果关系定义的前半句非常相似,唯一的区别是多了一个“平均而言”。社会科学不同于自然科学，一般来说我们没办法进行实验，保持其他因素完全不变。比如，我们抽到若干个本科生和若干个高中生，除了受教育程度不一样，本科生和高中生在别的各方面也不一样。每一个人都是独特的，没有办法保持IQ严格不变，我们尽可能能做到的是保持本科生和高中生的IQ的均值一样。故我们不得不加上“平均而言”，在数学上用期望表示。</p>
+<p>如果零条件均值假设成立，可以推出无偏性：平均而言，<span class="math inline">\(\hat{\beta_1}\)</span>等于<span class="math inline">\(\beta_1\)</span>，即平均而言反映因果关系，跟因果关系的定义的后半句非常相似，唯一的区别依然是多了一个“平均而言”。因为零件均值假设中有一个“平均而言”，这里也得有一个。</p>
+<p><strong>OLS估计量的方差</strong></p>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第46-49页。</p>
+<p><strong>误差方差的估计</strong></p>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第49-51页。</p>
+</div>
+<div id="blr-sec4" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> 函数形式</h2>
+<p>见伍德里奇《计量经济学导论：现代观点》第五版第38-41页。</p>
+</div>
+<div id="blr-sec5" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> 最小二乘法：再考察</h2>
+<p>最小二乘法到底在干什么？之前我们给了一种理解（称为理解1）：把观测值画在二维图里，找离这些观测值最近的直线。这是一种直观的理解，但不是唯一的理解。下面我们给出另外两种理解。</p>
+<p><strong>理解2</strong></p>
+<p><span class="math display" id="eq:2-15">\[\begin{align}
+y_i=\hat{\beta_0}+\hat{\beta_1}x_i+\hat{u_i}=\hat{y_i}+\hat{u_i} \tag{2.15}
+\end{align}\]</span></p>
+<p>也就是说我可以把y分解成两部分：拟合值<span class="math inline">\(\hat{y}\)</span>和残差<span class="math inline">\(\hat{u}\)</span>，这两部分有什么关系？</p>
+<p><span class="math inline">\(\sum_{i}(\hat{\beta_0}+\hat{\beta_1}x_i)\hat{u_i}=0\)</span>。为什么？[提示：使用一阶条件]。意味着<span class="math inline">\(\hat{y}\)</span>和<span class="math inline">\(\hat{u}\)</span>不相关。为什么？[提示：使用相关系数的公式]</p>
+<p>直观上，可以绘制<span class="math inline">\(\hat{u_i}\)</span>和<span class="math inline">\(\hat{y_i}\)</span>的散点图。仍利用教育回报率的例子，绘制<span class="math inline">\(\hat{y_i}\)</span>（横轴，怎么计算？）和<span class="math inline">\(\hat{u_i}\)</span>（纵轴）的散点图如图<a href="blr.html#fig:chap2fig9">2.9</a>。可见，两者不存在线性关系。严格地，可以算出它们地相关系数就是为0。</p>
+<div class="figure"><span style="display:block;" id="fig:chap2fig9"></span>
+<img src="figs/chap2-fig9.png" alt="What does OLS method do?" width="100%" height="100%" />
+<p class="caption">
+图 2.9: What does OLS method do?
+</p>
+</div>
+<p>总之，最小二乘法是做分解：将因变量分解成拟合值和残差这两个不相关的项。</p>
+<p><strong>理解3</strong></p>
+<p>换一个角度，利用线性代数的知识。考虑过原点的回归模型：</p>
+<p><span class="math display" id="eq:2-16">\[\begin{align}
+y=\beta_1x+u \tag{2.16}
+\end{align}\]</span></p>
+<p>也就是说，<span class="math inline">\(\beta_0=0\)</span>。</p>
+<p>OLS估计量（推导见伍德里奇《计量经济学导论：现代观点》第五版第51页）：</p>
+<p><span class="math display" id="eq:2-17">\[\begin{align}
+\hat{\beta_1}=\frac{\sum_{i}x_iy_i}{\sum_{i}x_i^2} \tag{2.17}
+\end{align}\]</span></p>
+<p>有两个观测值：<span class="math inline">\((x_1=2,y_1=1)，(x_2=0,y_2=2)\)</span>。代入上面的公式，得：<span class="math inline">\(\hat{\beta_1}=0.5\)</span></p>
+<p>将两个观测值的回归方程用线性代数表示：</p>
+<p><span class="math display" id="eq:2-18">\[\begin{align}
+\left(
+\begin{array}{c}
+1 \\
+2
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+2 \\
+0
+\end{array}
+\right)
+\times0.5
++\left(
+\begin{array}{c}
+0 \\
+2
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+1 \\
+0
+\end{array}
+\right)
++\left(
+\begin{array}{c}
+0 \\
+2
+\end{array}
+\right) \tag{2.18}
+\end{align}\]</span></p>
+<p>记向量<span class="math inline">\(\vec{y}=(1,2)&#39;,\vec{x}=(2,0)&#39;,\vec{u}=(0,2)&#39;\)</span>。把这些向量画在二维图中：</p>
+<div class="figure"><span style="display:block;" id="fig:chap2fig10"></span>
+<img src="figs/chap2-fig10.png" alt="What does OLS method do? (continued)" width="100%" height="100%" />
+<p class="caption">
+图 2.10: What does OLS method do? (continued)
+</p>
+</div>
+<p>由图。OLS法就是做线性投影：将向量y在x确定的平面上做线性投影，线性投影为拟合值，投影剩下的部分就是残差。该结论对于二元线性回归模型和下一章要讲的多元线性回归模型依然成立。</p>
+</div>
+<div id="blr-sec6" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> 零条件均值假设：成立吗？</h2>
+<blockquote>
+<p>一个物理学家，一个化学家和一个经济学家落难孤岛，正值饥肠辘辘，海上漂来一盒罐头。物理学家提议用岩石砸开罐头，化学家主张生火加热使其膨胀破裂，此时，经济学家慢条斯理地说：“你们的方法太复杂了，假设有一个开瓶器，我们就可以轻松撬开它。”<br>
+资料来源：<a href="https://www.douban.com/group/topic/252843954/?_i=7975810BnpGaYU" class="uri">https://www.douban.com/group/topic/252843954/?_i=7975810BnpGaYU</a></p>
+</blockquote>
+<p>当零条件假设成立时，OLS估计量无偏，平均而言能够反映因果关系。问题是，什么情况下零条件均值假设成立？</p>
+<p><strong>随机实验</strong></p>
+<p>如果x是随机分配的，那么零条件均值假设成立。比如，一个农学家研究施肥量（记为x）对作物收成（记为y）的影响。他可能做自然实验：找100块1亩大小的土地，随机分成10组，分别施以0、1、2……、9单位的肥料。某块地施肥量多寡，纯系运气，与别的信息无关。也就是说，知道该块地的施肥量对于推测该块地的别的信息了无帮助。用数学术语讲：
+对于任一施肥量，别的信息对此的条件期望是一个常数，即零条件均值假设成立。</p>
+<p>问题在于，在经济学里，很难开展随机实验，原因有二：其一，经济学领域的随机实验的成本可能较高，如为了解基础设施对经济增长的影响，随机实验的思路选择100个村子，随机分成2组，给一组修路，对另一组不做处理。修路成本高昂显而易见。其二，为估计教育回报率，随机实验的思路是随机地给不同小孩不同的受教育程度。但为什么有的小孩就能得到高学历，而有的小孩初中毕业就不得不步入社会？这是伦理压力。</p>
+<p><strong>检验零条件均值假设是否成立</strong></p>
+<p>定理：<span class="math inline">\(E[u|x]=0=&gt;Cov(x,u)=0,Corr(x,u)=0\)</span>。</p>
+<p>证明见斯托克和沃森《计量经济学》第二版格致出版社等第27页。</p>
+<p>反过来，如果相关，零条件均值假设不成立。这为我们提供了一个判断零条件均值假设成不成立的思路：一般来说，很难直接判断零条件均值假设是否成立，因其抽象。但容易判断x和u是不是相关的。如果有理由认为x和u相关，则有理由认为零条件均值假设不成立。</p>
+<p>例1：<span class="math inline">\(y=\beta_0+\beta_1*educ+u\)</span>。干扰项包含除教育以外其他影响收入因素，包括IQ。IQ和受教育程度x应是正相关的。而IQ是u的一个组成部分，因此我们有理由认为u和educ也是相关的。进而有理由认为零条件均值假设不成立。这就是所谓的遗漏变量问题：这里遗漏掉IQ，它与educ相关。既如此，OLS估计量不满足无偏性，平均而言不能反映因果关系。</p>
+<p>例2：cons=β0+β1transfer+u(消费&lt;-转移支付)。Q：u是哪些因素的综合影响?这些因素各自与transfer相关吗？如果相关, 是正相关还是负相关？0条件均值假设成立吗？</p>
+<p>另外一种情况是不仅x会影响y，反过来y也会影响x。</p>
+<p>例3：基础设施和经济发展水平的关系。良好的基础设施促进经济发展。反过来，经济发达，政府税收多，基础设施多。也就是说，基础设施和经济发展水平双向影响。</p>
+<p>例4：国民总收入和总消费的关系。</p>
+<p>如果x和y双向影响，那么x和u相关。证明如下：</p>
+<div class="figure"><span style="display:block;" id="fig:chap2fig11"></span>
+<img src="figs/chap2-fig11.png" alt="reverse causilty and biased estimator" width="100%" height="100%" />
+<p class="caption">
+图 2.11: reverse causilty and biased estimator
+</p>
+</div>
+<p>这就是反向因果问题。当其存在的情况下，零条件均值假设不成立，OLS估计量有偏, 平均而言不能反映因果关系。</p>
+<p>遗漏变量或反向因果问题在实践中非常常见，以致于很多时候，简单做一个最小二乘回归没有什么意义。处理遗漏变量或反向因果问题至关重要。如何处理？本讲义后述各种方法，皆旨在处理这两个问题。</p>
 
 </div>
 </div>
