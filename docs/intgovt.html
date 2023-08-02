@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 15 章 专题：政府间关系（含模糊断点回归） | 公共经济学中的计量方法及应用</title>
+  <meta name="description" content="第 15 章 专题：政府间关系（含模糊断点回归） | 公共经济学中的计量方法及应用" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 15 章 专题：政府间关系（含模糊断点回归） | 公共经济学中的计量方法及应用" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 15 章 专题：政府间关系（含模糊断点回归） | 公共经济学中的计量方法及应用" />
+  
+  
+  
+
+<meta name="author" content="叶兵" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rev.html"/>
+<link rel="next" href="oth.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">公共经济学中的计量方法及应用</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序言</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 导论</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#intro-corr"><i class="fa fa-check"></i><b>1.1</b> 相关和因果关系</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#intro-esti"><i class="fa fa-check"></i><b>1.2</b> 估计总体均值</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#intro-nature"><i class="fa fa-check"></i><b>1.3</b> 计量经济学的性质与经济数据</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#intro-math"><i class="fa fa-check"></i><b>1.4</b> 数学知识复习</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="blr.html"><a href="blr.html"><i class="fa fa-check"></i><b>2</b> 二元线性回归</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="blr.html"><a href="blr.html#blr-sec1"><i class="fa fa-check"></i><b>2.1</b> 二元线性回归模型的定义</a></li>
+<li class="chapter" data-level="2.2" data-path="blr.html"><a href="blr.html#blr-sec2"><i class="fa fa-check"></i><b>2.2</b> 普通最小二乘法的推导</a></li>
+<li class="chapter" data-level="2.3" data-path="blr.html"><a href="blr.html#blr-sec3"><i class="fa fa-check"></i><b>2.3</b> OLS估计量的期望和方差</a></li>
+<li class="chapter" data-level="2.4" data-path="blr.html"><a href="blr.html#blr-sec4"><i class="fa fa-check"></i><b>2.4</b> 函数形式</a></li>
+<li class="chapter" data-level="2.5" data-path="blr.html"><a href="blr.html#blr-sec5"><i class="fa fa-check"></i><b>2.5</b> 最小二乘法：再考察</a></li>
+<li class="chapter" data-level="2.6" data-path="blr.html"><a href="blr.html#blr-sec6"><i class="fa fa-check"></i><b>2.6</b> 零条件均值假设：成立吗？</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="mlr.html"><a href="mlr.html"><i class="fa fa-check"></i><b>3</b> 多元线性回归：估计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="mlr.html"><a href="mlr.html#mlr-sec1"><i class="fa fa-check"></i><b>3.1</b> 使用多元线性回归模型的动因</a></li>
+<li class="chapter" data-level="3.2" data-path="mlr.html"><a href="mlr.html#mlr-sec2"><i class="fa fa-check"></i><b>3.2</b> 多元线性回归模型的定义</a></li>
+<li class="chapter" data-level="3.3" data-path="mlr.html"><a href="mlr.html#mlr-sec3"><i class="fa fa-check"></i><b>3.3</b> OLS法的操作和解释</a></li>
+<li class="chapter" data-level="3.4" data-path="mlr.html"><a href="mlr.html#mlr-sec4"><i class="fa fa-check"></i><b>3.4</b> OLS估计量的期望</a></li>
+<li class="chapter" data-level="3.5" data-path="mlr.html"><a href="mlr.html#mlr-sec5"><i class="fa fa-check"></i><b>3.5</b> OLS估计量的方差</a></li>
+<li class="chapter" data-level="3.6" data-path="mlr.html"><a href="mlr.html#mlr-sec6"><i class="fa fa-check"></i><b>3.6</b> OLS估计量的有效性</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mlrinf.html"><a href="mlrinf.html"><i class="fa fa-check"></i><b>4</b> 多元线性回归：统计推断</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec1"><i class="fa fa-check"></i><b>4.1</b> 引例</a></li>
+<li class="chapter" data-level="4.2" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec2"><i class="fa fa-check"></i><b>4.2</b> OLS估计量的抽样分布</a></li>
+<li class="chapter" data-level="4.3" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec3"><i class="fa fa-check"></i><b>4.3</b> 检验对单个总体参数的假设</a></li>
+<li class="chapter" data-level="4.4" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec4"><i class="fa fa-check"></i><b>4.4</b> 多元回归能解决遗漏变量问题吗？</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dummy.html"><a href="dummy.html"><i class="fa fa-check"></i><b>5</b> 定性信息</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dummy.html"><a href="dummy.html#dummy-sec1"><i class="fa fa-check"></i><b>5.1</b> 二值变量</a></li>
+<li class="chapter" data-level="5.2" data-path="dummy.html"><a href="dummy.html#dummy-sec2"><i class="fa fa-check"></i><b>5.2</b> 虚拟变量陷阱</a></li>
+<li class="chapter" data-level="5.3" data-path="dummy.html"><a href="dummy.html#dummy-sec3"><i class="fa fa-check"></i><b>5.3</b> 分类、基准和虚拟变量</a></li>
+<li class="chapter" data-level="5.4" data-path="dummy.html"><a href="dummy.html#dummy-sec4"><i class="fa fa-check"></i><b>5.4</b> 多个虚拟变量</a></li>
+<li class="chapter" data-level="5.5" data-path="dummy.html"><a href="dummy.html#dummy-sec5"><i class="fa fa-check"></i><b>5.5</b> 更多例子</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="srdd.html"><a href="srdd.html"><i class="fa fa-check"></i><b>6</b> 清晰断点回归</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="srdd.html"><a href="srdd.html#srdd-sec1"><i class="fa fa-check"></i><b>6.1</b> 思路</a></li>
+<li class="chapter" data-level="6.2" data-path="srdd.html"><a href="srdd.html#srdd-sec2"><i class="fa fa-check"></i><b>6.2</b> 估计</a></li>
+<li class="chapter" data-level="6.3" data-path="srdd.html"><a href="srdd.html#srdd-sec3"><i class="fa fa-check"></i><b>6.3</b> 应用</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mech.html"><a href="mech.html"><i class="fa fa-check"></i><b>7</b> 机制和异质性分析</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="mech.html"><a href="mech.html#mech-sec1"><i class="fa fa-check"></i><b>7.1</b> 机制分析</a></li>
+<li class="chapter" data-level="7.2" data-path="mech.html"><a href="mech.html#mech-sec2"><i class="fa fa-check"></i><b>7.2</b> 异质性分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cons.html"><a href="cons.html"><i class="fa fa-check"></i><b>8</b> 一致性</a></li>
+<li class="chapter" data-level="9" data-path="misspe.html"><a href="misspe.html"><i class="fa fa-check"></i><b>9</b> 模型误设</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="misspe.html"><a href="misspe.html#misspe-sec1"><i class="fa fa-check"></i><b>9.1</b> 遗漏相关变量</a></li>
+<li class="chapter" data-level="9.2" data-path="misspe.html"><a href="misspe.html#misspe-sec2"><i class="fa fa-check"></i><b>9.2</b> 包含无关变量</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="panel.html"><a href="panel.html"><i class="fa fa-check"></i><b>10</b> 面板数据模型：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="panel.html"><a href="panel.html#panel-sec1"><i class="fa fa-check"></i><b>10.1</b> 面板数据的定义</a></li>
+<li class="chapter" data-level="10.2" data-path="panel.html"><a href="panel.html#panel-sec2"><i class="fa fa-check"></i><b>10.2</b> 差分法</a></li>
+<li class="chapter" data-level="10.3" data-path="panel.html"><a href="panel.html#panel-sec3"><i class="fa fa-check"></i><b>10.3</b> 去均值法</a></li>
+<li class="chapter" data-level="10.4" data-path="panel.html"><a href="panel.html#panel-sec4"><i class="fa fa-check"></i><b>10.4</b> 固定效应模型</a></li>
+<li class="chapter" data-level="10.5" data-path="panel.html"><a href="panel.html#panel-sec5"><i class="fa fa-check"></i><b>10.5</b> LSDV法</a></li>
+<li class="chapter" data-level="10.6" data-path="panel.html"><a href="panel.html#panel-sec6"><i class="fa fa-check"></i><b>10.6</b> 时间固定效应</a></li>
+<li class="chapter" data-level="10.7" data-path="panel.html"><a href="panel.html#panel-sec7"><i class="fa fa-check"></i><b>10.7</b> 应用：财政联邦主义的文献</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="did.html"><a href="did.html"><i class="fa fa-check"></i><b>11</b> 基于面板数据的双重差分法：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="did.html"><a href="did.html#did-sec1"><i class="fa fa-check"></i><b>11.1</b> 双重差分法的思路</a></li>
+<li class="chapter" data-level="11.2" data-path="did.html"><a href="did.html#did-sec2"><i class="fa fa-check"></i><b>11.2</b> 政策一次性实施</a></li>
+<li class="chapter" data-level="11.3" data-path="did.html"><a href="did.html#did-sec3"><i class="fa fa-check"></i><b>11.3</b> 政策分多轮推进</a></li>
+<li class="chapter" data-level="11.4" data-path="did.html"><a href="did.html#did-sec4"><i class="fa fa-check"></i><b>11.4</b> 外生事件</a></li>
+<li class="chapter" data-level="11.5" data-path="did.html"><a href="did.html#did-sec5"><i class="fa fa-check"></i><b>11.5</b> 基于处理强度的双重差分法</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="iv.html"><a href="iv.html"><i class="fa fa-check"></i><b>12</b> 工具变量法：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="iv.html"><a href="iv.html#iv-sec1"><i class="fa fa-check"></i><b>12.1</b> 何谓“剥离”？</a></li>
+<li class="chapter" data-level="12.2" data-path="iv.html"><a href="iv.html#iv-sec2"><i class="fa fa-check"></i><b>12.2</b> 二元情形</a></li>
+<li class="chapter" data-level="12.3" data-path="iv.html"><a href="iv.html#iv-sec3"><i class="fa fa-check"></i><b>12.3</b> 多元情形</a></li>
+<li class="chapter" data-level="12.4" data-path="iv.html"><a href="iv.html#iv-sec4"><i class="fa fa-check"></i><b>12.4</b> 判断备选变量是否是合格的工具变量</a></li>
+<li class="chapter" data-level="12.5" data-path="iv.html"><a href="iv.html#iv-sec5"><i class="fa fa-check"></i><b>12.5</b> 寻找工具变量：利用内生变量变异的外生来源</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="exp.html"><a href="exp.html"><i class="fa fa-check"></i><b>13</b> 专题：政府支出</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="exp.html"><a href="exp.html#exp-sec1"><i class="fa fa-check"></i><b>13.1</b> Government multiplier</a></li>
+<li class="chapter" data-level="13.2" data-path="exp.html"><a href="exp.html#exp-sec2"><i class="fa fa-check"></i><b>13.2</b> Social insurance</a></li>
+<li class="chapter" data-level="13.3" data-path="exp.html"><a href="exp.html#exp-sec3"><i class="fa fa-check"></i><b>13.3</b> Benefit incidence</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="rev.html"><a href="rev.html"><i class="fa fa-check"></i><b>14</b> 专题：政府收入</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="rev.html"><a href="rev.html#rev-sec1"><i class="fa fa-check"></i><b>14.1</b> Short-term tax policy</a></li>
+<li class="chapter" data-level="14.2" data-path="rev.html"><a href="rev.html#rev-sec2"><i class="fa fa-check"></i><b>14.2</b> Tax regime</a></li>
+<li class="chapter" data-level="14.3" data-path="rev.html"><a href="rev.html#rev-sec3"><i class="fa fa-check"></i><b>14.3</b> Tax incidence</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="intgovt.html"><a href="intgovt.html"><i class="fa fa-check"></i><b>15</b> 专题：政府间关系（含模糊断点回归）</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec1"><i class="fa fa-check"></i><b>15.1</b> Intergovernmental transfers</a></li>
+<li class="chapter" data-level="15.2" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec2"><i class="fa fa-check"></i><b>15.2</b> Place-based policy</a></li>
+<li class="chapter" data-level="15.3" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec3"><i class="fa fa-check"></i><b>15.3</b> Unfunded mandate</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="oth.html"><a href="oth.html"><i class="fa fa-check"></i><b>16</b> 其他公共经济学问题</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="oth.html"><a href="oth.html#oth-sec1"><i class="fa fa-check"></i><b>16.1</b> Public choice</a></li>
+<li class="chapter" data-level="16.2" data-path="oth.html"><a href="oth.html#oth-sec2"><i class="fa fa-check"></i><b>16.2</b> Environmental regulation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html"><i class="fa fa-check"></i>附录</a>
+<ul>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html#附录1双重差分法共同趋势假设检验及动态效应分析"><i class="fa fa-check"></i>附录1：双重差分法：共同趋势假设检验及动态效应分析</a></li>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html#附录2双重差分法的估计量无偏吗"><i class="fa fa-check"></i>附录2：双重差分法的估计量无偏吗？</a></li>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html#附录3stata操作指引"><i class="fa fa-check"></i>附录3：Stata操作指引</a></li>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html#附录4科学写作"><i class="fa fa-check"></i>附录4：科学写作</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">利用bookdown编写</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">公共经济学中的计量方法及应用</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intgovt" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">第 15 章</span> 专题：政府间关系（含模糊断点回归）<a href="intgovt.html#intgovt" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="intgovt-sec1" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Intergovernmental transfers<a href="intgovt.html#intgovt-sec1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Q：中央对地方的转移支付增加1单位，地方政府支出增加多少单位？</p>
+<p>考虑下面的例子：某大学生旧例每年从父母那里拿到15000，支出15000。某年获得奖学金5000。当年支出多少？从父母那里拿多少钱？可能支出不是20000，而是16000，因为想着父母挣钱不易（父母的效用进入其效用函数），少拿一点他们少辛苦一份，只从父母11000。</p>
+<p>从财政学角度解读这个例子。父母：纳税人，子女：地方政府。纳税人给地方政府缴税，相应地，地方政府提供公共品，比如，在考试或社团活动中取得优异成绩，带给全家喜悦。现在，子女作为地方政府获得一笔来自中央政府的为数5000的转移支付，将其中的一部分用作消费，另一部分给作为纳税人的父母减税。上面的例子，消费增加1000，给父母减税4000。</p>
+<p>一般地，中央对地方的转移支付增加1单位，假设地方政府最大化社会福利，它会从社会最优的角度安排这多出来的1单位钱。考虑如下的问题：这笔钱属于人民，人民希望如何花？人民将这笔钱分成两块，一块购买私人品，另一块购买公共品，后者即人民希望政府支出增加多少，前者反映减税多少。通常，人民希望更大的比例用于购买私人品，意味着中央对地方的转移支付增加1单位，地方政府支出增加少于0.5单位，减税多于0.5单位。这是理论预测，数据支持这一理论预测吗？</p>
+<p>文献：Lundqvist（2015）。</p>
+<p>思考：该文的结果支持这一理论预测吗？如不支持，如何解释结果？</p>
+</div>
+<div id="intgovt-sec2" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Place-based policy<a href="intgovt.html#intgovt-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Place-based policy，中文叫做区域政策，一般是中央在不同地区实施不同的政策。政策因地而异，即英文所谓place-based。区域政策在世界范围内普遍存在。支持区域政策的一个理由如big push theory。很多时候，中央扶持落后地区。但也有中央向发达地区倾斜资源的情况。</p>
+<p>改革开放后，中国的区域政策包括（但不限于）：八七扶贫攻坚计划、西部大开发政策、支持粤港澳大湾区发展的政策等。前两个政策意在支持落后地区，最后一个政策意在支持发达地区。可以看到，中国的区域政策经历了一个从注重公平（缩小地区差距）到重视效率（发挥集聚效应）。重视效率不必然损害公平，如果粤港澳大湾区经济集聚吸收了中西部的劳动力，有助于提高这些劳动力的工资，并提高其来源地劳动的边际产出。</p>
+<p>Meng（2013）研究八七扶贫攻坚计划是否提高了农民人均纯收入。下面介绍这篇文章（做了简化）。我们也通过这个例子说明<strong>模糊断点回归</strong>的含义及处理方法。回顾：<a href="srdd.html#srdd">6</a>介绍了清晰断点回归。在这一章的引例中，GPA&gt;=3.9，被授予奖学金，或谓接受处理；&lt;3.9，未被授予奖学金，或谓未接受处理。断点指3.9，清晰是什么含义？</p>
+<p><strong><em>政策背景</em></strong></p>
+<p>八七扶贫攻坚计划于1994年实施。其模式是，选取若干国家级贫困县（National Poor Counties），予以扶持。一个重要的选择标准1992年的农民人均纯收入是不是低于700元。注意该政策酝酿于1993年，此时，1992年的农民人均纯收入已经给定，不能再被操纵。这不是绝对的标准，也就是说，并不是说，一个县农民人均纯收入低于700元，就一定能入选；或者一个县农民人均高于700元，就一定无法入选。除人均纯收入以外，还有一些其他因素影响入选，如政治关联，与中央有强政治关联的县可能说服中央让其加入八七计划，即使其农民人均纯收入较高。</p>
+<p>图<a href="intgovt.html#fig:chap16fig1">15.1</a>展示了农民人均纯收入与入选国家级贫困县的概率之间的关系。横轴是（农民人均纯收入-700）。所以，横轴小于0就表示农民人均纯收入低于700；大于0表示农民人均纯收入高于700。将横轴分成宽度为20元的区间若干，如(-40，-20]、(-20，0]、(0，20]等。对每一个区间，计算落入这个区间的县入选国家级贫困县的频率（如该区间内10个县有7个入选，则入选频率为70%），将这一频率画到图中，即为图中的一个圆圈，圆圈的大小反映该区间内县的数量。由图可见，农民人均纯收入高于700和低于700都有可能入选国家级贫困县。但从高于700一侧走向低于700一侧，入选概率陡然提高。</p>
+<div class="figure"><span style="display:block;" id="fig:chap16fig1"></span>
+<img src="figs/chap16-fig1.png" alt="Farmer Income and national poor counties"  />
+<p class="caption">
+图 15.1: Farmer Income and national poor counties
+</p>
+</div>
+<p>资料来源：Meng（2013）图4。</p>
+<p>最终确定了592个国家级贫困县，如图<a href="intgovt.html#fig:chap16fig2">15.2</a>中红色区域所示。</p>
+<div class="figure"><span style="display:block;" id="fig:chap16fig2"></span>
+<img src="figs/chap16-fig2.png" alt="Illustration of national poor counties"  />
+<p class="caption">
+图 15.2: Illustration of national poor counties
+</p>
+</div>
+<p>资料来源：Meng（2013）图3。</p>
+<p>The 8-7 Plan has three major interventions for poverty reduction：</p>
+<ul>
+<li>First, targeted counties received credit assistance，即信贷优惠；</li>
+<li>Second, the Ministry of Finance provided budgetary grants for investment in poor counties，主要是提供专项转移支付，支持这些县的基础设施建设；</li>
+<li>Third, public employed projects were established in designated areas，即安排以工代赈项目。</li>
+</ul>
+<p><strong><em>计量设置</em></strong></p>
+<p>计量模型如下：</p>
+<p><span class="math display">\[
+\Delta logy_i=\beta_0+\beta_1NP94_i+\phi(y_i^{92})+\epsilon_i
+\]</span>
+其中，i表示县。<span class="math inline">\(NP94_i\)</span>是国家级贫困县的虚拟变量：是国家级贫困县则记为1，否则记为0。<span class="math inline">\(y_i\)</span>表示县i的农民人均纯收入。<span class="math inline">\(\Delta log(y_i)\)</span>则近似等于县i的农民人均纯收入在一段时间内的增长率。<span class="math inline">\(\phi(y_i^{92})\)</span>是1992年农民人均纯收入的多项式。一次项就是y_i<sup>{92}，二次项为y_i</sup>{92}+(y_i<sup>{92})</sup>2，以此类推。一个县如果特别穷，其发展的空间也就大，增长率可能高。<span class="math inline">\(\epsilon_i\)</span>是干扰项。</p>
+<p>问题在于，可能存在遗漏变量问题：刚提到，一个县与中央的政治关联强，有助于这个县成为国家级贫困县，即两者是正相关的；政治关联还可能为这些县带来其他有利于经济发展的资源，它它本身也会影响县域经济发展，构成干扰项的一部分。因此，有理由担心，u与<span class="math inline">\(NP94_i\)</span>相关，故<span class="math inline">\(NP94_i\)</span>是一个内生变量。</p>
+<p>一个解决方法是寻找工具变量。怎么样寻找工具变量？<a href="iv.html#iv-sec5">12.5</a>讲过寻找工具变量的一个思路：利用内生变量变异的外生来源。套用于此处，我们要思考哪些因素决定一个县能否入选国家级贫困县，从中找出外生的因素。一个显而易见的外生因素是中央的选择标准：1992年农民人均纯收入否低于700元。刻画这一标准的变量为：<span class="math inline">\(Eligible_i≡1(y_i{92}&lt;700)\)</span>,如果一个县1992年农民人均纯收入低于700元，它记为1，否则它记为0。前已说明，这一变量与<span class="math inline">\(NP94_i\)</span>正相关。这一标准是中央制定的标准，适用于全国，与干扰项——影响单个县农民人均纯收入增长的因素——很可能不相关。例如，没有理由一个县的政治关联在700元左右有一个跳跃式的变化。</p>
+<p><strong><em>估计结果</em></strong></p>
+<p>设因变量为<span class="math inline">\(logy_i^{2000}-logy_i^{1994}\)</span>，近似等于1994-2000年农民人均纯收入的增长率。估计结果见图<a href="intgovt.html#fig:chap16fig3">15.3</a>。Panel A是第一阶段回归的估计结果，Panel C是第二阶段回归的估计结果。列（1）自变量只包含NP94，列（2）加入了1992年农民人均纯收入作为控制变量，列（3）继续加入1992年农民人均纯收入的二次方作为控制变量，列（4）继续加入了其他县层面的控制变量。以列（4）为列，结果表明：the program has increased per capita income by approximately 38% during the program period of 1994 to 2000。</p>
+<div class="figure"><span style="display:block;" id="fig:chap16fig3"></span>
+<img src="figs/chap16-fig3.png" alt="Results for 94-00 change in log income per capita"  />
+<p class="caption">
+图 15.3: Results for 94-00 change in log income per capita
+</p>
+</div>
+<p>资料来源：Meng（2013）表4。</p>
+<p>图<a href="intgovt.html#fig:chap16fig4">15.4</a>设因变量为<span class="math inline">\(logy_i^{2003}-logy_i^{1994}\)</span>。此表列（1）与上表列（4）自变量相同。此表列（1）的估计结果表明：the program has increased per capita income by approximately 28% during the program period of 1994 to 2003。入选国家级贫困县使得农民人均纯收入在1994-2000年间增长了38%，在1994-2003年间只增长了28%，说明：the programma have had only sizeable short-run effects that began to decay just a few years after its implementation。</p>
+<div class="figure"><span style="display:block;" id="fig:chap16fig4"></span>
+<img src="figs/chap16-fig4.png" alt="Results for 94-03 change in log income per capita"  />
+<p class="caption">
+图 15.4: Results for 94-03 change in log income per capita
+</p>
+</div>
+<p>资料来源：Meng（2013）表6。</p>
+<p><strong><em>兼论模糊断点回归</em></strong></p>
+<p>从另一个角度考虑这个问题。1992年的农民人均纯收入低于700元不一定被选为国家级贫困县，高于700元不一定落选国家级贫困县——满足这一标准（&lt;700）与是否入选之间的关联具有模糊性，此其一。从1992年的农民人均纯收入高于700元一点点走向低于700元一点点入选国家级贫困县的概率有一个跳跃式增加，这意味着，虽然这一标准（&lt;700）与是否入选之间的关联具有模糊性，但这一标准对于预测入选国家级贫困县的概率是有帮助的，此其二。称满足以上两点的为“模糊断点回归”。</p>
+<p>如上所示，模糊断点回归（Fuzzy RDD）可用2SLS方法处理。从这个角度，可以将Fuzzy RDD视为2SLS的一个特例。而在<a href="srdd.html#srdd">6</a>中，我们已说明，清晰断点回归可以用多元回归处理，从这个角度，可以把它看作是多元回归的一个特例。这事对断点回归的一些可能的处理方式。断点回归还可以用非参数的方法处理，这超出了本讲义的写作范围。</p>
+</div>
+<div id="intgovt-sec3" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Unfunded mandate<a href="intgovt.html#intgovt-sec3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>文献：<mark>TBD</mark>。</p>
+<p>注：财政联邦主义的文献已讲过，本章不再重复。</p>
+<p><strong>参考文献</strong></p>
+<ul>
+<li>Lundqvist, H. (2015). Granting public or private consumption? Effects of grants on local public spending and income taxes. International Tax and Public Finance, 22(1), 41-72.</li>
+<li>Meng L. Evaluating China’s poverty alleviation program: a regression discontinuity approach[J]. Journal of Public Economics, 2013, 101: 1-11.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rev.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="oth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/016-intgovt.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

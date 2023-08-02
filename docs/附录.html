@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>附录 | 公共经济学中的计量方法及应用</title>
+  <meta name="description" content="附录 | 公共经济学中的计量方法及应用" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="附录 | 公共经济学中的计量方法及应用" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="附录 | 公共经济学中的计量方法及应用" />
+  
+  
+  
+
+<meta name="author" content="叶兵" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="oth.html"/>
+
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">公共经济学中的计量方法及应用</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序言</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 导论</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#intro-corr"><i class="fa fa-check"></i><b>1.1</b> 相关和因果关系</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#intro-esti"><i class="fa fa-check"></i><b>1.2</b> 估计总体均值</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#intro-nature"><i class="fa fa-check"></i><b>1.3</b> 计量经济学的性质与经济数据</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#intro-math"><i class="fa fa-check"></i><b>1.4</b> 数学知识复习</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="blr.html"><a href="blr.html"><i class="fa fa-check"></i><b>2</b> 二元线性回归</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="blr.html"><a href="blr.html#blr-sec1"><i class="fa fa-check"></i><b>2.1</b> 二元线性回归模型的定义</a></li>
+<li class="chapter" data-level="2.2" data-path="blr.html"><a href="blr.html#blr-sec2"><i class="fa fa-check"></i><b>2.2</b> 普通最小二乘法的推导</a></li>
+<li class="chapter" data-level="2.3" data-path="blr.html"><a href="blr.html#blr-sec3"><i class="fa fa-check"></i><b>2.3</b> OLS估计量的期望和方差</a></li>
+<li class="chapter" data-level="2.4" data-path="blr.html"><a href="blr.html#blr-sec4"><i class="fa fa-check"></i><b>2.4</b> 函数形式</a></li>
+<li class="chapter" data-level="2.5" data-path="blr.html"><a href="blr.html#blr-sec5"><i class="fa fa-check"></i><b>2.5</b> 最小二乘法：再考察</a></li>
+<li class="chapter" data-level="2.6" data-path="blr.html"><a href="blr.html#blr-sec6"><i class="fa fa-check"></i><b>2.6</b> 零条件均值假设：成立吗？</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="mlr.html"><a href="mlr.html"><i class="fa fa-check"></i><b>3</b> 多元线性回归：估计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="mlr.html"><a href="mlr.html#mlr-sec1"><i class="fa fa-check"></i><b>3.1</b> 使用多元线性回归模型的动因</a></li>
+<li class="chapter" data-level="3.2" data-path="mlr.html"><a href="mlr.html#mlr-sec2"><i class="fa fa-check"></i><b>3.2</b> 多元线性回归模型的定义</a></li>
+<li class="chapter" data-level="3.3" data-path="mlr.html"><a href="mlr.html#mlr-sec3"><i class="fa fa-check"></i><b>3.3</b> OLS法的操作和解释</a></li>
+<li class="chapter" data-level="3.4" data-path="mlr.html"><a href="mlr.html#mlr-sec4"><i class="fa fa-check"></i><b>3.4</b> OLS估计量的期望</a></li>
+<li class="chapter" data-level="3.5" data-path="mlr.html"><a href="mlr.html#mlr-sec5"><i class="fa fa-check"></i><b>3.5</b> OLS估计量的方差</a></li>
+<li class="chapter" data-level="3.6" data-path="mlr.html"><a href="mlr.html#mlr-sec6"><i class="fa fa-check"></i><b>3.6</b> OLS估计量的有效性</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mlrinf.html"><a href="mlrinf.html"><i class="fa fa-check"></i><b>4</b> 多元线性回归：统计推断</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec1"><i class="fa fa-check"></i><b>4.1</b> 引例</a></li>
+<li class="chapter" data-level="4.2" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec2"><i class="fa fa-check"></i><b>4.2</b> OLS估计量的抽样分布</a></li>
+<li class="chapter" data-level="4.3" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec3"><i class="fa fa-check"></i><b>4.3</b> 检验对单个总体参数的假设</a></li>
+<li class="chapter" data-level="4.4" data-path="mlrinf.html"><a href="mlrinf.html#mlrinf-sec4"><i class="fa fa-check"></i><b>4.4</b> 多元回归能解决遗漏变量问题吗？</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dummy.html"><a href="dummy.html"><i class="fa fa-check"></i><b>5</b> 定性信息</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dummy.html"><a href="dummy.html#dummy-sec1"><i class="fa fa-check"></i><b>5.1</b> 二值变量</a></li>
+<li class="chapter" data-level="5.2" data-path="dummy.html"><a href="dummy.html#dummy-sec2"><i class="fa fa-check"></i><b>5.2</b> 虚拟变量陷阱</a></li>
+<li class="chapter" data-level="5.3" data-path="dummy.html"><a href="dummy.html#dummy-sec3"><i class="fa fa-check"></i><b>5.3</b> 分类、基准和虚拟变量</a></li>
+<li class="chapter" data-level="5.4" data-path="dummy.html"><a href="dummy.html#dummy-sec4"><i class="fa fa-check"></i><b>5.4</b> 多个虚拟变量</a></li>
+<li class="chapter" data-level="5.5" data-path="dummy.html"><a href="dummy.html#dummy-sec5"><i class="fa fa-check"></i><b>5.5</b> 更多例子</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="srdd.html"><a href="srdd.html"><i class="fa fa-check"></i><b>6</b> 清晰断点回归</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="srdd.html"><a href="srdd.html#srdd-sec1"><i class="fa fa-check"></i><b>6.1</b> 思路</a></li>
+<li class="chapter" data-level="6.2" data-path="srdd.html"><a href="srdd.html#srdd-sec2"><i class="fa fa-check"></i><b>6.2</b> 估计</a></li>
+<li class="chapter" data-level="6.3" data-path="srdd.html"><a href="srdd.html#srdd-sec3"><i class="fa fa-check"></i><b>6.3</b> 应用</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mech.html"><a href="mech.html"><i class="fa fa-check"></i><b>7</b> 机制和异质性分析</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="mech.html"><a href="mech.html#mech-sec1"><i class="fa fa-check"></i><b>7.1</b> 机制分析</a></li>
+<li class="chapter" data-level="7.2" data-path="mech.html"><a href="mech.html#mech-sec2"><i class="fa fa-check"></i><b>7.2</b> 异质性分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cons.html"><a href="cons.html"><i class="fa fa-check"></i><b>8</b> 一致性</a></li>
+<li class="chapter" data-level="9" data-path="misspe.html"><a href="misspe.html"><i class="fa fa-check"></i><b>9</b> 模型误设</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="misspe.html"><a href="misspe.html#misspe-sec1"><i class="fa fa-check"></i><b>9.1</b> 遗漏相关变量</a></li>
+<li class="chapter" data-level="9.2" data-path="misspe.html"><a href="misspe.html#misspe-sec2"><i class="fa fa-check"></i><b>9.2</b> 包含无关变量</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="panel.html"><a href="panel.html"><i class="fa fa-check"></i><b>10</b> 面板数据模型：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="panel.html"><a href="panel.html#panel-sec1"><i class="fa fa-check"></i><b>10.1</b> 面板数据的定义</a></li>
+<li class="chapter" data-level="10.2" data-path="panel.html"><a href="panel.html#panel-sec2"><i class="fa fa-check"></i><b>10.2</b> 差分法</a></li>
+<li class="chapter" data-level="10.3" data-path="panel.html"><a href="panel.html#panel-sec3"><i class="fa fa-check"></i><b>10.3</b> 去均值法</a></li>
+<li class="chapter" data-level="10.4" data-path="panel.html"><a href="panel.html#panel-sec4"><i class="fa fa-check"></i><b>10.4</b> 固定效应模型</a></li>
+<li class="chapter" data-level="10.5" data-path="panel.html"><a href="panel.html#panel-sec5"><i class="fa fa-check"></i><b>10.5</b> LSDV法</a></li>
+<li class="chapter" data-level="10.6" data-path="panel.html"><a href="panel.html#panel-sec6"><i class="fa fa-check"></i><b>10.6</b> 时间固定效应</a></li>
+<li class="chapter" data-level="10.7" data-path="panel.html"><a href="panel.html#panel-sec7"><i class="fa fa-check"></i><b>10.7</b> 应用：财政联邦主义的文献</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="did.html"><a href="did.html"><i class="fa fa-check"></i><b>11</b> 基于面板数据的双重差分法：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="did.html"><a href="did.html#did-sec1"><i class="fa fa-check"></i><b>11.1</b> 双重差分法的思路</a></li>
+<li class="chapter" data-level="11.2" data-path="did.html"><a href="did.html#did-sec2"><i class="fa fa-check"></i><b>11.2</b> 政策一次性实施</a></li>
+<li class="chapter" data-level="11.3" data-path="did.html"><a href="did.html#did-sec3"><i class="fa fa-check"></i><b>11.3</b> 政策分多轮推进</a></li>
+<li class="chapter" data-level="11.4" data-path="did.html"><a href="did.html#did-sec4"><i class="fa fa-check"></i><b>11.4</b> 外生事件</a></li>
+<li class="chapter" data-level="11.5" data-path="did.html"><a href="did.html#did-sec5"><i class="fa fa-check"></i><b>11.5</b> 基于处理强度的双重差分法</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="iv.html"><a href="iv.html"><i class="fa fa-check"></i><b>12</b> 工具变量法：计量方法及应用</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="iv.html"><a href="iv.html#iv-sec1"><i class="fa fa-check"></i><b>12.1</b> 何谓“剥离”？</a></li>
+<li class="chapter" data-level="12.2" data-path="iv.html"><a href="iv.html#iv-sec2"><i class="fa fa-check"></i><b>12.2</b> 二元情形</a></li>
+<li class="chapter" data-level="12.3" data-path="iv.html"><a href="iv.html#iv-sec3"><i class="fa fa-check"></i><b>12.3</b> 多元情形</a></li>
+<li class="chapter" data-level="12.4" data-path="iv.html"><a href="iv.html#iv-sec4"><i class="fa fa-check"></i><b>12.4</b> 判断备选变量是否是合格的工具变量</a></li>
+<li class="chapter" data-level="12.5" data-path="iv.html"><a href="iv.html#iv-sec5"><i class="fa fa-check"></i><b>12.5</b> 寻找工具变量：利用内生变量变异的外生来源</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="exp.html"><a href="exp.html"><i class="fa fa-check"></i><b>13</b> 专题：政府支出</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="exp.html"><a href="exp.html#exp-sec1"><i class="fa fa-check"></i><b>13.1</b> Government multiplier</a></li>
+<li class="chapter" data-level="13.2" data-path="exp.html"><a href="exp.html#exp-sec2"><i class="fa fa-check"></i><b>13.2</b> Social insurance</a></li>
+<li class="chapter" data-level="13.3" data-path="exp.html"><a href="exp.html#exp-sec3"><i class="fa fa-check"></i><b>13.3</b> Benefit incidence</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="rev.html"><a href="rev.html"><i class="fa fa-check"></i><b>14</b> 专题：政府收入</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="rev.html"><a href="rev.html#rev-sec1"><i class="fa fa-check"></i><b>14.1</b> Short-term tax policy</a></li>
+<li class="chapter" data-level="14.2" data-path="rev.html"><a href="rev.html#rev-sec2"><i class="fa fa-check"></i><b>14.2</b> Tax regime</a></li>
+<li class="chapter" data-level="14.3" data-path="rev.html"><a href="rev.html#rev-sec3"><i class="fa fa-check"></i><b>14.3</b> Tax incidence</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="intgovt.html"><a href="intgovt.html"><i class="fa fa-check"></i><b>15</b> 专题：政府间关系（含模糊断点回归）</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec1"><i class="fa fa-check"></i><b>15.1</b> Intergovernmental transfers</a></li>
+<li class="chapter" data-level="15.2" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec2"><i class="fa fa-check"></i><b>15.2</b> Place-based policy</a></li>
+<li class="chapter" data-level="15.3" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec3"><i class="fa fa-check"></i><b>15.3</b> Unfunded mandate</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="oth.html"><a href="oth.html"><i class="fa fa-check"></i><b>16</b> 其他公共经济学问题</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="oth.html"><a href="oth.html#oth-sec1"><i class="fa fa-check"></i><b>16.1</b> Public choice</a></li>
+<li class="chapter" data-level="16.2" data-path="oth.html"><a href="oth.html#oth-sec2"><i class="fa fa-check"></i><b>16.2</b> Environmental regulation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html"><i class="fa fa-check"></i>附录</a>
+<ul>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html#附录1双重差分法共同趋势假设检验及动态效应分析"><i class="fa fa-check"></i>附录1：双重差分法：共同趋势假设检验及动态效应分析</a></li>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html#附录2双重差分法的估计量无偏吗"><i class="fa fa-check"></i>附录2：双重差分法的估计量无偏吗？</a></li>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html#附录3stata操作指引"><i class="fa fa-check"></i>附录3：Stata操作指引</a></li>
+<li class="chapter" data-level="" data-path="附录.html"><a href="附录.html#附录4科学写作"><i class="fa fa-check"></i>附录4：科学写作</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">利用bookdown编写</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">公共经济学中的计量方法及应用</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="附录" class="section level1 unnumbered hasAnchor">
+<h1>附录<a href="附录.html#附录" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="附录1双重差分法共同趋势假设检验及动态效应分析" class="section level2 unnumbered hasAnchor">
+<h2>附录1：双重差分法：共同趋势假设检验及动态效应分析<a href="附录.html#附录1双重差分法共同趋势假设检验及动态效应分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>基于<a href="did.html#did-sec2">11.2</a>的例子进行说明。利用两控区政策实施前的数据检验共同趋势假设。为简化，只考虑1995和1996年。如下表所示。1995年的情况如图<a href="did.html#fig:chap11fig2">11.2</a>对应列。这里假设当年两控区城市和非两控区城市具有相同的时间趋势项<span class="math inline">\(\lambda_{1995}\)</span>。这始终是可以做到的，假设当年两者的时间趋势项不同，可以将二者的差异放到个体效应中，经此调整后，当年两者的时间趋势项相同。1996年，非两控区城市i的时间趋势项是<span class="math inline">\(\lambda_{1996}\)</span>，而两控区城市j的时间趋势项是<span class="math inline">\(\lambda_{1996}+\Delta\lambda\)</span>，<span class="math inline">\(\Delta\lambda\)</span>为两者时间趋势变化的差异。共同趋势成立 <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\Delta\lambda=0\)</span>。</p>
+<p>表A1</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">1995</th>
+<th align="left">1996</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">TCZ</td>
+<td align="left"><span class="math inline">\(\lambda_{1995}+\alpha_i\)</span></td>
+<td align="left"><span class="math inline">\(\lambda_{1996}+\Delta\lambda+\alpha_i\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">non-TCZ</td>
+<td align="left"><span class="math inline">\(\lambda_{1995}+\alpha_j\)</span></td>
+<td align="left"><span class="math inline">\(\lambda_{1996}+\alpha_j\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>因此，检验共同趋势假设是否成立的方法是估计如下的计量模型：</p>
+<p><span class="math display">\[
+y_{i,t}=\Delta\lambda\times TCZ_i\times Year_{1996}+\delta X_{i,t}+\lambda_t+\alpha_i+u_{i,t}\ t=1995, 1996
+\]</span>
+只使用1995和1996年的数据。如果<span class="math inline">\(\Delta\lambda\)</span>的系数不显著异于0，则可认为共同趋势假设成立；反之，认为共同趋势假设不成立。</p>
+<p>注意：模型中没有变量<span class="math inline">\(TCZ_iYear_{1995}\)</span>。因为为了分析的简便，我们在表A1中强令1995年两控区城市和非两控区城市的时间趋势项相同，这就是说，我们强行施加了假设：<span class="math inline">\(TCZ_iYear_{1995}\)</span>的系数为0。</p>
+<p>现实中，政策实施后在各年的效果可能不一样，是为政策的动态效应。原因有很多，如政策力度在各年不一。回到上例。假设共同趋势假设成立。设两控区政策使婴儿死亡率降低的幅度在1998和2000年分别为<span class="math inline">\(\rho_{1998}\)</span>和<span class="math inline">\(\rho_{2000}\)</span>。制表如下：</p>
+<p>表A2</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">1995</th>
+<th align="left">1998</th>
+<th align="left">2000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">TCZ</td>
+<td align="left"><span class="math inline">\(\lambda_{1995}+\alpha_i\)</span></td>
+<td align="left"><span class="math inline">\(\rho_{1998}+\lambda_{1998}+\alpha_i\)</span></td>
+<td align="left"><span class="math inline">\(\rho_{2000}+\lambda_{2000}+\alpha_i\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">non-TCZ</td>
+<td align="left"><span class="math inline">\(\lambda_{1995}+\alpha_j\)</span></td>
+<td align="left"><span class="math inline">\(\lambda_{1998}+\alpha_j\)</span></td>
+<td align="left"><span class="math inline">\(\lambda_{2000}+\alpha_j\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>估计下面的模型即可得到政策在1998和2000年的效应：
+<span class="math display">\[
+y_{i,t}=\rho_{1998}\times TCZ_i\times Year_{1998}+\rho_{2000}\times TCZ_i\times Year_{2000}\\+\delta X_{i,t}+\lambda_t+\alpha_i+u_{i,t}\ t=1995, 1998, 2000
+\]</span></p>
+<p>注意，只用到1995、1998和2000年的数据。</p>
+<p>可以把共同趋势假设检验和政策动态效应估计放到一起进行。Tanaka（2015）使用了1991-2000年的数据，为达此目的，将计量模型设置为：</p>
+<p><span class="math display">\[
+y_{i,t}=\rho_{1992}TCZ_iYear_{1992}+\rho_{1993}TCZ_iYear_{1993}+\rho_{1994}TCZ_iYear_{1994}\\+\rho_{1995}TCZ_iYear_{1995}+\rho_{1996}TCZ_iYear_{1996}+\rho_{1997}TCZ_iYear_{1997}\\+\rho_{1998}TCZ_iYear_{1998}+\rho_{1999}TCZ_iYear_{1999}+\rho_{2000}TCZ_iYear_{2000}\\+\delta X_{i,t}+\lambda_t+\alpha_i+u_{i,t},\ t=1991,1992,...,2000
+\]</span>
+如果<span class="math inline">\(\rho_{1992}, \rho_{1993}, \rho_{1994}, \rho_{1995}, \rho_{1996}, \rho_{1997}\)</span>都不显著，可以认为共同趋势假设成立；反之，则不成立。如果共同趋势假设成立，<span class="math inline">\(\rho_{1998}, \rho_{1999}, \rho_{2000}\)</span>的估计系数反映了政策的动态效应。</p>
+</div>
+<div id="附录2双重差分法的估计量无偏吗" class="section level2 unnumbered hasAnchor">
+<h2>附录2：双重差分法的估计量无偏吗？<a href="附录.html#附录2双重差分法的估计量无偏吗" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>命题</strong>：如果共同时间趋势假设成立，那么，政策虚拟变量的系数的最小二乘估计量是无偏的。</p>
+<p>Please see a proof for the case with only two periods, one period before a policy and the other after the policy.</p>
+<p><img src="figs/chap20-fig1.png" /><!-- -->
+图A1：Proof for the unbiasness of the DID estimator</p>
+</div>
+<div id="附录3stata操作指引" class="section level2 unnumbered hasAnchor">
+<h2>附录3：Stata操作指引<a href="附录.html#附录3stata操作指引" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Stata本身的帮助文档提供了使用的使用指导。如欲知如何使用regress命令，在Stata命令框中输入：“help regress”，即跳出对该命令使用的详细说明，包括举例。</p>
+<p>陈强（2015）《计量经济学及Stata应用》介绍了常见的计量模型在Stata中的实现，可作为Stata操作的工具书翻阅。</p>
+<p>也可以求助Stata操作于AI。自Chatgpt问世，AI展现了强大的能力。可能用作科研助手。国外的AI包括：Chatgpt、Copilot和Claud等。国内的AI包括：通义千问、星火大模型等。以下是我与某AI一段连续问答，藉此说明如何把AI变成我们使用Stata时的助手：</p>
+<blockquote>
+<p>问：你好，我手头有一个横截面数据，名为“WAGE1.dta”，它每一个观测值表示一个个人，共有526个观测值。我已在stata中打开这一数据。数据中有一个变量名为y，它表示工资的对数。还有一个变量名为x，表示受教育年限。我想用y对x回归，请问应使用什么命令？<br>
+AI答：您好！您可以使用以下命令进行回归：reg y x。其中，y是被解释变量，x是解释变量。如果您想要去掉截距项，可以使用以下命令：reg y x, noconstant。<br>
+问：我想用y对x回归，只用前480个观测值，用什么命令？<br>
+AI答：您好！您可以使用以下命令进行回归：reg y x in 1/480。其中，y是被解释变量，x是解释变量，in 1/480表示只用前480个观测值。如果您想要去掉截距项，可以使用以下命令：reg y x in 1/480, noconstant。<br>
+问：我想计算y和x的相关系数，使用什么命令？<br>
+AI答：您好！您可以使用以下命令计算y和x的相关系数：pwcorr y x。如果您想要计算偏相关系数，可以使用以下命令：pcorr y x。<br>
+问：我想生成一个变量z，它取值为x的10倍，使用什么命令？<br>
+AI答：您好！您可以使用以下命令生成一个变量z，它取值为x的10倍：gen z = 10*x。<br>
+问：用工资的对数对受教育年限回归，受教育年限的系数是什么含义？<br>
+AI答：当用工资的对数对受教育年限回归时，受教育年限的系数表示的是：当工资的对数增加1个单位时，受教育年限的变化量。<br>
+问：I regress the logarithm of wage on years of education. How do I interpret the coefficient of years of education?<br>
+AI答：When you regress the logarithm of wage on years of education, the coefficient of years of education represents the percentage change in wage associated with a one-unit increase in years of education.</p>
+</blockquote>
+<p>说明：</p>
+<ul>
+<li>AI回答的质量依赖于问问题的质量（准确性和方式等），提高提问题的水平很重要；</li>
+<li>AI的回答未必是正确的，须予查证；</li>
+<li>AI基于概率模型，所以，重复问相同的问题，得到的回答未必完全相同；</li>
+<li>使用中文和英文提相同的问题，得到的答案可能很不一样，这是由于训练AI的中英文素材不一样。</li>
+</ul>
+</div>
+<div id="附录4科学写作" class="section level2 unnumbered hasAnchor">
+<h2>附录4：科学写作<a href="附录.html#附录4科学写作" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Gopen（1990）写道：</p>
+<blockquote>
+<p>In our experience, the misplacement of old and new information turns out to be the No. 
+1 problem in American professionalwriting today.</p>
+</blockquote>
+<p>所谓旧信息（old information）指已在前文中出现过的信息，新信息（new information）指首次出现的信息。</p>
+<p>应该怎么做？Gopen（1990）继续写道：</p>
+<blockquote>
+<p>Put in the topic position the old information that links backward; putinthe stress
+position the new information you want the reader to emphasize.</p>
+</blockquote>
+<p>例：“图书馆前有一只猫。这只猫是白色的。”在第一句中，“猫”已出现，故“这只猫”属于旧信息，出现在第二句开头。“白色”是新信息，出现在第二句结尾。</p>
+<p>ACEMOGLU et al.（2001）第一段：</p>
+<blockquote>
+<p>What are the fundamental causes of the large differences in income per capita across countries? Although there is still <strong>little consensus on the answer to this question</strong>, differences in institutions and property rights have received considerable attention in recent years. <strong>Countries with better “institutions,”</strong> more secure property rights, and less distor tionary policies will invest more in physical and human capital, and will use these factors more efficiently to achieve a greater level of income (e.g., Douglass C. North and Robert P. Thomas, 1973; Eric L. Jones, 1981; North, 1981). <strong>This view</strong> receives some support from cross-country correlations between measures of property rights and economic development (e.g., Stephen Knack and Philip Keefer, 1995; Paulo Mauro, 1995; Robert E. Hall and Charles I. Jones, 1999; Dani Rodrik, 1999), and from a few micro studies that investigate the relationship between property rights and investment or output (e.g., Timothy Besley, 1995; Christopher Mazingo, 1999; Johnson et al., 1999).</p>
+</blockquote>
+<p>注意：每一句都以旧信息开头（加粗显示）。</p>
+<p>这一原则宜适用于中文科学写作。且看金庸倚天屠龙记：</p>
+<p>（第四回 字作丧乱意彷徨）</p>
+<blockquote>
+<p>忽听得背后有人幽幽叹了口气。这一下叹息,在黑沉沉的静夜中听来大是鬼气森森,张翠山霍地转身,却见背后竟无一人,游目环顾,除了湖上小舟中那个单身游客之外,四下里寂无人影。张翠山微觉惊讶,斜睨舟中游客,只见他青衫方巾,和自己一样,也是作文士打扮,朦胧中看不清他的面貌,只见他侧面的脸色极是苍白,给碧纱灯笼一照,映着湖中绿波,寒水孤舟,冷冷冥冥,竟不似尘世间人。但见他悄坐舟中,良久良久,除了风拂衣袖,竟是一动也不动。<br>
+…<br>
+忽听得桨声响起，小舟已缓缓荡向湖心，但听那少女抚琴歌道：“今夕兴尽，来宵悠悠，六和塔下，垂柳扁舟。彼君子兮，宁当来游？”舟去渐远，歌声渐低，但见波影浮动，一灯如豆，隐入了湖光水色。<br></p>
+</blockquote>
+<p>第五回 皓臂似玉梅花妆</p>
+<blockquote>
+<p>钱塘江到了六和塔下转一个大弯，然后直向东流。该处和府城相距不近，张翠山脚下虽快，得到六和塔下，天色也已将黑，只见塔东三株大柳树下果然系着一艘扁舟。钱塘江中的江船张有风帆，自比西湖里的游船大得多了，但船头挂着两盏碧纱灯笼，却和昨晚所见的一般模样。张翠山心中怦怦而跳，定了定神，走到大柳树下，只见碧纱灯下，那少女独坐船头，身穿淡绿衫子，却已改了女装。<br>
+…<br>
+张翠山本来一意要问她昨晚的事，这时见她换了女子装束，却踌躇起来，忽听那少女仰天吟道：“抱膝船头，思见嘉宾，微风波动，惘焉若醒。”</p>
+</blockquote>
+<p>文字特点：符合科学写作的要求；常省略，短句多，长短交错，体现了中文的优美（节奏感，韵律感）。</p>
+<p><strong>参考文献</strong></p>
+<ul>
+<li>陈强. 计量经济学及Stata应用[M]. 高等教育出版社, 2015.</li>
+<li>Gopen G D, Swan J A. The science of scientific writing[J]. American scientist, 1990, 78(6): 550-558.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="oth.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/020-appendix.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
