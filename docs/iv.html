@@ -171,7 +171,7 @@
 <li class="chapter" data-level="14.2" data-path="rev.html"><a href="rev.html#rev-sec2"><i class="fa fa-check"></i><b>14.2</b> Tax regime</a></li>
 <li class="chapter" data-level="14.3" data-path="rev.html"><a href="rev.html#rev-sec3"><i class="fa fa-check"></i><b>14.3</b> Tax incidence</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="intgovt.html"><a href="intgovt.html"><i class="fa fa-check"></i><b>15</b> 专题：政府间关系（含模糊断点回归）</a>
+<li class="chapter" data-level="15" data-path="intgovt.html"><a href="intgovt.html"><i class="fa fa-check"></i><b>15</b> 专题：政府间关系（并模糊断点回归）</a>
 <ul>
 <li class="chapter" data-level="15.1" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec1"><i class="fa fa-check"></i><b>15.1</b> Intergovernmental transfers</a></li>
 <li class="chapter" data-level="15.2" data-path="intgovt.html"><a href="intgovt.html#intgovt-sec2"><i class="fa fa-check"></i><b>15.2</b> Place-based policy</a></li>
@@ -211,13 +211,14 @@
             <section class="normal" id="section-">
 <div id="iv" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">第 12 章</span> 工具变量法：计量方法及应用<a href="iv.html#iv" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>在<a href="blr.html#blr-sec6">2.6</a>中，我们说明了对于简单回归——<span class="math inline">\(y=\alpha+\beta x\)</span>，遗漏变量和反向因果会导致：<span class="math inline">\(Cov(x,u)\neq0\)</span>，即x是内生变变量。这会导致<span class="math inline">\(\beta\)</span>的OLS估计量:(1)是有偏的，因为<span class="math inline">\(Cov(x,u)\neq0 \Rightarrow E[u|x]\neq0\)</span>；（2）是不一致的。</p>
-<p>怎么办？如果我们遇到的是遗漏变量问题，我们可以尝试将可能的遗漏变量并加入回归。比如，在估计教育回报率的例子中，我们尝试将度量IQ并加入到回归中。这是多元回归模型。有的时候，可能造成问题的遗漏因素不好测量，但如果知道它不随时间变化的话，可以通过加入个体固定效应的形式将之加到回归里。这是固定效应模型。比如，在研究啤酒税对交通事故死亡率的影响时，为处理不变的酒驾社会接受度的可能影响，我们在模型中加入州固定效应。这些操作的实质是在保持这些遗漏因素不变的前提下开展研究。如不确定，请回忆多元回归和固定效应模型中系数的含义。</p>
-<p>这一办法的局限：（1）当一个遗漏因素难以度量且随时间变化时，这一办法不适用；（2）这一办法处理不了反向因果问题。这一章要介绍的工具变量回归能克服这些局限，处理遗漏变量问题和反向因果问题。其处理问题的思路是”剥离”。</p>
+<p>在<a href="blr.html#blr-sec6">2.6</a>中，我们说明了对于简单回归——<span class="math inline">\(y=\alpha+\beta x\)</span>，遗漏变量和反向因果会导致：<span class="math inline">\(Cov(x,u)\neq0\)</span>，即x是内生变变量。这会导致<span class="math inline">\(\beta\)</span>的OLS估计量：（1）是有偏的，因为<span class="math inline">\(Cov(x,u)\neq0 \Rightarrow E[u|x]\neq0\)</span>；（2）是不一致的。</p>
+<p>怎么办？如果我们遇到的是遗漏变量问题，我们可以尝试将可能的遗漏变量加入回归。比如，在估计教育回报率的例子中，我们尝试度量IQ并加入到回归中。这是多元回归模型。有的时候，可能造成问题的遗漏因素不好测量，但如果知道它不随时间变化的话，可以通过加入个体固定效应将其纳入回归模型。这是固定效应模型。比如，在研究啤酒税对交通事故死亡率的影响时，为处理不变的酒驾社会接受度的可能影响，我们在模型中加入州固定效应。这些操作的实质是在保持这些遗漏因素不变的前提下开展研究。如不确定，请回忆多元回归和固定效应模型中系数的含义。</p>
+<p>这一办法的局限：（1）当一个遗漏因素难以度量且随时间变化时，这一办法不适用；（2）这一办法处理不了反向因果问题。这一章要介绍的工具变量回归能克服这些局限，处理遗漏变量问题和反向因果问题。其处理问题的思路是“剥离”。</p>
 <div id="iv-sec1" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> 何谓“剥离”？<a href="iv.html#iv-sec1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>比如，你昨天买了一根香蕉，今早起来发现香蕉的顶部1/4变黑了，其余3/4色泽如初。你会怎么办？有钱的话，你可以把它扔了，再买一根。也有可能，你把变黑的1/4切下来扔掉，吃掉其余3/4。也就是说，你把香蕉分成两部分：变黑的1/4和其余3/4。你认为，前一部分是有问题的部分，故而切掉扔弃。经过这一剥离之后，余下3/4没有问题，可以放心食用。</p>
-<p>由此可见，剥离的思路其实我们非常熟悉了。还有一些别的例子。比如，把高考答卷的名字部分密封起来。这一做法有很长的历史，至少宋代科举就这样做了，当时称作“糊名”。明代举子杨慎参加进士考试，通过糊名可以把他分成两部分：学识部分的杨慎（写出了：滚滚长江东逝水，浪花淘尽英雄…）和身份部分的杨慎（首辅大臣的儿子）；并且，剥离掉可能引起问题的身份部分的杨慎，仅以学识部分的杨慎去应试。</p>
+<p>另举一例，高考答卷的名字部分要密封起来。这一做法有很长的历史，至少宋代科举就这样做了，当时称作“糊名”。明代举子杨慎参加进士考试，通过糊名可以把他分成两部分：学识部分的杨慎（写出了：滚滚长江东逝水，浪花淘尽英雄…）和身份部分的杨慎（首辅大臣的儿子）；剥离掉可能引起问题的身份部分的杨慎，仅以学识部分的杨慎去应试。</p>
+<p>由此可见，剥离的思路其实我们已经非常熟悉了。</p>
 </div>
 <div id="iv-sec2" class="section level2 hasAnchor" number="12.2">
 <h2><span class="header-section-number">12.2</span> 二元情形<a href="iv.html#iv-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -229,7 +230,7 @@
 <li><span class="math inline">\(Cov(x_2,u)≠0\)</span>，即<span class="math inline">\(x_2\)</span>与u相关；</li>
 <li><span class="math inline">\(Cov(x_1,x_2)=0\)</span>，即<span class="math inline">\(x_1\)</span>与<span class="math inline">\(x_2\)</span>相关。</li>
 </ul>
-<p>对照上面的例子，<span class="math inline">\(x_2\)</span>相当于香蕉变黑的1/4，是有问题的部分。<span class="math inline">\(x_1\)</span>相当于其余3/4，是无问题的部分。参照上一节的思路，剥离有问题的<span class="math inline">\(x_2\)</span>：<span class="math inline">\(y=\beta_0+\beta_1x_1+(\beta_1x_2+u)=\beta_0+\beta_1x_1+ε\)</span>。 这里，我们将<span class="math inline">\(x_2\)</span>扔到干扰项中，<span class="math inline">\(\beta_1x_2+u\)</span>合在一起，视之为一个新的干扰项，记为<span class="math inline">\(\epsilon\)</span>。计量模型由此转化为：<span class="math inline">\(y=\beta_0+\beta_1x_1+ε\)</span>。现在的问题是：在转化后的模型中，<span class="math inline">\(x_1\)</span>和<span class="math inline">\(\epsilon\)</span>不相关吗？</p>
+<p>对照上面的例子，<span class="math inline">\(x_2\)</span>相当于香蕉变黑的1/4，是有问题的部分。<span class="math inline">\(x_1\)</span>相当于其余3/4，是无问题的部分。参照上一节的思路，剥离有问题的<span class="math inline">\(x_2\)</span>：<span class="math inline">\(y=\beta_0+\beta_1x_1+(\beta_1x_2+u)\)</span>。 这里，我们将<span class="math inline">\(x_2\)</span>扔到干扰项中，<span class="math inline">\(\beta_1x_2+u\)</span>合在一起，视之为一个新的干扰项，记为<span class="math inline">\(\epsilon\)</span>。计量模型由此转化为：<span class="math inline">\(y=\beta_0+\beta_1x_1+ε\)</span>。现在的问题是：在转化后的模型中，<span class="math inline">\(x_1\)</span>和<span class="math inline">\(\epsilon\)</span>不相关吗？</p>
 <p><span class="math display">\[
 Cov(x_1,\epsilon)=Cov(x_1,\beta_1x_2+u)=\beta_1Cov(x_1,x_2)+Cov(x_1,u)=0+0=0
 \]</span></p>
@@ -242,7 +243,7 @@ Cov(x_1,\epsilon)=Cov(x_1,\beta_1x_2+u)=\beta_1Cov(x_1,x_2)+Cov(x_1,u)=0+0=0
 <li><span class="math inline">\(Cov(z, u)=0\)</span>。</li>
 </ul>
 <p>即z与x相关，但与u无关——它是一个与x相关的外生变量。</p>
-<p>Q：基于这一信息，该如何分解?[提示：回忆<a href="blr.html#blr">2</a>的内容]</p>
+<p>Q：基于这一信息，该如何分解？[提示：回忆<a href="blr.html#blr">2</a>的内容]</p>
 <p>A：用x对z进行回归：<span class="math inline">\(x=(\delta_0+\delta_1z)+\eta\)</span>。注意，回归不要求存在因果关系（见简单回归一章）。由于<span class="math inline">\(Cov(z, x)\neq 0\)</span>，因此，<span class="math inline">\(\delta_1≠0\)</span>。验证：<span class="math inline">\(Cov(\delta_0+\delta_1z, u)=0,Cov(\delta_0+\delta_1z,\eta)=0\)</span>（如不清楚第二个等式缘何成立，回顾<a href="blr.html#blr">2</a>的内容）。因此，定义：<span class="math inline">\(x_1\equiv \delta_0+\delta_1z, x_2\equiv \eta\)</span>。这样的分解满足上述三个条件。</p>
 <p>估计程序分为两阶段：</p>
 <ul>
@@ -250,7 +251,7 @@ Cov(x_1,\epsilon)=Cov(x_1,\beta_1x_2+u)=\beta_1Cov(x_1,x_2)+Cov(x_1,u)=0+0=0
 <li>第二阶段，用y对<span class="math inline">\(x_1\)</span>回归。</li>
 </ul>
 <p>经此程序，我们得到<span class="math inline">\(\beta_1\)</span>的一个一致估计量。在每一阶段，都使用最小二乘法，用了两次，故称为两阶段最小二乘法（2SLS method）。</p>
-<p>理解:在第一阶段，利用z，剥离掉x中内生的部分(that is problematic)，仅余x外生的部分(that is problem-free)。第二阶段，用y对x外生的部分回归。z是一个剥离用的工具，称之为工具变量（Instrument variable，简称IV）。</p>
+<p>理解：在第一阶段，利用z，剥离掉x中内生的部分（that is problematic），仅余x外生的部分（that is problem-free）。第二阶段，用y对x外生的部分回归。z是一个剥离用的工具，称之为工具变量（Instrument variable，简称IV）。</p>
 </div>
 <div id="iv-sec3" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">12.3</span> 多元情形<a href="iv.html#iv-sec3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -260,7 +261,7 @@ Cov(x_1,\epsilon)=Cov(x_1,\beta_1x_2+u)=\beta_1Cov(x_1,x_2)+Cov(x_1,u)=0+0=0
 <li>Instrument exogeneity：<span class="math inline">\(Cov(z_i,u)=0\)</span> for i=1, …, m，即<span class="math inline">\(z_1, ..., z_m\)</span>是外生变量；</li>
 <li>Instrument relevance：在x对<span class="math inline">\(w_1, ..., w_k, z_1, ..., z_m\)</span>的总体回归中, <span class="math inline">\(z_1, ..., z_m\)</span>的系数不为0, 即保持<span class="math inline">\(w_1, ..., w_k\)</span>不变, <span class="math inline">\(z_1, ..., z_m\)</span>对预测x有帮助。</li>
 </ul>
-<p>第一个性质是上一节变量z性质1的重复。第二个条件上一节变量z性质2有所变化。回顾上一节变量z性质2：<span class="math inline">\(Cov(z, x)\neq 0 \Leftrightarrow \delta_1≠0\ (x=\delta_0+\delta_1z+\eta)\)</span>；即z对于预测x是有帮助的。这里的区别是在回归中加入了控制变量。保持<span class="math inline">\(w_1, ..., w_k\)</span>不变，<span class="math inline">\(z_1, ..., z_m\)</span>对预测x有帮助，用统计学的语言讲，就是说，<span class="math inline">\(z_1, ..., z_m\)</span>与x偏相关。</p>
+<p>第一个性质是上一节变量z性质1的重复。第二个性质较上一节变量z性质2有所变化。回顾上一节变量z性质2：<span class="math inline">\(Cov(z, x)\neq 0 \Leftrightarrow \delta_1≠0\ (x=\delta_0+\delta_1z+\eta)\)</span>；即z对于预测x是有帮助的。这里的区别是在回归中加入了控制变量。保持<span class="math inline">\(w_1, ..., w_k\)</span>不变，<span class="math inline">\(z_1, ..., z_m\)</span>对预测x有帮助，用统计学的语言讲，就是说，<span class="math inline">\(z_1, ..., z_m\)</span>与x偏相关。</p>
 <p>称满足这两个条件的变量为工具变量。</p>
 <p>利用这些工具变量，进行两阶段最小二乘回归：</p>
 <ul>
@@ -268,36 +269,36 @@ Cov(x_1,\epsilon)=Cov(x_1,\beta_1x_2+u)=\beta_1Cov(x_1,x_2)+Cov(x_1,u)=0+0=0
 <li>第二阶段，用OLS法估计<span class="math inline">\(y=\beta_0+\beta_1x_1+\beta_2w_1+...+\beta_{k+1}w_k+ε\)</span>。</li>
 </ul>
 <p>注意第一阶段中也加入了控制变量，第二阶段只是把原模型的x替换为<span class="math inline">\(x_1\)</span>。</p>
-<p>命题：<span class="math inline">\(\beta_1\)</span>的2SLS估计量依概率收敛于总体参数(一致性)。</p>
+<p>命题：<span class="math inline">\(\beta_1\)</span>的2SLS估计量依概率收敛于总体参数（一致性）。</p>
 <p>证明：仿照上一节，证明第二阶段中所有自变量都是外生变量即可。试予验证。从中可以明了为什么第一阶段需要将控制变量加入回归。</p>
 <p>在Stata中，可以使用regress命令先后进行第一阶段和第二阶段回归。Stata也提供了一个命令自动完成这一系列过程（假设m=1，k=3）：</p>
 <p><font color=red>ivregress 2sls y (x1=z1) w1 w2 w3</font></p>
 </div>
 <div id="iv-sec4" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> 判断备选变量是否是合格的工具变量<a href="iv.html#iv-sec4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>以上假定满足以上性质地<span class="math inline">\(z_1, …, z_m\)</span>给定。在此前提下，我们可以利用2SLS法一致地估计总体参数<span class="math inline">\(\beta_1\)</span>。问题在于，这样的变量需要我们自己寻找。实际中的步骤是，我们找到一些备选变量，验证这些备选变量是否满足上述两个性质。若满足，它们就是合格的工具变量；反之，则须另觅变量。</p>
-<p>假设只找到一个备选变量v，下面说明如何判断此种情形下v是否满足工具变量的两个性质。</p>
-<p>验证v满足Instrument relevance：（1）说明v与x相关的逻辑，即说明为什么你认为v应该与x相关？（2）进行统计检验，即按照这一性质的定义，估计以下回归模型：<span class="math inline">\(x=\delta_0+\delta_1w_1+...+\delta_kw_k+\delta_{k+1}v+η\)</span>。v的系数应显著不等于0，且其符号与上述v与x相关的逻辑一致。</p>
-<p>验证v满足Instrument exogeneity：列举原来的回归（非第二阶段回归）模型中干扰项u包含的因素，要求这些因素不包含v（如包含v，意味着v直接影响因变量，自不能作为工具变量），且有理由相信这些因素与v无关（如果有理由相信某个因素与v相关，则v不是合格的工具变量）。</p>
+<p>以上假定满足以上两个性质的<span class="math inline">\(z_1, …, z_m\)</span>给定。在此前提下，我们可以利用2SLS法一致地估计总体参数<span class="math inline">\(\beta_1\)</span>。问题在于，这样的变量需要我们自己寻找。实际中的步骤是，我们提出一些备选变量，验证这些备选变量是否满足上述两个性质。若满足，它们就是合格的工具变量；反之，则须另觅变量。</p>
+<p>假设找到一个备选变量v，下面说明如何判断此种情形下v是否满足工具变量的两个性质。</p>
+<p>验证v满足Instrument relevance：（1）说明v与x相关的逻辑，即说明为什么你认为v应该与x相关；（2）进行统计检验，即按照这一性质的定义，估计以下回归模型：<span class="math inline">\(x=\delta_0+\delta_1w_1+...+\delta_kw_k+\delta_{k+1}v+η\)</span>。v的系数应显著不等于0，且其符号与上述v与x相关的逻辑一致。</p>
+<p>验证v满足Instrument exogeneity：列举原来回归（非第二阶段回归）模型中干扰项u包含的因素，要求这些因素不包含v（如包含v，意味着v直接影响因变量，自不能作为工具变量），且有理由相信这些因素与v无关（如果有理由相信某个因素与v相关，则v不是合格的工具变量）。</p>
 <p>工具变量通常难找，因此，提出多个备选变量的情况少见，不予讨论。</p>
 <p>具体如何做，我们通过一个例子说明，这个例子援引自斯托克和沃森（2012）第12.1.5节。</p>
 <blockquote>
-<p>例：研究美国各州香烟的需求函数：<span class="math inline">\(Ln(Q_i)=\alpha+\beta Ln(P_i)+u_i\)</span>。其中，i表示州，Q表示香烟销量，P表示香烟价格。该模型存在反向因果：一方面，价格影响需求量（需求函数）。另一方面，由于市场出清时需求量就等于供给量，供给量也会影响价格（供给函数）。存在反向因果意味着，<span class="math inline">\(Ln(P_i)\)</span>是内生变量。需要寻找工具变量。现提出如下的备选变量：<span class="math inline">\(SalesTax_i\)</span>，表示对每包香烟征收的销售税, 由州政府设定，各州不一。<br>
+<p>例：研究美国各州香烟的需求函数：<span class="math inline">\(Ln(Q_i)=\alpha+\beta Ln(P_i)+u_i\)</span>。其中，i表示州，Q表示香烟销量，P表示香烟价格。该模型存在反向因果：一方面，价格影响需求量（需求函数）。另一方面，市场出清时需求量就等于供给量，供给量也会影响价格（供给函数）。存在反向因果意味着，<span class="math inline">\(Ln(P_i)\)</span>是内生变量。需要寻找工具变量。现提出如下的备选变量：<span class="math inline">\(SalesTax_i\)</span>，表示对每包香烟征收的销售税, 由州政府设定，各州不一。<br>
 <br>
-检验Instrument relevance是否成立：（1）从逻辑上讲，供给方会把部分会全部销售税转嫁给消费者，导致香烟销售税和价格正相关；（2）用<span class="math inline">\(Ln(P_i)\)</span>对<span class="math inline">\(SalesTax_i\)</span>回归，<span class="math inline">\(SalesTax_i\)</span>的估计系数为0.031（标准误为0.005），即显著异于0，且符号与逻辑一致。<br>
+检验Instrument relevance是否成立：（1）从逻辑上讲，供给方会把部分或全部销售税转嫁给消费者，导致香烟销售税和价格正相关；（2）用<span class="math inline">\(Ln(P_i)\)</span>对<span class="math inline">\(SalesTax_i\)</span>回归，<span class="math inline">\(SalesTax_i\)</span>的估计系数为0.031（标准误为0.005），显著异于0，且符号与逻辑一致。<br>
 <br>
-检验Instrument exogeneity是否成立：<span class="math inline">\(u_i\)</span>中不包含<span class="math inline">\(SalesTax_i\)</span>，即后者不直接影响价格。但<span class="math inline">\(u_i\)</span>中包含人均收入。一般来说，人均收入越高，对健康生活方式的需求越大，对香烟的需求越小。同时，人均收入高的州政府可能更多地依靠个人所得税筹资，而非销售税筹资，人均收入与销售税之间存在负相关。由于人均收入是u的组成部分，有理由认为u和销售税是相关的，Instrument exogeneity不成立。说明：只需要从u中找出任一个因素与销售税相关，即可否定Instrument exogeneity；而要说服他人相信Instrument exogeneity成立，则需要列出干扰项中包含的尽可能多的因素，说明这些因素与内生变量不相关的理由。<br>
+检验Instrument exogeneity是否成立：<span class="math inline">\(u_i\)</span>中不包含<span class="math inline">\(SalesTax_i\)</span>，即后者不直接影响价格。但<span class="math inline">\(u_i\)</span>中包含人均收入。一般来说，人均收入越高，对健康生活方式的需求越大，对香烟的需求越小。同时，人均收入高的州政府可能更多地依靠个人所得税筹资，而非销售税筹资，故人均收入与销售税之间存在负相关。由于人均收入是u的组成部分，有理由认为u和销售税是相关的，Instrument exogeneity不成立。说明：只需要从u中找出任一个因素与销售税相关，即可否定Instrument exogeneity；而要说服他人相信Instrument exogeneity成立，则需要列出干扰项中包含的尽可能多的因素，说明这些因素与内生变量不相关的理由。<br>
 <br>
 由于Instrument exogeneity不成立，<span class="math inline">\(SalesTax_i\)</span>不是一个合格的工具变量。</p>
 </blockquote>
-<p>这个例子透露出，寻找工具变量并不是一件容易的事。这并不是说工具变量的寻找无迹可寻。存在一些寻找工具变量的套路。接下来介绍一个常用的套路。</p>
+<p>这个例子透露出，寻找工具变量并不是一件容易的事。这并不是说工具变量无迹可寻。存在一些寻找工具变量的套路。接下来介绍一个常用的套路。</p>
 </div>
 <div id="iv-sec5" class="section level2 hasAnchor" number="12.5">
 <h2><span class="header-section-number">12.5</span> 寻找工具变量：利用内生变量变异的外生来源<a href="iv.html#iv-sec5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>所谓内生变量变异是指不同的观测值内生变量取到不尽相同的值。为什么有的观测值内生变量取值大，而有的观测值内生变量取值小？有很多原因。我们尝试追踪内生变量变异的外生来源，即与因变量的决定因素无关的来源。基于这样的外生来源，分离出内生变量变异中的外生部分。这样做的前提是，我们对内生变量变异的来源有充分的认知，这通常要求我们对相关的背景有充分的了解。以下介绍循此思路的两个经典范例。</p>
+<p>所谓内生变量变异是指不同的观测值的内生变量取不尽相同的值。为什么有的观测值的内生变量取值大，而有的观测值的内生变量取值小？有很多原因。我们尝试追踪内生变量变异的外生来源，即与未纳入模型的因变量的决定因素无关的来源。基于这样的外生来源，分离出内生变量变异中的外生部分。这样做的前提是，我们对内生变量变异的来源有充分的认知，这要求我们对相关的背景有充分的了解。以下介绍循此思路的两个范例。</p>
 <p><strong><em>Hoxby（2000）</em></strong></p>
 <p>Hoxby（2000）基于美国横截面数据，研究：Does Competition among Public Schools Benefit Students and Taxpayers？</p>
-<p>美国业务教育阶段公立学校上学采取租售同权原则，即一个学区内的租户也有权上该学区的公立学校。租房的成本相对较低，因此，学生及其家庭能够以较低的成本在学区间流动，导致学区间面临着的争夺生源的竞争。生源竞争的激烈程度依不同都市区而有不同。本文考虑的问题是，一个都市区内学区间的竞争能否提高效率，使得学生和纳税人受益？</p>
+<p>美国业务教育阶段公立学校学额分配采取租售同权原则，即一个学区内的租户也有权上该学区的公立学校。租房的成本相对较低，因此，学生及其家庭能够以较低的成本在学区间流动，导致学区间面临着争夺生源的竞争。生源竞争的激烈程度依不同都市区而有不同。本文考虑的问题是，一个都市区内学区间的竞争能否提高效率，使得学生和纳税人受益？</p>
 <p>计量模型如下：</p>
 <div class="figure"><span style="display:block;" id="fig:chap12fig1"></span>
 <img src="figs/chap12-fig1.png" alt="Econometric model in Hoxby (2000)"  />
@@ -311,7 +312,7 @@ Cov(x_1,\epsilon)=Cov(x_1,\beta_1x_2+u)=\beta_1Cov(x_1,x_2)+Cov(x_1,u)=0+0=0
 <blockquote>
 <p>The logic is that in the eighteenth and nineteenth centuries, when school district boundaries were initially set in America, an important consideration was students’ travel time to school. Natural barriers could significantly increase travel time. With automobiles, buses, paved roads, bridges, and flood controls, many of the barriers that would have caused students to travel miles out of their way are now hardly noticed. Yet, the vestigial importance of natural barriers is preserved because they determined initial school-district boundaries, which are the key supply-side factor that determines today’s boundaries. Thus, the number of school districts in a given land area at a given time of settlement was an increasing function of the number of natural barriers. I focus on streams, because they are the most common and most easily quantified natural barriers.</p>
 </blockquote>
-<p>文中这一段阐述了streams影响学区划分的逻辑。作者继续进行了第一阶段回归：因变量为<span class="math inline">\(C_m\)</span>，自变量为number of larger streams in metropolitan area、number of smaller streams in metropolitan area和控制变量。结果显示，number of larger streams in metropolitan area、number of smaller streams in metropolitan area的系数均显著为正（见文中表2），与所述逻辑一致。</p>
+<p>文中这一段阐述了streams影响学区划分的逻辑。作者继续进行了第一阶段回归：因变量为<span class="math inline">\(C_m\)</span>，自变量为number of larger streams in metropolitan area、number of smaller streams in metropolitan area和控制变量。结果显示，number of larger streams in metropolitan area和number of smaller streams in metropolitan area的系数均显著为正（见文中表2），与所述逻辑一致。</p>
 <p>Instrument exogeneity：</p>
 <blockquote>
 <p>What about the second condition for valid instrumental variables-that streams are exogenous to school productivity? The condition is highly plausible.</p>
@@ -320,7 +321,7 @@ Cov(x_1,\epsilon)=Cov(x_1,\beta_1x_2+u)=\beta_1Cov(x_1,x_2)+Cov(x_1,u)=0+0=0
 <p>第二阶段回归的结果表明，学区间竞争越大，公立学校学生12年级阅读分数越高（见文中表3），per-pupil spending越小，share of students in private school越小（见文中表5），12年级阅读分数与log(per-pupil spending)的比值越大（见文中表7）。因此，学区间竞争提高了公立学校的效率。</p>
 <p>在这篇文章中，学区间竞争程度的变异有很多来源。作者基于对学区制度的了解，追踪到地理信息这一学区间竞争程度变异的外生来源。基于这一外生来源分离学区间竞争程度的外生部分，从而识别其对公立学校绩效的因果影响。</p>
 <p><strong><em>Acemoglu et al.（2001）</em></strong></p>
-<p><a href="did.html#did-sec5">11.5</a>提供了人力资本积累促进经济增长的经验证据。Acemoglu et al.（2001）研究制度对经济发展的影响。</p>
+<p><a href="did.html#did-sec5">11.5</a>提供了人力资本积累促进经济增长的经验证据。Acemoglu et al.（2001）则研究制度对经济发展的影响。</p>
 <p>其计量模型如下:</p>
 <p><span class="math display">\[
 logy_i=\mu+\alpha R_i+X_i^{&#39;}\gamma+\epsilon_i
@@ -345,7 +346,7 @@ Log European Mortality Settler，即19世纪初在殖民地定居的欧洲殖民
 </p>
 </div>
 <p>资料来源：Acemoglu et al.（2001）表4。</p>
-<p><strong>斯托克和沃森（2012）第12章对工具变量有更为详尽且的介绍，包括工具变量法的发明，请自行阅读。</strong></p>
+<p><strong>斯托克和沃森（2012）第12章对工具变量有更为详尽的介绍，包括工具变量法的发明，请自行阅读。</strong></p>
 <p><strong>参考文献</strong></p>
 <ul>
 <li>斯托克, 沃森. 计量经济学导论(第三版)[M]. 中国人民大学出版社, 2014, 第12章.</li>
