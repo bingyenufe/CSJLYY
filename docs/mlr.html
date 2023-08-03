@@ -31,15 +31,15 @@
   
 <link rel="prev" href="blr.html"/>
 <link rel="next" href="mlrinf.html"/>
-<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
@@ -217,8 +217,8 @@
 <p><span class="math display" id="eq:3-1">\[\begin{align}
 wage=\beta_0+\beta_1educ+u(IQ,...)，Cov(educ, IQ)&gt;0 \tag{3.1}
 \end{align}\]</span></p>
-<p>问题是，受教育程度更高的人平均而言IQ更高，零条件均值假设不成立，估计量是有偏。怎么解决这个问题？</p>
-<p>造成困扰的原因是干扰项包含了IQ。既如此，直接把IQ放到自变量里面就行了：</p>
+<p>问题是，受教育程度更高的人平均而言IQ也更高，零条件均值假设不成立，估计量有偏。怎么解决这个问题？</p>
+<p>造成困扰的原因是干扰项中包含IQ。既如此，直接把IQ放到自变量里面就行了：</p>
 <p><span class="math display" id="eq:3-2">\[\begin{align}
 wage=\beta_0+\beta_1educ+\beta_2IQ+u \tag{3.2}
 \end{align}\]</span></p>
@@ -226,17 +226,18 @@ wage=\beta_0+\beta_1educ+\beta_2IQ+u \tag{3.2}
 </div>
 <div id="mlr-sec2" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> 多元线性回归模型的定义<a href="mlr.html#mlr-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第60页。</p>
-<p>补充：虽然列出来了多个解释变量，但并不是说我们对于所有解释变量的系数都同等程度地关心。通常，我们会只关心其中的一个解释变量<span class="math inline">\(x_1\)</span>的系数。如在上面的例子中，我们仅关心educ的系数，表示教育回报率。至于IQ的系数是多少，我们不关心。把IQ加进来唯一的理由是，若不加进来，它就是遗漏变量，会导致估计结果有偏。我们把<span class="math inline">\(x_1\)</span>叫做核心解释变量，其他解释变量叫做控制变量。</p>
+<p>二元线性回归模型具有如下的形式：<span class="math inline">\(y=\beta_0+\beta_1x_11+\beta_1x_2+...+\beta_kx_k+u\)</span>。见伍德里奇《计量经济学导论：现代观点》第五版第60页。</p>
+<p>虽然列出来了多个解释变量，但并不是说我们对于所有解释变量的系数都同等程度地关心。很多时候，我们只关心其中一个解释变量如<span class="math inline">\(x_1\)</span>的系数。如在上面的例子中，我们仅关心educ的系数，表示教育回报率。至于IQ的系数是多少，我们不关心。把IQ加进来唯一的理由是，若不加进来，它就是遗漏变量，会导致估计结果有偏。我们把<span class="math inline">\(x_1\)</span>叫做核心解释变量，其他解释变量叫做控制变量。</p>
 <p><span class="math inline">\(x_1\)</span>的系数<span class="math inline">\(\beta_1\)</span>的含义：当<span class="math inline">\(\bigtriangleup x_1=1, \bigtriangleup x_2=0, …, \bigtriangleup x_k=0, \bigtriangleup u=0\)</span>时，<span class="math inline">\(\bigtriangleup y=\beta_1\)</span>。故其反映 x1对y的因果影响。</p>
-<p><strong>函数形式</strong></p>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第154-161页。</p>
+<p><strong><em>函数形式</em></strong></p>
+<p>变量可以取对数，也可以取平方。如政府债务对经济增长的影响可能是倒U型的：适当规模的政府债务于经济发展有利，但过犹不及。相应地，计量模型为：<span class="math inline">\(GDPG_i=\beta_0+\beta_1Debt_i+\beta_2(Debt_i)^2+u_i\)</span>。其中，i表示省，<span class="math inline">\(GDPG_i\)</span>表示i省的经济增长率，<span class="math inline">\(Debt_i\)</span>表示i省的债务。预期<span class="math inline">\(\beta_0&gt;0,\ \beta_1&lt;0\)</span>。Q：计算<span class="math inline">\(\frac{ d_{GDPG_i} } { d_{Debt_i} }\)</span>。最优的债务水平是多少？</p>
+<p>另见伍德里奇（2015）《计量经济学导论：现代观点》第五版第154-161页。</p>
 </div>
 <div id="mlr-sec3" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> OLS法的操作和解释<a href="mlr.html#mlr-sec3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>如何得到OLS估计值</strong></p>
+<p><strong><em>如何得到OLS估计值</em></strong></p>
 <p>见伍德里奇《计量经济学导论：现代观点》第五版第3.2节“如何得到OLS估计值”。</p>
-<p>补充：一阶条件：</p>
+<p>注意一阶条件为：</p>
 <p><span class="math display" id="eq:3-3">\[\begin{align}
 \sum_i\hat{u_i}=0 \tag{3.3}
 \end{align}\]</span></p>
@@ -249,38 +250,41 @@ wage=\beta_0+\beta_1educ+\beta_2IQ+u \tag{3.2}
 \end{align}\]</span></p>
 <p>式<a href="mlr.html#eq:3-3">(3.3)</a>的含义：Deviations from regression line sum up to zero。也就是说，正负残差抵消掉了。</p>
 <p>式<a href="mlr.html#eq:3-4">(3.4)</a>的含义：Correlations between deviations and regressors are zero，即所有解释变量和残差不相关。</p>
-<p>式<a href="mlr.html#eq:3-5">(3.5)</a>的含义：将因变量分解成拟合值和残差这个不相关的两部分。</p>
-<p><strong>多元回归估计系数的理解</strong></p>
-<p>欲求x1的估计系数，可采取两步法如下:</p>
+<p>式<a href="mlr.html#eq:3-5">(3.5)</a>的含义：因变量分解成拟合值和残差这两个不相关的部分。</p>
+<p><strong><em>理解多元回归估计系数</em></strong></p>
+<p>欲求<span class="math inline">\(x_1\)</span>的估计系数，可采取两步法如下:</p>
 <ul>
-<li>Step 1：<span class="math inline">\(x_1\)</span>对<span class="math inline">\(x_2\)</span>，…，<span class="math inline">\(x_k\)</span>做OLS回归(可不可以这样做?)，生成残差<span class="math inline">\(\hat{r}\)</span>。将<span class="math inline">\(x_1\)</span>分解为其他解释变量解释的部分和与其他解释变量无关的部分；</li>
+<li>Step 1：<span class="math inline">\(x_1\)</span>对<span class="math inline">\(x_2\)</span>，…，<span class="math inline">\(x_k\)</span>做OLS回归（可不可以这样做？），生成残差<span class="math inline">\(\hat{r}\)</span>，即将<span class="math inline">\(x_1\)</span>分解为其他解释变量解释的部分（拟合值）和与其他解释变量无关的部分（<span class="math inline">\(\hat{r}\)</span>）；</li>
 <li>Step 2：y对<span class="math inline">\(\hat{r}\)</span>回归。</li>
 </ul>
-<p>由此估计的<span class="math inline">\(x_1\)</span>的系数等于OLS估计的<span class="math inline">\(x_1\)</span>的系数（证明见伍德里奇3-2f）。</p>
-<p>Step 1中<span class="math inline">\(\hat{r}\)</span>是<span class="math inline">\(x_1\)</span>与其他自变量（<span class="math inline">\(x_2,…,x_k\)</span>）不相关的部分。另一种说法：<span class="math inline">\(\hat{r}\)</span>是<span class="math inline">\(x_1\)</span>排除了或净化掉其他自变量的影响之后的部分。于是，<span class="math inline">\(\hat{\beta_1}\)</span>度量了在排除其他自变量的影响之后y与<span class="math inline">\(x_1\)</span>之间的关系。</p>
-<p>多元回归分析的作用在于，尽管不能在其他自变量不变的情况下收集数据，但它提供的系数仍可做其他自变量不变的解释。</p>
-<p>例：<span class="math inline">\(wage=\beta_0+\beta_1educ+\beta_2IQ+u\)</span>。<span class="math inline">\(\hat{\beta_1}\)</span>表示保持IQ不变时受教育程度与工资的关系，相当于比较具有相同IQ但不同受教育程度和收入的人。看起来就好像我们出去在具有同等IQ但educ可能不同的人群中抽样。尽管保持IQ不变，道德品质等仍可能变化，educ与wage之间的关系不完全反映educ-&gt;wage的因果关系。一般地，不能保证估计系数有意义。</p>
-<p>另见伍德里奇《计量经济学导论：现代观点》第五版第3.2节“对多元回归‘排除其他变量影响’的解释”。</p>
-<p><strong>OLS的拟合值和残差</strong></p>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第3.2节“OLS的拟合值和残差”。</p>
+<p>Step 2估计的<span class="math inline">\(x_1\)</span>的系数等于用OLS法估计的<span class="math inline">\(x_1\)</span>的系数（证明见伍德里奇3-2f）。</p>
+<p>在Step 1中，<span class="math inline">\(\hat{r}\)</span>是<span class="math inline">\(x_1\)</span>与其他自变量（<span class="math inline">\(x_2,…,x_k\)</span>）不相关的部分。另一种说法：<span class="math inline">\(\hat{r}\)</span>是<span class="math inline">\(x_1\)</span>排除了或净化掉其他自变量的影响之后的部分。于是，<span class="math inline">\(\hat{\beta_1}\)</span>度量的是在排除其他自变量的影响之后y与<span class="math inline">\(x_1\)</span>之间的关系。</p>
+<p>多元回归分析的作用在于，尽管不能在其他自变量不变的情况下收集数据，但它提供的系数仍可作其他自变量不变的解释。</p>
+<p>例：<span class="math inline">\(wage=\beta_0+\beta_1educ+\beta_2IQ+u\)</span>。<span class="math inline">\(\hat{\beta_1}\)</span>表示保持IQ不变时受教育程度与工资的关系，相当于比较具有相同IQ但不同受教育程度和收入的人。看起来就好像我们在具有相同IQ但educ可能不同的人群中抽样。尽管保持IQ不变，道德品质等仍可能变化，educ与wage之间的关系不完全反映educ-&gt;wage的因果关系。一般地，不能保证估计系数有意义。</p>
+<p>另见伍德里奇（2015）《计量经济学导论：现代观点》第五版第3.2节“对多元回归‘排除其他变量影响’的解释”。</p>
+<p><strong><em>OLS的拟合值和残差</em></strong></p>
+<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版第3.2节“OLS的拟合值和残差”。</p>
 </div>
 <div id="mlr-sec4" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> OLS估计量的期望<a href="mlr.html#mlr-sec4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第70—74页。</p>
-<p>补充：对于带常数的多元线性回归模型，所谓多重共线性，是指存在解释变量（含常数）存在准确的线性关系，即它们之间具有如下的关系：</p>
+<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版第70—74页。</p>
+<p>相比二元线性回归模型，假设多出来：自变量不存在多重共线性。对于带常数的多元线性回归模型，所谓多重共线性，是指解释变量（含常数）存在准确的线性关系，即它们之间具有如下的关系：</p>
 <p><span class="math display" id="eq:3-6">\[\begin{align}
 a_0+a_1x_1+a_2x_2+…+a_kx_k=0 \tag{3.6}
 \end{align}\]</span></p>
-<p>零条件均值假设表示自变量<span class="math inline">\(x_1,x_2,…,x_k\)</span>对于我预测干扰项的均值没有帮助。也就是说，任一自变量变大或变小，干扰项的均值保持不变。</p>
-<p>如果零条件均值假设成立，有下面的推论：<span class="math inline">\(Cov(x_j,u)=0,Corr(x_j,u)=0\ for\ j=1,2,…,k\)</span>。把跟干扰项不相关的变量就称为外生解释变量。跟干扰项相关的解释变量称为内生解释变量。零条件均值假设成立意味着所有解释变量都是外生解释变量。</p>
+<p>零条件均值假设写作：<span class="math inline">\(E[u|x_1,x_2,...,x_k]=0\)</span>，表示自变量<span class="math inline">\(x_1,x_2,…,x_k\)</span>对于预测干扰项的均值没有帮助。也就是说，任一自变量变大或变小，干扰项的均值保持不变。如果零条件均值假设成立，有下面的推论：<span class="math inline">\(Cov(x_j,u)=0,Corr(x_j,u)=0\ for\ j=1,2,…,k\)</span>。把与干扰项不相关的变量就称为外生解释变量，与干扰项相关的解释变量称为内生解释变量。零条件均值假设成立意味着所有解释变量都是外生解释变量。</p>
 </div>
 <div id="mlr-sec5" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> OLS估计量的方差<a href="mlr.html#mlr-sec5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第3.4节除“误设模型中的方差”一小节。</p>
+<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版第3.4节除“误设模型中的方差”以外的内容。</p>
 </div>
 <div id="mlr-sec6" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> OLS估计量的有效性<a href="mlr.html#mlr-sec6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第3.5节。</p>
+<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版第3.5节。</p>
+<p><strong>参考文献</strong></p>
+<ul>
+<li>伍德里奇. 计量经济学导论(第五版)[M]. 中国人民大学出版社, 2015.</li>
+</ul>
 
 </div>
 </div>
@@ -293,14 +297,14 @@ a_0+a_1x_1+a_2x_2+…+a_kx_k=0 \tag{3.6}
 <a href="mlrinf.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/clipboard.min.js"></script>
-<script src="libs/gitbook/js/plugin-search.js"></script>
-<script src="libs/gitbook/js/plugin-sharing.js"></script>
-<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook/js/jquery.highlight.js"></script>
-<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

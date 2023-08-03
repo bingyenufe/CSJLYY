@@ -31,15 +31,15 @@
   
 <link rel="prev" href="mlr.html"/>
 <link rel="next" href="dummy.html"/>
-<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
@@ -216,9 +216,9 @@
 <p>在电影《肖申克的救赎》的一开始，男主人公被控杀害妻子，“铁证如山”，锒铛入狱。但，男主人公是被冤枉的。</p>
 <p>审判的程序：</p>
 <ol style="list-style-type: decimal">
-<li>提出原假设(无罪)；</li>
+<li>提出原假设（无罪）；</li>
 <li>提供证据；</li>
-<li>证据不足, 维持原假设(无罪释放); 证据足够充分, 拒绝原假设(锒铛入狱)</li>
+<li>若证据不足，维持原假设（无罪释放）；若证据足够充分，拒绝原假设（投入监狱）</li>
 </ol>
 <p>可能存在的问题：</p>
 <ol style="list-style-type: decimal">
@@ -229,22 +229,27 @@
 </div>
 <div id="mlrinf-sec2" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> OLS估计量的抽样分布<a href="mlrinf.html#mlrinf-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第4.1节。</p>
+<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版第4.1节。</p>
 </div>
 <div id="mlrinf-sec3" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> 检验对单个总体参数的假设<a href="mlrinf.html#mlrinf-sec3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第4.2节。</p>
+<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版第4.2节。</p>
 </div>
 <div id="mlrinf-sec4" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> 多元回归能解决遗漏变量问题吗？<a href="mlrinf.html#mlrinf-sec4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>相比简单回归，多元回归考虑了更多的影响因素，能不能解决彻底解决遗漏变量问题？问题在于，影响因素有很多，能把所有的因素都包含进来吗？有两个难点：</p>
+<p>相比简单回归，多元回归考虑了更多的影响因素，能不能彻底解决遗漏变量问题？问题在于，影响因素有很多，能把所有的因素都包含进来吗？有两个难点：</p>
 <ul>
-<li>第一个难点是，甚至不可能列出所有的影响因素。例：20世纪90年代，美国犯罪率大幅降低，什么原因所致？列维特等提出并验证了，约70年代允许堕胎法案的通过导致了90年代犯罪率的降低！多数人考虑不到这个影响因素。</li>
-<li>第二个难点是，即使列出来一些影响因素，一定能找到这些影响因素的数据吗？收集数据最原始的方式是发传单。如果想度量更多的影响因素，就要在问卷上设置更多的问题。问题一多，做一份问卷的时间就长了，时间或人工成本增加，未必是时间或经费有限的研究者能够承受的。在有限的时间或经费预算内，理性的做法是，尽可能多地测度重要的因素，舍弃相对次要的因素。</li>
+<li>第一个难点是，甚至不可能列出所有的影响因素。例：20世纪90年代，美国犯罪率大幅降低，什么原因导致？列维特和都伯纳（2016）提出并验证了，70年代允许堕胎法案的通过在一定程度上导致90年代犯罪率降低！多数人想不到这个影响因素。</li>
+<li>第二个难点是，即使列出来一些影响因素，一定能找到这些影响因素的数据吗？收集数据最原始的方式是发问卷。如果想度量更多的影响因素，就要在问卷上设置更多的问题。问题一多，做一份问卷的时间就长了，时间或人工成本增加，未必是时间或经费有限的研究者能够承受的。在有限的时间或经费预算内，理性的做法是，测度重要的因素，舍弃次要的因素。</li>
 </ul>
-<p>总之，不可能把所有的影响因素都加入自变量。未纳入的影响因素进入干扰项。不能保证所有未纳入的因素都和核心解释变量不相关。一旦有一个未纳入的因素跟核心解释变量相关，零条件均值假设就不成立了，OLS估计量有偏，平均而言不能识别因果关系。</p>
-<p>结论：相比简单回归，多元回归的话，使得遗漏变量问题有所缓解，但不能保证能够彻底解决遗漏变量问题，且通常不能彻底解决遗漏变量问题。</p>
-<p>但，有一种特殊的情况，多元线性回归能识别因果关系，这就是满足一定前提条件的清晰断点回归（可以把它看作多元线性回归的一个特例）。为了能够理解清晰断点回归，需要先学习定性信息的知识。</p>
+<p>总之，不可能把所有的影响因素都加入自变量。未纳入的影响因素进入干扰项。不能保证所有未纳入的因素都和核心解释变量不相关。一旦有一个未纳入的因素与核心解释变量相关，零条件均值假设就不成立了，OLS估计量有偏，平均而言不能识别因果关系。</p>
+<p>结论：相比二元线性回归，多元线性回归使得遗漏变量问题有所缓解，但不能保证彻底解决遗漏变量问题，且通常不能彻底解决遗漏变量问题。</p>
+<p>但，有一种特殊的情况，多元线性回归能识别因果关系，这就是满足一定前提条件的清晰断点回归（可以把它看作多元线性回归的一个特例）。为能理解清晰断点回归，需要先学习定性信息的知识。</p>
+<p><strong>参考文献</strong></p>
+<ul>
+<li>列维特、都伯纳. 魔鬼经济学01[M]. 中信出版社会, 2016.</li>
+<li>伍德里奇. 计量经济学导论(第五版)[M]. 中国人民大学出版社, 2015.</li>
+</ul>
 
 </div>
 </div>
@@ -257,14 +262,14 @@
 <a href="dummy.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/clipboard.min.js"></script>
-<script src="libs/gitbook/js/plugin-search.js"></script>
-<script src="libs/gitbook/js/plugin-sharing.js"></script>
-<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook/js/jquery.highlight.js"></script>
-<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -308,20 +313,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
