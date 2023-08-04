@@ -218,10 +218,10 @@
 y=\beta_0+\beta_1D+u \tag{5.1}
 \end{align}\]</span></p>
 <p><span class="math inline">\(\beta_1\)</span>表示其他因素不变，D从0增加到1，y的变化。</p>
-<p>利用OLS估计量的计算公式推出，<span class="math inline">\(\hat{\beta_1}\)</span>等于 D等于1时y的均值减去D等于0时y的均值。</p>
+<p>利用OLS估计量的计算公式推出，<span class="math inline">\(\hat{\beta_1}=\bar{y}|_{D=1}-\bar{y}|_{D=0}\)</span>。</p>
 <p>如果零条件均值假设成立，<span class="math inline">\(\hat{\beta_1}\)</span>是无偏的。</p>
-<p><strong>一个例子</strong></p>
-<p>中国改革的一个典型做法是先在一些地方试点，如果试点效果好，再把成功的经验推向全国。所以，考虑下面一个情形：在中国的一部分地级市进行某项财税改革的试点。考虑如下的计量模型：</p>
+<p><strong><em>一个例子</em></strong></p>
+<p>中国改革的一个典型做法是先在一些地方试点，如果试点效果好，再把成功的经验推向全国。假设在中国部分地级市开展某项财税改革试点。考虑如下的计量模型：</p>
 <p><span class="math display" id="eq:5-2">\[\begin{align}
 y=\beta_0+\beta_1Pilot+u \tag{5.2}
 \end{align}\]</span></p>
@@ -253,7 +253,7 @@ y=\beta_0+\beta_1Pilot+\beta_2NoPilot+u \tag{5.3}
 </div>
 <div id="dummy-sec3" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> 分类、基准和虚拟变量<a href="dummy.html#dummy-sec3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>从分类的角度理解虚拟变量。将地级市分成两类：试点和未试点。以未试点的地级市为基准，给试点的地级市一个虚拟变量Pilot(如图<a href="dummy.html#fig:chap5fig1">5.1</a>)。回归中Pilot的系数表示相对基准试点地级市因变量的平均增幅.</p>
+<p>从分类的角度理解虚拟变量。将地级市分成两类：试点和未试点。以未试点的地级市为基准，给试点的地级市一个虚拟变量Pilot（如图<a href="dummy.html#fig:chap5fig1">5.1</a>）。回归中Pilot的系数表示相对基准，试点地级市因变量的平均增幅.</p>
 <div class="figure"><span style="display:block;" id="fig:chap5fig1"></span>
 <img src="figs/chap5-fig1.png" alt="Classification"  />
 <p class="caption">
@@ -264,8 +264,7 @@ y=\beta_0+\beta_1Pilot+\beta_2NoPilot+u \tag{5.3}
 </div>
 <div id="dummy-sec4" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> 多个虚拟变量<a href="dummy.html#dummy-sec4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>考虑另外一种试点情形：有两套试点方案，一套试点方案在一些地区实施，另一套试点方案在另一些地区实施，还有一些地区未实施任一方案，作为对照组。
-现在有两套试点方案，需要定义两个虚拟变量。记第一种试点方案得虚拟变量为Pilot1（试点此方案记为1，否则记为0），第二种试点方案的虚拟变量为Pilot2。计量模型：</p>
+<p>考虑另外一种试点情形：有两套试点方案，一套试点方案在一些地区实施，另一套试点方案在另一些地区实施，还有一些地区未实施任一方案。由于有两套试点方案，需要定义两个虚拟变量。记第一种试点方案的虚拟变量为Pilot1（试点此方案记为1，否则记为0），第二种试点方案的虚拟变量为Pilot2。计量模型：</p>
 <p><span class="math display" id="eq:5-4">\[\begin{align}
 y=\beta_0+\beta_1Pilot1+\beta_2Pilot2+u \tag{5.4}
 \end{align}\]</span></p>
@@ -283,7 +282,7 @@ y=\beta_0+\beta_1Pilot1+\beta_2Pilot2+u \tag{5.4}
 </div>
 <div id="dummy-sec5" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> 更多例子<a href="dummy.html#dummy-sec5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>用虚拟变量可以做很多事。比如，定义这么一个虚拟变量Male。顾名思义，它是男性的虚拟变量。严格的定义如下：</p>
+<p>用虚拟变量可以做很多事。比如，定义一个虚拟变量Male。顾名思义，它是男性的虚拟变量，赋值如下：</p>
 <p><span class="math display">\[
 Male=
 \begin{cases}
@@ -295,9 +294,13 @@ Male=
 <p><span class="math display" id="eq:5-5">\[\begin{align}
 wage=\beta_0+\beta_1Male+u \tag{5.5}
 \end{align}\]</span></p>
-<p>Q：<span class="math inline">\(\beta_1\)</span>的含义？<span class="math inline">\(\hat{\beta_1}=?\)</span></p>
-<p>还可以用虚拟变量研究种族（汉族还是少数民族）；行业（重工业或轻工业，三大产业）；地区（东中西）。</p>
-<p><strong>另见伍德里奇《计量经济学导论：现代观点》第五版第7.1-7.3节。</strong></p>
+<p>Q：<span class="math inline">\(\hat{\beta_1}=?\)</span></p>
+<p>还可以用虚拟变量研究种族（汉族还是少数民族）；行业（重工业或轻工业，或三大产业）；地区（东中西）。</p>
+<p><strong>伍德里奇《计量经济学导论：现代观点》第五版第7.1-7.3节对定性信息做了更详尽的介绍。</strong></p>
+<p><strong>参考文献</strong></p>
+<ul>
+<li>伍德里奇. 计量经济学导论(第五版)[M]. 中国人民大学出版社, 2015.</li>
+</ul>
 
 </div>
 </div>

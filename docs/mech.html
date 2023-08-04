@@ -213,24 +213,26 @@
 <h1><span class="header-section-number">第 7 章</span> 机制和异质性分析<a href="mech.html#mech" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="mech-sec1" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> 机制分析<a href="mech.html#mech-sec1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>回到§<a href="dummy.html#dummy-sec5">5.5</a>的计量模型：</p>
+<p>回到<a href="dummy.html#dummy-sec5">5.5</a>的计量模型：</p>
 <p><span class="math display" id="eq:7-1">\[\begin{align}
 wage=\beta_0+\beta_1Male+u \tag{7.1}
 \end{align}\]</span></p>
-<p>很可能得到，<span class="math inline">\(\hat{\beta_1}\)</span>为正，即样本中男性平均工资比女性平均工资高。进一步我们想问为什么平均而言男性工资比女性工资高？猜想男性工资更高一个原因/机制是男性受教育程度更高。怎么检验这一猜想/机制？思路、计量方法？</p>
+<p>很可能得到，<span class="math inline">\(\hat{\beta_1}\)</span>为正，即样本中男性平均工资比女性平均工资高。进一步我们想问，为什么平均而言男性工资比女性工资高？猜想男性工资更高一个原因/机制是男性受教育程度更高。怎么检验这一猜想/机制？</p>
 <p>（1）首先，检验男性受教育程度更高，这是前提。regress educ on Male:</p>
 <p><span class="math display" id="eq:7-2">\[\begin{align}
 educ=\gamma_0+\gamma_1Male+\epsilon \tag{7.2}
 \end{align}\]</span></p>
 <p>应满足：<span class="math inline">\(\hat{\gamma_1}&gt;0\)</span>。</p>
-<p>（2）然后，两性受教育程度的差异对于两性工资差异有解释力。举例来说，男性工资平均高10，其中3是男性受教育程度高造成的，7是其他因素造成的。也就是说，比较受教育程度相同的男性和女性，前者平均工资比后者高7。即控制受教育程度，男性平均工资高7（相比不控制时的10减小）。因此，验证思路：设法控制受教育程度（即剔除这一机制），看此时估计系数是否减小（至7）。Q：怎么控制受教育程度？[提示：回忆多元线性回归中系数的含义]</p>
+<p>（2）然后，检验两性受教育程度的差异对于两性工资差异有解释力。举例来说，男性工资平均高10，其中3是男性受教育程度高造成的，7是其他因素造成的。也就是说，如比较受教育程度相同的男性和女性，前者平均工资比后者高7。即控制受教育程度，男性平均工资高7（相比不控制时的10减小）。因此，验证思路是：设法控制受教育程度（即剔除这一机制），看此时估计系数是否减小（至7）。</p>
+<p>Q：怎么控制受教育程度？[提示：回忆多元线性回归中系数的含义]</p>
+<p>方法是构建如下的计量模型：</p>
 <p><span class="math display" id="eq:7-3">\[\begin{align}
 wage=\alpha_0+\alpha_1Male+\alpha_2educ+v \tag{7.3}
 \end{align}\]</span></p>
 <p>式<a href="mech.html#eq:7-1">(7.1)</a>中<span class="math inline">\(\beta_1\)</span>相当于例子中的10，式<a href="mech.html#eq:7-3">(7.3)</a>中<span class="math inline">\(\alpha_1\)</span>相当于例子中的7。验证：<span class="math inline">\(\alpha_1&lt;\beta_1\)</span>，即控制教育这一机制后，两性工资差距减小。还要验证这一推导背后隐含的假设：教育提高了工资，即<span class="math inline">\(\alpha_2&gt;0\)</span>。</p>
 <p>进一步，在例子中，教育这一机制解释了<span class="math inline">\(\frac{10-7}{10}=30\%\)</span>的两性工资差异。一般地，教育这一机制解释了<span class="math inline">\(\frac{\beta_1-\alpha_1}{\beta_1}\)</span>的两性工资差异。</p>
 <p>如果（1）和（2）同时的得到验证，则教育这一机制得证。</p>
-<p>一般地，怀疑x影响y的一个机制是z，即怀疑存在x-&gt;z-&gt;y的逻辑路径。检验该机制的程序类此。</p>
+<p>一般地怀疑x影响y的一个机制是z，即怀疑存在x-&gt;z-&gt;y的逻辑链条。检验该机制的步骤类此。Q：试举x-&gt;z-&gt;y的一个例子，说明x、z和y分别表示什么，解释x-&gt;z-&gt;y的逻辑链条，写出机制分析的步骤。</p>
 </div>
 <div id="mech-sec2" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> 异质性分析<a href="mech.html#mech-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -238,17 +240,18 @@ wage=\alpha_0+\alpha_1Male+\alpha_2educ+v \tag{7.3}
 <p><span class="math display" id="eq:7-4">\[\begin{align}
 wage=\beta_0+\beta_1educ+u \tag{7.4}
 \end{align}\]</span></p>
-<p><span class="math inline">\(\beta_1\)</span>反映样本中受教育程度增加1单位工资平均增加多少，即反映平均的教育回报率。可能不同人的教育回报率不一样。如在古代，女性的教育回报率接近0，因其参加不了科举，做不了官。而男性的教育回报率为正。即教育回报率在两性间存在差异，呈现出异质性。用什么计量模型刻画不同个体差异化的教育回报率？</p>
-<p>一种方法：将样本分成两组，一组全是男，一组全是女，分组估计，看两组的<span class="math inline">\(\hat{\beta_1}\)</span>是否存在明显的差异。</p>
-<p>另一种方法：记男性的估计系数比女性的估计系数多<span class="math inline">\(\gamma_2\in R\)</span>。女性的回归方程为：</p>
+<p><span class="math inline">\(\beta_1\)</span>反映样本中受教育程度增加1单位工资平均增加多少，即反映平均的教育回报率。可能不同人的教育回报率不一样。如在古代，女性的教育回报率接近0，因其参加不了科举，做不了官。而男性的教育回报率为正。即教育回报率在两性间存在差异，呈现出异质性。用什么计量方法刻画不同个体差异化的教育回报率？</p>
+<p><strong>一种方法</strong>：将样本分成两组，一组全是男，一组全是女，分组估计，看两组的<span class="math inline">\(\hat{\beta_1}\)</span>是否存在明显的差异。</p>
+<p><strong>另一种方法</strong>：写出女性的回归方程如下：</p>
 <p><span class="math display" id="eq:7-5">\[\begin{align}
 wage=\beta_0+\gamma_1educ+u \tag{7.5}
 \end{align}\]</span></p>
-<p>男性的回归方程为：</p>
+<p>设男性的估计系数比女性的估计系数多<span class="math inline">\(\gamma_2\in R\)</span>（男性的教育回报率大于女性的教育回报率 &lt;=&gt; <span class="math inline">\(\gamma_2&gt;0\)</span>）。则男性的回归方程为：</p>
 <p><span class="math display" id="eq:7-6">\[\begin{align}
 wage=\beta_0+(\gamma_1+\gamma_2)educ+u \tag{7.6}
 \end{align}\]</span></p>
 <p>Q：试用一个统一的计量模型概括上述两式。</p>
+<p>如下：</p>
 <p><span class="math display" id="eq:7-7">\[\begin{align}
 wage=\beta_0+(\gamma_1+\gamma_2Male)educ+u \tag{7.7}
 \end{align}\]</span></p>
@@ -256,12 +259,13 @@ wage=\beta_0+(\gamma_1+\gamma_2Male)educ+u \tag{7.7}
 <p><span class="math display" id="eq:7-8">\[\begin{align}
 wage=\beta_0+\gamma_1educ+\gamma_2educ\times Male+u \tag{7.8}
 \end{align}\]</span></p>
-<p>男性的教育回报率大于女性的教育回报率 &lt;=&gt; <span class="math inline">\(\gamma_2&gt;0\)</span>。</p>
-<p>换一种表述：教育回报率的大小依赖于性别，为刻画这一点，在自变量已包含educ之外，再加入educ与性别指标Male的乘积。一般地，怀疑x对y的影响依赖于z，为刻画这一异质性，在自变量中加入x与z的乘积，即使用如下的计量模型：</p>
+<p>换一种表述：教育回报率的大小依赖于性别，为刻画这一点，在自变量已包含educ之外，再加入educ与性别指标Male的乘积。</p>
+<p>一般地，怀疑x对y的影响依赖于z，为刻画这一异质性，在自变量中加入x与z的乘积，即使用如下的计量模型：</p>
 <p><span class="math display" id="eq:7-9">\[\begin{align}
 y=\beta_0+\gamma_1x+\gamma_2x\times z+u \tag{7.9}
 \end{align}\]</span></p>
-<p><span class="math inline">\(\gamma_2\)</span>的含义：z增加1单位，将使x的系数增加<span class="math inline">\(\gamma_2\)</span>。如果<span class="math inline">\(\gamma_2&gt;0\)</span>，那么更大的z增大了x对y的因果影响。Q：举一式<a href="mech.html#eq:7-9">(7.9)</a>适用的例子，说明y、x和z分别表示什么，解释x对y的影响依赖于z的逻辑。</p>
+<p><span class="math inline">\(\gamma_2\)</span>的含义：z增加1单位，将使x的系数增加<span class="math inline">\(\gamma_2\)</span>。如果<span class="math inline">\(\gamma_2&gt;0\)</span>，那么更大的z增大了x对y的因果影响。</p>
+<p>Q：另举一式<a href="mech.html#eq:7-9">(7.9)</a>适用的例子，说明y、x和z分别表示什么，解释x对y的影响依赖于z的逻辑。</p>
 
 </div>
 </div>

@@ -211,30 +211,38 @@
             <section class="normal" id="section-">
 <div id="misspe" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">第 9 章</span> 模型误设<a href="misspe.html#misspe" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>本章在伍德里奇（2015）《计量经济学导论：现代观点》第五版第74-78页的基础上做了改写和拓展。</p>
 <div id="misspe-sec1" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> 遗漏相关变量<a href="misspe.html#misspe-sec1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Q：如果E[IQ|受教育程度=本科]&gt;E[IQ|受教育程度=高中]，那么，E[收入|受教育程度=本科]-[收入|受教育程度=高中]将过高地估计（高估）、还是过低地估计（低估）受教育程度对收入的因果影响？假设真实的情况是受教育程度由高中提高到本科将使月收入提高1000元，如估计值为1500元则为高估，估计值为800元则为低估。</p>
-<p>本科生的收入更高反映了两种影响：一个是教育的作用，另一个是本科生的IQ平均更高，而IQ高导致收入高，即收入差距一部分是由IQ差距导致的。简单求收入差值相当将高估受教育程度对收入的因果影响。</p>
-<p>用数学语言，造成正的偏误的来源有两点：受教育程度与IQ正相关，而IQ对收入有正向的因果影响。</p>
-<p>用计量语言概括此例：真实的模型是这样的：<span class="math inline">\(wage=\beta_0+\beta_1educ+\beta_2IQ+u,E[u|educ,IQ]=0\)</span>。但我们错误估计了如下模型：<span class="math inline">\(wage=\alpha_0+\alpha_1educ+w\)</span>。这属于模型误设的一种情形：遗漏相关变量。正的偏误。</p>
-<p>一般地，真实的模型为：<span class="math inline">\(y=\beta_0+\beta_1x_1+\beta_2x_2+u\)</span>。假设零条件均值假设成立。错误地估计了模型：<span class="math inline">\(y=\alpha_0+\alpha_1x_1+w\)</span>。<span class="math inline">\(\hat{\alpha_1}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>有何联系？</p>
-<p>推导：</p>
-<div class="figure"><span style="display:block;" id="fig:chap3fig1"></span>
-<img src="figs/chap3-fig1.png" alt="Derivation for omitted variables"  />
+<p>仍然关注教育回报率。</p>
+<p>假设真实的情况是受教育程度由高中提高到本科将使月收入提高1000元，如估计值为1500元则为高估，称产生正的偏误；估计值为800元则为低估，称产生负的偏误。</p>
+<p>Q：如果E[IQ|受教育程度=本科]&gt;E[IQ|受教育程度=高中]，那么，E[收入|受教育程度=本科]-[收入|受教育程度=高中]将高估、还是低估受教育程度对收入的因果影响？</p>
+<p>本科生收入更高反映了两种影响：一个是教育的作用，另一个是本科生的IQ平均更高，而IQ高导致收入高，即收入差距一部分是由IQ差距导致的。简单求收入差值将高估受教育程度对收入的因果影响。</p>
+<p>用数学语言讲，造成正的偏误的来源有两点：受教育程度与IQ正相关，而IQ对收入有正向的因果影响。</p>
+<p>用计量语言概括此例：真实的模型是这样的：<span class="math inline">\(wage=\beta_0+\beta_1educ+\beta_2IQ+u,E[u|educ,IQ]=0\)</span>。但我们错误估计了如下模型：<span class="math inline">\(wage=\alpha_0+\alpha_1educ+w\)</span>。这属于模型误设的一种情形：遗漏相关变量。OLS估计量存在正的偏误（高估）。</p>
+<p>一般地，真实的模型为：<span class="math inline">\(y=\beta_0+\beta_1x_1+\beta_2x_2+u\)</span>。假设零条件均值假设成立。错误地估计模型：<span class="math inline">\(y=\alpha_0+\alpha_1x_1+w\)</span>。<span class="math inline">\(\hat{\alpha_1}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>有何联系？</p>
+<p>推导如下：</p>
+<div class="figure"><span style="display:block;" id="fig:chap9fig1"></span>
+<img src="figs/chap9-fig1.png" alt="Derivation for omitted variables"  />
 <p class="caption">
 图 9.1: Derivation for omitted variables
 </p>
 </div>
-<p>对于真实的模型，零条件均值假设成立，故有：<span class="math inline">\(\hat{\beta_1}\stackrel{p}{\longrightarrow}\beta_1\)</span>。而<span class="math inline">\(Cov(u,x_1)=0,Cov(v,x_1)=0\)</span> =&gt; <span class="math inline">\(Cov(\beta_2v+u,x_1)=0\)</span>。因此，<span class="math inline">\(\hat{\alpha_1}\stackrel{p}{\longrightarrow}\beta_1+\beta_2\delta_1\)</span>。多出来的部分<span class="math inline">\(\beta_2\delta_1\)</span>就是偏误。其中，<span class="math inline">\(\delta_1\)</span>反映<span class="math inline">\(x_1\)</span>和<span class="math inline">\(x_2\)</span>的相关性。<span class="math inline">\(\beta_2\)</span>反映<span class="math inline">\(x_2\)</span>对y的因果影响。对应上面提到的两点。例：<span class="math inline">\(\beta_2\)</span>和<span class="math inline">\(\delta_1\)</span>都为正，正正得正，偏误为正，高估。</p>
-<p>Q：基于这些数学公式理解上述例子中正的偏误。</p>
+<p>对于真实的模型，零条件均值假设成立，故有：<span class="math inline">\(\hat{\beta_1}\stackrel{p}{\longrightarrow}\beta_1\)</span>。而<span class="math inline">\(Cov(u,x_1)=0,Cov(v,x_1)=0\)</span> =&gt; <span class="math inline">\(Cov(\beta_2v+u,x_1)=0\)</span>。因此，<span class="math inline">\(\hat{\alpha_1}\stackrel{p}{\longrightarrow}\beta_1+\beta_2\delta_1\)</span>。多出来的部分<span class="math inline">\(\beta_2\delta_1\)</span>就是偏误。其中，<span class="math inline">\(\delta_1\)</span>反映<span class="math inline">\(x_1\)</span>和<span class="math inline">\(x_2\)</span>的相关性。<span class="math inline">\(\beta_2\)</span>反映<span class="math inline">\(x_2\)</span>对y的因果影响。对应上面提到的两点。在例子中，<span class="math inline">\(\beta_2\)</span>和<span class="math inline">\(\delta_1\)</span>都为正，正正得正，偏误为正（高估）。</p>
 <p>例: cons&lt;-transfer+income, 遗漏income. Q: 偏误方向?</p>
-<p>例: GDP&lt;-govt expenditure+money supply, 遗漏货币供给. Q: 偏误方向?</p>
-<p>另见伍德里奇《计量经济学导论：现代观点》第五版第75-78页。</p>
+<p>例: GDP&lt;-govt expenditure+money supply, 遗漏货币供给. Q: 偏误方向?。</p>
 </div>
 <div id="misspe-sec2" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> 包含无关变量<a href="misspe.html#misspe-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第74-75页。</p>
-<p>总结：遗漏相关变量导致偏误，包含无关变量影响方差。这两个都有问题，哪个问题更小一点？遗漏相关变量问题可能更大一点。所以，一般的建议是在不确定要不要加某个变量的时候，把它给加上，这可能使得标准误变大，但OLS估计量始终是无偏的，意味着平均而言反映了因果关系。</p>
+<p>假设真实的模型是：<span class="math inline">\(y=\beta_0+\beta_1x_1+\beta_2x_2+u\)</span>。我们引入了无关变量<span class="math inline">\(x_3\)</span>。</p>
+<p>真实的模型又可写作：<span class="math inline">\(y=\beta_0+\beta_1x_1+\beta_2x_2+0\times x_3+u\)</span>。通过这一改写，形式上将<span class="math inline">\(x_3\)</span>纳入了真实模型，不再是无关变量。可推出：若零条件均值假设成立，<span class="math inline">\(x_1,x_2,x_3\)</span>的系数的OLS估计量皆是无偏的，特别地，<span class="math inline">\(x_3\)</span>的系数的OLS估计量的期望为0。</p>
+<p>但要注意，包含无关变量可能使得标准误增大。</p>
+<p><strong>本章小结</strong></p>
+<p>遗漏相关变量导致偏误，包含无关变量影响方差。这两个都有问题，遗漏相关变量问题可能更大一点。所以，一般的建议是在不确定要不要加某个变量作为自变量的时候，把它加上，这可能使得标准误变大，但OLS估计量始终是无偏的，平均而言反映了因果关系。</p>
+<p><strong>参考文献</strong></p>
+<ul>
+<li>伍德里奇. 计量经济学导论(第五版)[M]. 中国人民大学出版社, 2015.</li>
+</ul>
 
 </div>
 </div>

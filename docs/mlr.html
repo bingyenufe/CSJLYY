@@ -31,15 +31,15 @@
   
 <link rel="prev" href="blr.html"/>
 <link rel="next" href="mlrinf.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 
 
 
@@ -226,31 +226,42 @@ wage=\beta_0+\beta_1educ+\beta_2IQ+u \tag{3.2}
 </div>
 <div id="mlr-sec2" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> 多元线性回归模型的定义<a href="mlr.html#mlr-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>二元线性回归模型具有如下的形式：<span class="math inline">\(y=\beta_0+\beta_1x_11+\beta_1x_2+...+\beta_kx_k+u\)</span>。见伍德里奇《计量经济学导论：现代观点》第五版第60页。</p>
-<p>虽然列出来了多个解释变量，但并不是说我们对于所有解释变量的系数都同等程度地关心。很多时候，我们只关心其中一个解释变量如<span class="math inline">\(x_1\)</span>的系数。如在上面的例子中，我们仅关心educ的系数，表示教育回报率。至于IQ的系数是多少，我们不关心。把IQ加进来唯一的理由是，若不加进来，它就是遗漏变量，会导致估计结果有偏。我们把<span class="math inline">\(x_1\)</span>叫做核心解释变量，其他解释变量叫做控制变量。</p>
-<p><span class="math inline">\(x_1\)</span>的系数<span class="math inline">\(\beta_1\)</span>的含义：当<span class="math inline">\(\bigtriangleup x_1=1, \bigtriangleup x_2=0, …, \bigtriangleup x_k=0, \bigtriangleup u=0\)</span>时，<span class="math inline">\(\bigtriangleup y=\beta_1\)</span>。故其反映 x1对y的因果影响。</p>
+<p>多元线性回归模型具有如下的形式：</p>
+<p><span class="math display" id="eq:3-3">\[\begin{align}
+y=\beta_0+\beta_1x_1+\beta_2x_2+...+\beta_kx_k+u \tag{3.3}
+\end{align}\]</span></p>
+<ul>
+<li>y：dependent variable, explained variable, response variable；</li>
+<li><span class="math inline">\(x_1,x_2,...,x_k\)</span>：independent variables, explanatory variables, regressors；</li>
+<li>u：error term, disturbance, unobservables；</li>
+<li><span class="math inline">\(\beta_0\)</span>：intercept；</li>
+<li><span class="math inline">\(\beta_1,\beta_2,...,\beta_k\)</span>：slope parameters。</li>
+</ul>
+<p>尽管存在多个解释变量，并不是说我们对所有解释变量的系数都同等程度地关心。很多时候，我们只关心其中一个解释变量如<span class="math inline">\(x_1\)</span>的系数。如在上面的例子中，我们仅关心educ的系数，表示教育回报率。至于IQ的系数是多少，我们不关心。把IQ加进来唯一的理由是，若不加进来，它就是遗漏变量，会导致估计结果有偏。我们把<span class="math inline">\(x_1\)</span>叫做核心解释变量，其他解释变量叫做控制变量。</p>
+<p><span class="math inline">\(x_1\)</span>的系数<span class="math inline">\(\beta_1\)</span>的含义：当<span class="math inline">\(\bigtriangleup x_1=1, \bigtriangleup x_2=0, …, \bigtriangleup x_k=0, \bigtriangleup u=0\)</span>时，<span class="math inline">\(\bigtriangleup y=\beta_1\)</span>。故其反映<span class="math inline">\(x_1\)</span>对y的因果影响。</p>
 <p><strong><em>函数形式</em></strong></p>
-<p>变量可以取对数，也可以取平方。如政府债务对经济增长的影响可能是倒U型的：适当规模的政府债务于经济发展有利，但过犹不及。相应地，计量模型为：<span class="math inline">\(GDPG_i=\beta_0+\beta_1Debt_i+\beta_2(Debt_i)^2+u_i\)</span>。其中，i表示省，<span class="math inline">\(GDPG_i\)</span>表示i省的经济增长率，<span class="math inline">\(Debt_i\)</span>表示i省的债务。预期<span class="math inline">\(\beta_0&gt;0,\ \beta_1&lt;0\)</span>。Q：计算<span class="math inline">\(\frac{ d_{GDPG_i} } { d_{Debt_i} }\)</span>。最优的债务水平是多少？</p>
-<p>另见伍德里奇（2015）《计量经济学导论：现代观点》第五版第154-161页。</p>
+<p>变量可以取对数，也可以取平方。如政府债务对经济增长的影响可能是倒U型的：适当规模的政府债务于经济发展有利，但过犹不及。相应地，计量模型为：<span class="math inline">\(GDPG_i=\beta_0+\beta_1Debt_i+\beta_2(Debt_i)^2+u_i\)</span>。其中，i表示省，<span class="math inline">\(GDPG_i\)</span>表示i省的经济增长率，<span class="math inline">\(Debt_i\)</span>表示i省的债务。预期<span class="math inline">\(\beta_1&gt;0,\ \beta_2&lt;0\)</span>。Q：计算<span class="math inline">\(\frac{ d_{GDPG_i} } { d_{Debt_i} }\)</span>。最优的债务水平是多少？</p>
 </div>
 <div id="mlr-sec3" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> OLS法的操作和解释<a href="mlr.html#mlr-sec3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong><em>如何得到OLS估计值</em></strong></p>
-<p>见伍德里奇《计量经济学导论：现代观点》第五版第3.2节“如何得到OLS估计值”。</p>
-<p>注意一阶条件为：</p>
-<p><span class="math display" id="eq:3-3">\[\begin{align}
-\sum_i\hat{u_i}=0 \tag{3.3}
-\end{align}\]</span></p>
+<p>定义拟合值：<span class="math inline">\(\hat{y_i}\equiv \hat{\beta_0}+\hat{\beta_1}x_{i1}+\hat{\beta_2}x_{i2}+...+\hat{\beta_k}x_{ik}\)</span>。</p>
+<p>定义残差：<span class="math inline">\(\hat{u_i}\equiv y_i-\hat{y_i}\)</span>。</p>
+<p>求解优化问题：<span class="math inline">\(min\ \sum_{i=1}^n(\hat{u_i})^2\)</span>。一阶条件为：</p>
 <p><span class="math display" id="eq:3-4">\[\begin{align}
-\sum_ix_{ij}\hat{u_i}=0\ for\ j=1,2,...,k \tag{3.4}
+\sum_i\hat{u_i}=0 \tag{3.4}
+\end{align}\]</span></p>
+<p><span class="math display" id="eq:3-5">\[\begin{align}
+\sum_ix_{ij}\hat{u_i}=0\ for\ j=1,2,...,k \tag{3.5}
 \end{align}\]</span></p>
 <p>=&gt;</p>
-<p><span class="math display" id="eq:3-5">\[\begin{align}
-\sum_i\hat{y_i}\hat{u_i}=0 \tag{3.5}
+<p><span class="math display" id="eq:3-6">\[\begin{align}
+\sum_i\hat{y_i}\hat{u_i}=0 \tag{3.6}
 \end{align}\]</span></p>
 <p>式<a href="mlr.html#eq:3-3">(3.3)</a>的含义：Deviations from regression line sum up to zero。也就是说，正负残差抵消掉了。</p>
 <p>式<a href="mlr.html#eq:3-4">(3.4)</a>的含义：Correlations between deviations and regressors are zero，即所有解释变量和残差不相关。</p>
 <p>式<a href="mlr.html#eq:3-5">(3.5)</a>的含义：因变量分解成拟合值和残差这两个不相关的部分。</p>
+<p>求解一阶条件组成的联立方程组可得<span class="math inline">\(\hat{\beta_0},\hat{\beta_1},\hat{\beta_2},...,\hat{\beta_k}\)</span>的OLS估计量。</p>
 <p><strong><em>理解多元回归估计系数</em></strong></p>
 <p>欲求<span class="math inline">\(x_1\)</span>的估计系数，可采取两步法如下:</p>
 <ul>
@@ -262,17 +273,23 @@ wage=\beta_0+\beta_1educ+\beta_2IQ+u \tag{3.2}
 <p>多元回归分析的作用在于，尽管不能在其他自变量不变的情况下收集数据，但它提供的系数仍可作其他自变量不变的解释。</p>
 <p>例：<span class="math inline">\(wage=\beta_0+\beta_1educ+\beta_2IQ+u\)</span>。<span class="math inline">\(\hat{\beta_1}\)</span>表示保持IQ不变时受教育程度与工资的关系，相当于比较具有相同IQ但不同受教育程度和收入的人。看起来就好像我们在具有相同IQ但educ可能不同的人群中抽样。尽管保持IQ不变，道德品质等仍可能变化，educ与wage之间的关系不完全反映educ-&gt;wage的因果关系。一般地，不能保证估计系数有意义。</p>
 <p>另见伍德里奇（2015）《计量经济学导论：现代观点》第五版第3.2节“对多元回归‘排除其他变量影响’的解释”。</p>
-<p><strong><em>OLS的拟合值和残差</em></strong></p>
-<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版第3.2节“OLS的拟合值和残差”。</p>
 </div>
 <div id="mlr-sec4" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> OLS估计量的期望<a href="mlr.html#mlr-sec4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版第70—74页。</p>
-<p>相比二元线性回归模型，假设多出来：自变量不存在多重共线性。对于带常数的多元线性回归模型，所谓多重共线性，是指解释变量（含常数）存在准确的线性关系，即它们之间具有如下的关系：</p>
+<p><strong><em>三个假设</em></strong></p>
+<p>（1）假设1（随机抽样）：我们有一个服从总体模型<a href="mlr.html#eq:3-3">(3.3)</a>的随机样本；</p>
+<p>（2）假设2（不存在完全多重共线性）：解释变量（含常数）间不存在准确的线性关系，即不存在如下的关系：</p>
 <p><span class="math display" id="eq:3-6">\[\begin{align}
 a_0+a_1x_1+a_2x_2+…+a_kx_k=0 \tag{3.6}
 \end{align}\]</span></p>
-<p>零条件均值假设写作：<span class="math inline">\(E[u|x_1,x_2,...,x_k]=0\)</span>，表示自变量<span class="math inline">\(x_1,x_2,…,x_k\)</span>对于预测干扰项的均值没有帮助。也就是说，任一自变量变大或变小，干扰项的均值保持不变。如果零条件均值假设成立，有下面的推论：<span class="math inline">\(Cov(x_j,u)=0,Corr(x_j,u)=0\ for\ j=1,2,…,k\)</span>。把与干扰项不相关的变量就称为外生解释变量，与干扰项相关的解释变量称为内生解释变量。零条件均值假设成立意味着所有解释变量都是外生解释变量。</p>
+<p>完全多重共线性的例子：某乡村自20世纪80年代举行村长选举多次，每次在两名候选人之间选举村长，其中一名是张姓候选人，另一名是非张姓候选人。考虑到村民倾向于支持同姓候选人，建立如下的计量模型：<span class="math inline">\(voteZ=\beta_0+\beta_1shareZ+\beta_2sharenZ+u\)</span>。其中，voteZ是张姓候选人得票率，shareZ是张姓村民占比，sharenZ是非张姓村民占比。显然，shareZ+sharenZ=1。故这一模型存在多重共线性。</p>
+<p>这一假设排除了某解释变量为常数的情况。</p>
+<p>这一假设仅排除了解释变量之间的完全相关（|r|=1）; 允许不完全相关。</p>
+<p>（3）假设3（零条件均值假设）：<span class="math inline">\(E[u|x_1,x_2,...,x_k]=0\)</span>，表示自变量<span class="math inline">\(x_1,x_2,…,x_k\)</span>对于预测干扰项的均值没有帮助。也就是说，任一自变量变大或变小，干扰项的均值保持不变。</p>
+<p>如果零条件均值假设成立，有下面的推论：<span class="math inline">\(Cov(x_j,u)=0,Corr(x_j,u)=0\ for\ j=1,2,…,k\)</span>。把与干扰项不相关的变量就称为外生解释变量，与干扰项相关的解释变量称为内生解释变量。零条件均值假设成立意味着所有解释变量都是外生解释变量。</p>
+<p><strong><em>OLS估计量的期望</em></strong></p>
+<p>若计量模型<a href="mlr.html#eq:3-3">(3.3)</a>满足假设1-3，可推出：<span class="math inline">\(E(\hat{\beta_j})=\beta_j,\ j=0,1,2,...,k\)</span>，即OLS估计量是无偏的。</p>
+<p>注意，无偏性是多轮抽样的平均性质。对于一个样本，估计值可能小于或大于总体参数，甚至可能离总体参数很远。</p>
 </div>
 <div id="mlr-sec5" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> OLS估计量的方差<a href="mlr.html#mlr-sec5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -297,14 +314,14 @@ a_0+a_1x_1+a_2x_2+…+a_kx_k=0 \tag{3.6}
 <a href="mlrinf.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

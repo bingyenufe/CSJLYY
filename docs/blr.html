@@ -31,15 +31,15 @@
   
 <link rel="prev" href="intro.html"/>
 <link rel="next" href="mlr.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 
 
 
@@ -213,15 +213,34 @@
 <h1><span class="header-section-number">第 2 章</span> 二元线性回归<a href="blr.html#blr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="blr-sec1" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> 二元线性回归模型的定义<a href="blr.html#blr-sec1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>二元线性回归模型具有如下的形式：<span class="math inline">\(y=\beta_0+\beta_1x+u\)</span>。见伍德里奇（2015）《计量经济学导论：现代观点》第五版第2.1节。</p>
+<p>二元线性回归模型具有如下的形式：</p>
+<p><span class="math display" id="eq:2-1">\[\begin{align}
+y_i=\beta_0+\beta_1x_i+u \tag{2.1}
+\end{align}\]</span></p>
+<ul>
+<li>i表示观测值；</li>
+<li>y：dependent variable, explained variable, response variable；</li>
+<li>x：independent variables, explanatory variables, regressors；</li>
+<li>u：error term, disturbance, unobservables；</li>
+<li><span class="math inline">\(\beta_0\)</span>：intercept；</li>
+<li><span class="math inline">\(\beta_1\)</span>：slope parameters。</li>
+</ul>
+<p>我们是y、x和u为随机变量。</p>
+<p>在不引起混淆的时候，也可略去下标，将模型写作<span class="math inline">\(y=\beta_0+\beta_1x+u\)</span>。</p>
+<p>系数的含义：若<span class="math inline">\(\bigtriangleup u=0\)</span>（所有其他因素保持不变）时，<span class="math inline">\(\bigtriangleup y=\beta_1\bigtriangleup x\)</span>（自变量增加1单位，因变量变化多少？）。故<span class="math inline">\(\beta_1\)</span>其反映x对y的因果影响。</p>
+<p>例：教育回报率众所关心。考虑如下的计量模型：</p>
+<p><span class="math display" id="eq:2-2">\[\begin{align}
+wage=\beta_0+\beta_1educ+u \tag{2.2}
+\end{align}\]</span></p>
+<p>其中，u包括Labor force experience、tenure with current employer、work ethic和intelligence等。<span class="math inline">\(\beta_1\)</span>度量的是，保持所有其他因素不变，受教育年限增加1年导致的小时工资的变化，反映教育回报率。</p>
+<p>“线性”指关于参数是线性的。</p>
 </div>
 <div id="blr-sec2" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> 普通最小二乘法的推导<a href="blr.html#blr-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong><em>最小二乘（OLS）法的直观理解</em></strong></p>
-<p>从总体中随机抽取N个观测值。记号：{<span class="math inline">\(((x_i,y_i):i=1,...,N)\)</span>}。</p>
-<p>画散点图。横轴表示受教育程度，纵轴表示工资。呈正向关系。如图<a href="blr.html#fig:chap2fig1">2.1</a>。</p>
-<p>设计量模型为：<span class="math inline">\(y=\beta_0+\beta_1x+u\)</span>。</p>
-<p>问题：基于这些数据，估计总体参数。之前，我们估计的总体参数只有总体均值一个；这里，有两个待估计的总体参数：<span class="math inline">\(\beta_0\)</span>和<span class="math inline">\(\beta_1\)</span>。怎么估计<span class="math inline">\(\beta_0\)</span>和<span class="math inline">\(\beta_1\)</span>？</p>
+<p>从总体中随机抽取N个观测值。记号：{<span class="math inline">\(((x_i,y_i):i=1,...,N)\)</span>}。画散点图，如图<a href="blr.html#fig:chap2fig1">2.1</a>所示。</p>
+<p>设计量模型为式<a href="blr.html#eq:2-1">(2.1)</a>。</p>
+<p>问题：基于这些数据，如何估计总体参数？之前，我们估计的总体参数只有总体均值一个；这里，有两个待估计的总体参数：<span class="math inline">\(\beta_0\)</span>和<span class="math inline">\(\beta_1\)</span>。怎么估计<span class="math inline">\(\beta_0\)</span>和<span class="math inline">\(\beta_1\)</span>？</p>
 <p>记<span class="math inline">\(\beta_0\)</span>的估计量为<span class="math inline">\(\hat{\beta_0}\)</span>，<span class="math inline">\(\beta_1\)</span>的估计量记为<span class="math inline">\(\hat{\beta_1}\)</span>。如果确定了<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>，就可以确定一条直线：<span class="math inline">\(y=\hat{\beta_0}+\hat{\beta_1}x\)</span>。<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>变化，直线也跟着变化。反过来，直线确定了，<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>也确定了。即：<span class="math inline">\({\hat{\beta_0},\hat{\beta_1}}\)</span>与直线是一一对应的关系。那么，确定<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>，等价于找直线为<span class="math inline">\(y=\hat{\beta_0}+\hat{\beta_1}x\)</span>。</p>
 <p>问题：直线有无限条，需要我们找出其中一条，它在某种意义上是最优的。直观上，该怎么去找？</p>
 <div class="figure"><span style="display:block;" id="fig:chap2fig1"></span>
@@ -233,12 +252,12 @@
 <p>回忆：估计总体均值时，我们选择距观测值m（对应观测点）最近的数（对应一条水平线y=m），或者说选择距观测点最近的水平线。</p>
 <p>类比：找一条离观测点最近的直线。这里不必是一条水平线，可以是任意走向的直线。</p>
 <p>严格地，定义一条给定的直线到各观测点的距离。一种（不是唯一的）定义距离的方法：如图<a href="blr.html#fig:chap2fig2">2.2</a>，三个观测点<span class="math inline">\((x_1,y_1),(x_2,y_2),(x_3,y_3)\)</span>，一条给定的直线<span class="math inline">\(y =\hat{\beta_0}+\hat{\beta_1}x\)</span>，做一条从点1出发的垂线，至该直线而止，定义该线段的平方为点1到该直线的距离。数学表达：<span class="math inline">\((y_1- \hat{\beta_0}-\hat{\beta_1}x_1)^2\)</span>。注意，<span class="math inline">\(y_1-\hat{\beta_0}-\hat{\beta_1}x\)</span>可能为负，求其平方，保证得到一个正数。类似可求其他点到该直线的距离。总距离为：</p>
-<p><span class="math display" id="eq:2-1">\[\begin{align}
-(y_1 - \hat{\beta_0} - \hat{\beta_1}x_1)^2 + (y_2 - \hat{\beta_0} - \hat{\beta_1}x_2)^2 +(y_3 - \hat{\beta_0} - \hat{\beta_1}x_3)^2 \tag{2.1}
+<p><span class="math display" id="eq:2-3">\[\begin{align}
+(y_1 - \hat{\beta_0} - \hat{\beta_1}x_1)^2 + (y_2 - \hat{\beta_0} - \hat{\beta_1}x_2)^2 +(y_3 - \hat{\beta_0} - \hat{\beta_1}x_3)^2 \tag{2.3}
 \end{align}\]</span></p>
 <p>选择直线与观测点的总距离最小，或者说选择<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>使得总距离最小：</p>
-<p><span class="math display" id="eq:2-2">\[\begin{align}
-Min_{\hat{\beta_0},\hat{\beta_1}} (y_1 - \hat{\beta_0} - \hat{\beta_1}x_1)^2 +(y_3 - \hat{\beta_0} - \hat{\beta_1}x_2)^2 + (y_2 - \hat{\beta_0} - \hat{\beta_1}x_3)^2 \tag{2.2}
+<p><span class="math display" id="eq:2-4">\[\begin{align}
+Min_{\hat{\beta_0},\hat{\beta_1}} (y_1 - \hat{\beta_0} - \hat{\beta_1}x_1)^2 +(y_3 - \hat{\beta_0} - \hat{\beta_1}x_2)^2 + (y_2 - \hat{\beta_0} - \hat{\beta_1}x_3)^2 \tag{2.4}
 \end{align}\]</span></p>
 <div class="figure"><span style="display:block;" id="fig:chap2fig2"></span>
 <img src="figs/chap2-fig2.png" alt="Illustration of the OLS method"  />
@@ -247,33 +266,33 @@ Min_{\hat{\beta_0},\hat{\beta_1}} (y_1 - \hat{\beta_0} - \hat{\beta_1}x_1)^2 +(y
 </p>
 </div>
 <p>定义：</p>
-<p><span class="math display" id="eq:2-3">\[\begin{align}
+<p><span class="math display" id="eq:2-5">\[\begin{align}
 \hat{y} \equiv \hat{\beta_0} + \hat{\beta_1}x \\
-\hat{u} \equiv  y  - \hat{y} = y  - \hat{\beta_0} - \hat{\beta_1}x \tag{2.3}
+\hat{u} \equiv  y  - \hat{y} = y  - \hat{\beta_0} - \hat{\beta_1}x \tag{2.5}
 \end{align}\]</span></p>
 <p><span class="math inline">\(\hat{y}\)</span>就是直线的纵坐标，称为拟合值。<span class="math inline">\(\hat{u}\)</span>是图<a href="blr.html#fig:chap2fig2">2.2</a> 中线段，在直线上方记为正，在直线下方记为负，称为残差。可以把最小化问题表述为：</p>
-<p><span class="math display" id="eq:2-4">\[\begin{align}
-Min_{\hat{\beta_0},\hat{\beta_1}} (y_1 - \hat{y_1})^2 +(y_2 - \hat{y_2})^2 + (y_3 - \hat{y_3})^2 = \hat{u_1}^2 +\hat{u_2}^2 + \hat{u_3}^2 \tag{2.4}
+<p><span class="math display" id="eq:2-6">\[\begin{align}
+Min_{\hat{\beta_0},\hat{\beta_1}} (y_1 - \hat{y_1})^2 +(y_2 - \hat{y_2})^2 + (y_3 - \hat{y_3})^2 = \hat{u_1}^2 +\hat{u_2}^2 + \hat{u_3}^2 \tag{2.6}
 \end{align}\]</span></p>
 <p><strong><em>OLS估计量的推导</em></strong></p>
 <p>一般地，有N个观测值，优化问题为：</p>
-<p><span class="math display" id="eq:2-5">\[\begin{align}
-Min_{\hat{\beta_0},\hat{\beta_1}} \sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\beta_1}x_i)^2 \tag{2.5}
+<p><span class="math display" id="eq:2-7">\[\begin{align}
+Min_{\hat{\beta_0},\hat{\beta_1}} \sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\beta_1}x_i)^2 \tag{2.7}
 \end{align}\]</span></p>
 <p>对择<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>求偏导，得到一阶条件：</p>
-<p><span class="math display" id="eq:2-6">\[\begin{align}
+<p><span class="math display" id="eq:2-8">\[\begin{align}
 \sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\beta_1}x_i) = 0 \\
-\sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\beta_1}x_i) x_i = 0 \tag{2.6}
+\sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\beta_1}x_i) x_i = 0 \tag{2.8}
 \end{align}\]</span></p>
 <p>可以推出：</p>
-<p><span class="math display" id="eq:2-7">\[\begin{align}
+<p><span class="math display" id="eq:2-9">\[\begin{align}
 \hat{\beta_1} = \frac{\sum_{i=1}^N (x_i-\overline{x})(y_i-\overline{y})}{(x_i-\overline{x})^2} \\
-\hat{\beta_0} = \overline{y} -  \hat{\beta_1}\overline{x} \tag{2.7}
+\hat{\beta_0} = \overline{y} -  \hat{\beta_1}\overline{x} \tag{2.9}
 \end{align}\]</span></p>
 <p>推导见伍德里奇（2015）《计量经济学导论：现代观点》第五版式(2.16)-(2.19)。</p>
 <p><span class="math inline">\(\hat{\beta_1}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>的计算公式已经给出来了。两个估计量均是观测值{<span class="math inline">\(((x_i,y_i):i=1,...,N)\)</span>}的函数。由于我们把x和y视作随机变量，随机变量的函数依然是随机变量。</p>
 <p><strong><em>程序模拟</em></strong></p>
-<p>写了的一个Fortran小程序。它从总体中随机抽取一个样本，包含30个观测值，每个观测值包含x和y两个取值（可以将y理解成wage，x理解成education）。</p>
+<p>写了一个Fortran小程序。它从总体中随机抽取一个样本，包含30个观测值，每个观测值包含x和y两个取值（可以将y理解成wage，x理解成education）。</p>
 <p>一次随机抽样的结果如图<a href="blr.html#fig:chap2fig3">2.3</a>。抽到的第一个观测值的y是0.4187，x是0.1616。第二个观测值的y是0.2976，x是1.3366。因为是随机抽样，第二个观测值y和x的取值不同于第一个观测值的y和x的取值。其他观测值取值如图。基于这些观测值，计算了<span class="math inline">\(\hat{\beta_1}\)</span>，计算结果和详细的计算过程如图<a href="blr.html#fig:chap2fig3">2.3</a>。</p>
 <div class="figure"><span style="display:block;" id="fig:chap2fig3"></span>
 <img src="figs/chap2-fig3.png" alt="Calculation based on a random sample"  />
@@ -297,13 +316,13 @@ Min_{\hat{\beta_0},\hat{\beta_1}} \sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\bet
 </p>
 </div>
 <p>总结：因为x和y是随机的，每次抽样得到的x和y不一样，基于这些x和y计算出来的<span class="math inline">\(\hat{\beta_1}\)</span>不一样，故<span class="math inline">\(\hat{\beta_1}\)</span>是一个随机变量。</p>
-<p><strong><em>例：教育回报率</em></strong></p>
-<p>见伍德里奇（2015）《计量经济学导论：现代观点》第五版例2.4。</p>
+<p><strong><em>估计教育回报率</em></strong></p>
+<p>伍德里奇（2015）《计量经济学导论：现代观点》第五版例2.4基于数据“WAGE1.dta”估计了计量模型：<span class="math inline">\(wage=\beta_0+\beta_1educ+u\)</span>。结果显示，<span class="math inline">\(\hat{\beta_0}=-0.90,\hat{\beta_1}=0.54\)</span>。<span class="math inline">\(\hat{\beta_1}\)</span>的含义：in the sample, one more year of education was associated with an increase in hourly wage by 0.54 dollar。注意，这里没有其他条件不变这个限定条件。一般而言，<span class="math inline">\(\hat{\beta_1}\)</span>和<span class="math inline">\(\beta_1\)</span>的含义是不一样的。</p>
 <p><strong><em>一阶条件的含义</em></strong></p>
 <p>一阶条件也可写成：</p>
-<p><span class="math display" id="eq:2-8">\[\begin{align}
+<p><span class="math display" id="eq:2-10">\[\begin{align}
 \sum_{i=1}^N  \hat{u_i} = 0 \\
-\sum_{i=1}^N  \hat{u_i}x_i = 0 \tag{2.8}
+\sum_{i=1}^N  \hat{u_i}x_i = 0 \tag{2.10}
 \end{align}\]</span></p>
 <p>含义：（1）正负偏离相抵；（2）残差与自变量不相关。Q：为什么？[提示：想想相关系数的公式]。</p>
 <p>一阶条件的直观展示如图<a href="blr.html#fig:chap2fig6">2.6</a>。仍然使用伍德里奇（2015）《计量经济学导论：现代观点》第五版例2.4的数据，绘制散点图，<span class="math inline">\(\hat{u_i}\)</span>作为纵轴，education作为横轴。</p>
@@ -322,8 +341,8 @@ Min_{\hat{\beta_0},\hat{\beta_1}} \sum_{i=1}^N  (y_i - \hat{\beta_0} - \hat{\bet
 <p>问题：反过来用educ对wage做回归，可不可以？有没有意义？</p>
 <p>数学上没有问题。Stata演示结果略。经济学上没有意义。一般的结论：用变量1对变量2回归，不能保证变量2的估计系数有意义。</p>
 <p>为了使估计系数有意义，需要施加约束。什么是有意义？通常，满足下式，称有意义：</p>
-<p><span class="math display" id="eq:2-9">\[\begin{align}
-E[\hat{\beta_1}] = \beta_1 \tag{2.9}
+<p><span class="math display" id="eq:2-11">\[\begin{align}
+E[\hat{\beta_1}] = \beta_1 \tag{2.11}
 \end{align}\]</span></p>
 <p>含义：<span class="math inline">\(\hat{\beta_1}\)</span>是一个随机变量。我们不能保证每一次抽样得到的<span class="math inline">\(\hat{\beta_1}\)</span>都等于<span class="math inline">\(\beta_1\)</span>；通常前者不等于后者。我们希望至少保证当把这个事情重复很多遍，比如说我们刚才抽样500次，得到的500个<span class="math inline">\(\hat{\beta_1}\)</span>的平均值等于<span class="math inline">\(\beta_1\)</span>。或者说，上式成立。期望表示的就是“平均而言”。上式是说，平均而言，<span class="math inline">\(\hat{\beta_1}\)</span>反映/识别了因果关系。</p>
 <p>问题：施加什么条件才能使上式成立？</p>
@@ -331,48 +350,41 @@ E[\hat{\beta_1}] = \beta_1 \tag{2.9}
 <p>考虑第一小问：本科生平均收入比高中生平均收入高，既因接受了更多的教育，又因本科生IQ平均来说比高中生高。故给定该前提条件，该差值不能反映受教育程度和收入之间的因果关系。</p>
 <p>考虑第二小问：换成E[IQ|受教育程度=本科]=E[IQ|受教育程度=高中]。我们之前担心存在遗漏变量问题：本科生和高中生的IQ不相同，因此，不知道收入差异到底是受教育程度不同还是IQ不同所致。改成这一前提条件，回避了这一问题。</p>
 <p>即使如此，本科生和高中生在别的方面存在差异。如，一般来说，家庭收入越高，对小孩的教育投入越多，小孩上大学的概率越高。又如，本科生和高中生的道德品质可能有差异。等等。为此，按照上面的逻辑，我们还需要增加如下的前提条件：</p>
-<p><span class="math display" id="eq:2-10">\[\begin{align}
+<p><span class="math display" id="eq:2-12">\[\begin{align}
 E[家庭收入|受教育程度=本科]=E[家庭收入|受教育程度=高中] \\
 E[道德品质|受教育程度=本科]=E[道德品质|受教育程度=高中] \\
-... \tag{2.10}
+... \tag{2.12}
 \end{align}\]</span></p>
 <p>问题在于，可以列出成百上千个前提条件，因为影响收入的因素众多。思考：可不可以化繁为简，用一个简单的式子概括一系列前提条件？这个简单的式子是什么？</p>
 <p>下式符合要求：</p>
-<p><span class="math display" id="eq:2-11">\[\begin{align}
-E[u|受教育程度=本科]=E[u|受教育程度=高中] \tag{2.11}
+<p><span class="math display" id="eq:2-13">\[\begin{align}
+E[u|受教育程度=本科]=E[u|受教育程度=高中] \tag{2.13}
 \end{align}\]</span></p>
 <p>干扰项的定义就是除了我们纳入模型的因素以外，未纳入模型的因素的综合影响。数学上，可以将u写成IQ、家庭收入、道德品质等一众未纳入模型的因素的函数。上式表示，本科生和高中生除受教育程度以外各因素的综合影响平均而言相等，或者说给定受教育程度，受教育程度以外各因素的综合影响的期望为一个常数。</p>
 <p>在这个前提条件满足的情况下，E[收入|受教育程度=本科]-[收入|受教育程度=高中]能够反映受教育程度和收入之间的因果关系。注意这只是一个假设，成不成立是另外一回事。这里只是说如果假设成立，那么我们可以继续进行数学推导。</p>
 <p>一般地，受教育程度可以取多个值，如小学、初中、高中、本科、研究生等。将前提条件换成：</p>
-<p><span class="math display" id="eq:2-12">\[\begin{align}
-E[u|educ] = Constant \tag{2.12}
+<p><span class="math display" id="eq:2-14">\[\begin{align}
+E[u|educ] = Constant \tag{2.14}
 \end{align}\]</span></p>
 <p>表示，不管受教育程度取何值，除受教育程度以外各因素的综合影响平均而言均相等。</p>
 <p>这是保证OLS估计量有意义的核心假设。此外，我们还需要其他一些假设。</p>
-<p><strong><em>四个假设</em></strong></p>
-<p>四个假设：</p>
-<ul>
-<li>（线性于参数）总体模型为：<span class="math inline">\(y=\beta_0+\beta_1x+u\)</span>；</li>
-<li>（随机抽样）我们具有一个服从上述总体模型的随机样本；</li>
-<li>（样本中解释变量有波动）样本中x取不尽相同的值；</li>
-<li>（零条件均值）<span class="math inline">\(E[u|x]=0\)</span>。</li>
-</ul>
-<p>详见伍德里奇（2015）《计量经济学导论：现代观点》第五版第41-43页。</p>
-<p>零条件均值假设与前述条件均值为常数本质上是一回事。为什么？</p>
-<p>零条件均值假设的含义：x变化时，所有其他因素对y的综合影响平均意义上保持不变。在教育回报率的例子中，这意味着，不管受教育程度怎么变化，所有其他因素对收入的综合影响平均意义上保持不变（合理吗？）。也可以说，或者说，x对于预测其他因素对y的综合影响的均值无帮助。</p>
+<p><strong><em>三个假设</em></strong></p>
+<p>（1）假设1（随机抽样）：我们有一个服从总体模型<a href="blr.html#eq:2-1">(2.1)</a>的随机样本；</p>
+<p>（2）假设2（样本中解释变量有波动）：样本中x取不尽相同的值。如不然，则无法研究x变化如何影响y；</p>
+<p>（3）假设3（零条件均值）：<span class="math inline">\(E[u|x]=0\)</span>。零条件均值假设与前述条件均值为常数本质上是一回事（想想为什么）。零条件均值假设的含义：x变化时，所有其他因素对y的综合影响平均意义上保持不变。。或者说，x对于预测其他因素对y的综合影响的均值无帮助。在教育回报率的例子中，这意味着，不管受教育程度怎么变化，所有其他因素对收入的综合影响平均意义上保持不变（合理吗？）</p>
 <p>零条件均值假设是假设，未必是事实。如果它成立，我们可以在它基础上进行推导。但我们需要检查它在现实中是否成立。</p>
 <p><strong><em>OLS估计量的无偏性</em></strong></p>
-<p>OLS估计量是无偏的：<span class="math inline">\(E[\hat{\beta_1}]=\beta_1\)</span>。见伍德里奇《计量经济学导论：现代观点》第五版第43-45页。</p>
+<p>若计量模型<a href="blr.html#eq:2-1">(2.1)</a>满足假设1-3，可推出：<span class="math inline">\(E[\hat{\beta_0}]=\beta_0,\ E[\hat{\beta_1}]=\beta_1\)</span>，称OLS估计量是无偏的。证明见伍德里奇（2015）《计量经济学导论：现代观点》第五版第2.5节定理2.1。</p>
 <p><strong><em>程序模拟（续）</em></strong></p>
 <p>接<a href="blr.html#blr-sec2">2.2</a>中的程序模拟。疑问：500次抽样怎么抽的？这里予以明确。假设真实的模型为：</p>
-<p><span class="math display" id="eq:2-13">\[\begin{align}
-y=x+u, x\ and\ u \sim N(0,1), x\ and\ u\ are\ independent. \tag{2.13}
+<p><span class="math display" id="eq:2-15">\[\begin{align}
+y=x+u, x\ and\ u \sim N(0,1), x\ and\ u\ are\ independent. \tag{2.15}
 \end{align}\]</span></p>
 <p>这里，<span class="math inline">\(\beta_0=0,\beta_1=1\)</span>。</p>
 <p>抽样：以抽取第一个观测值为例，我们从一个标准正态分布里随机抽取一个<span class="math inline">\(x_1\)</span>，从另一个独立的标准正态分布里随机抽取一个<span class="math inline">\(u_1\)</span>，把它们加起来，就得到<span class="math inline">\(y_1\)</span>。由此得到第一个观测值<span class="math inline">\((x_1,y_1)\)</span>。如此，我们抽第2至30个观测值，组成一个样本。这是一次抽样。基于这一次抽样，计算一个<span class="math inline">\(\hat{\beta_1}\)</span>。重复这一过程，进行第2至500次抽样。每次抽样均包含30个观测值，计算得到一个<span class="math inline">\(\hat{\beta_1}\)</span>。共得到500个<span class="math inline">\(\hat{\beta_1}\)</span>。</p>
-<p>这一过程满足上述4个假设，包括<span class="math inline">\(E(u|x)=0\)</span>。为什么？因此：</p>
-<p><span class="math display" id="eq:2-14">\[\begin{align}
-E[\hat{\beta_1}]=1 \tag{2.14}
+<p>这一过程满足假设1-3，包括<span class="math inline">\(E(u|x)=0\)</span>。为什么？因此：</p>
+<p><span class="math display" id="eq:2-16">\[\begin{align}
+E[\hat{\beta_1}]=1 \tag{2.16}
 \end{align}\]</span></p>
 <p>这是理论结果。是否500次抽样的<span class="math inline">\(\hat{\beta_1}\)</span>的均值约等于1？绘制500个<span class="math inline">\(\hat{\beta_1}\)</span>的直方图如图<a href="blr.html#fig:chap2fig7">2.7</a>。由图，<span class="math inline">\(\hat{\beta_1}\)</span>不尽相同，有的时候比较小，甚至达到0.3，而有的时候比较大，甚至达到1.7。就是说由一个随机抽取的样本计算的<span class="math inline">\(\hat{\beta_1}\)</span>可能离总体参数很远。但<span class="math inline">\(\hat{\beta_1}\)</span>出现在总体参数1附近的频率最大。总体上，<span class="math inline">\(\hat{\beta_1}\)</span>围绕着1分布，取到极端值的频率小。</p>
 <div class="figure"><span style="display:block;" id="fig:chap2fig7"></span>
@@ -388,7 +400,7 @@ E[\hat{\beta_1}]=1 \tag{2.14}
 图 2.8: Mean of estimates
 </p>
 </div>
-<p>这个形象的例子说明在满足4个假设的情况下，基于一个样本计算的<span class="math inline">\(\hat{\beta_1}\)</span>通常不等于<span class="math inline">\(\beta_1\)</span>，还可能离<span class="math inline">\(\beta_1\)</span>比较远，但<span class="math inline">\(\hat{\beta_1}\)</span>的均值等于<span class="math inline">\(\beta_1\)</span>。</p>
+<p>这个形象的例子说明在满足假设1-3的情况下，基于一个样本计算的<span class="math inline">\(\hat{\beta_1}\)</span>通常不等于<span class="math inline">\(\beta_1\)</span>，还可能离<span class="math inline">\(\beta_1\)</span>比较远，但<span class="math inline">\(\hat{\beta_1}\)</span>的均值等于<span class="math inline">\(\beta_1\)</span>。</p>
 <p><strong><em>零条件均值、无偏性与因果关系</em></strong></p>
 <p>我们很多次把最小二乘回归跟因果关系联系在一起。并非牵强附会。</p>
 <p>因果关系的定义：x变化时其他因素不变，y怎么变化？反映从x到y的因果关系。</p>
@@ -399,18 +411,19 @@ E[\hat{\beta_1}]=1 \tag{2.14}
 </div>
 <div id="blr-sec4" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> 函数形式<a href="blr.html#blr-sec4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>收入和受教育程度的另一个计量模型：<span class="math inline">\(log(wage)=\beta_0+\beta_1educ+u\)</span>。</p>
-<p>CEO薪水和公司销售额的一个计量模型：<span class="math inline">\(log(salary)=\beta_0+\beta_1log(sales)+u\)</span>。</p>
-<p>这两个模型都属于二元线性回归模型。此处，“线性”指关于总体参数是线性的。</p>
-<p>以上两个模型中的系数作何解释？</p>
-<p>详见伍德里奇《计量经济学导论：现代观点》第五版第38-41页。</p>
+<p>前已述及，“二元线性回归中”的“线性”指关于参数是线性的。至于自变量，可以是绝对值，也可以取对数。下面两个模型都是二元线性回归模型：</p>
+<ul>
+<li>收入和受教育程度的另一个计量模型：<span class="math inline">\(log(wage)=\beta_0+\beta_1educ+u\)</span>；</li>
+<li>CEO薪水和公司销售额的一个计量模型：<span class="math inline">\(log(salary)=\beta_0+\beta_1log(sales)+u\)</span>。</li>
+</ul>
+<p>Q：以上两个模型中系数<span class="math inline">\(\beta_1\)</span>作何解释？例如，第一个模型中，<span class="math inline">\(\beta_1=0.05\)</span>，是什么含义？[如无头绪，请先阅读伍德里奇（2015）《计量经济学导论：现代观点》第五版第38-41页，再回答问题]</p>
 </div>
 <div id="blr-sec5" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> 最小二乘法：再考察<a href="blr.html#blr-sec5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>最小二乘法到底在干什么？之前我们给出了一种理解（称为理解1）：把观测值画在二维图中，找离这些观测值最近的直线。这是一种直观的理解，但不是唯一的理解。下面我们给出另外两种理解。</p>
 <p><strong><em>理解2</em></strong></p>
-<p><span class="math display" id="eq:2-15">\[\begin{align}
-y_i=\hat{\beta_0}+\hat{\beta_1}x_i+\hat{u_i}=\hat{y_i}+\hat{u_i} \tag{2.15}
+<p><span class="math display" id="eq:2-17">\[\begin{align}
+y_i=\hat{\beta_0}+\hat{\beta_1}x_i+\hat{u_i}=\hat{y_i}+\hat{u_i} \tag{2.17}
 \end{align}\]</span></p>
 <p>也就是说我可以把y分解成两部分：拟合值<span class="math inline">\(\hat{y}\)</span>和残差<span class="math inline">\(\hat{u}\)</span>。这两部分有什么关系？</p>
 <p><span class="math inline">\(\sum_{i}(\hat{\beta_0}+\hat{\beta_1}x_i)\hat{u_i}=0\)</span>。为什么？[提示：使用一阶条件]。意味着<span class="math inline">\(\hat{y}\)</span>和<span class="math inline">\(\hat{u}\)</span>不相关。为什么？[提示：使用相关系数的公式]</p>
@@ -424,17 +437,17 @@ y_i=\hat{\beta_0}+\hat{\beta_1}x_i+\hat{u_i}=\hat{y_i}+\hat{u_i} \tag{2.15}
 <p>总之，最小二乘法是做分解：将因变量分解成拟合值和残差这两个不相关的项。</p>
 <p><strong><em>理解3</em></strong></p>
 <p>换一个角度，利用线性代数的知识。考虑过原点的回归模型：</p>
-<p><span class="math display" id="eq:2-16">\[\begin{align}
-y=\beta_1x+u \tag{2.16}
+<p><span class="math display" id="eq:2-18">\[\begin{align}
+y=\beta_1x+u \tag{2.18}
 \end{align}\]</span></p>
 <p>也就是说，<span class="math inline">\(\beta_0=0\)</span>。</p>
 <p>OLS估计量为（推导见伍德里奇（2015）《计量经济学导论：现代观点》第五版第51页）：</p>
-<p><span class="math display" id="eq:2-17">\[\begin{align}
-\hat{\beta_1}=\frac{\sum_{i}x_iy_i}{\sum_{i}x_i^2} \tag{2.17}
+<p><span class="math display" id="eq:2-19">\[\begin{align}
+\hat{\beta_1}=\frac{\sum_{i}x_iy_i}{\sum_{i}x_i^2} \tag{2.19}
 \end{align}\]</span></p>
 <p>有两个观测值：<span class="math inline">\((x_1=2,y_1=1)，(x_2=0,y_2=2)\)</span>。代入上面的公式，得：<span class="math inline">\(\hat{\beta_1}=0.5\)</span>。</p>
 <p>将两个观测值的回归方程用线性代数表示：</p>
-<p><span class="math display" id="eq:2-18">\[\begin{align}
+<p><span class="math display" id="eq:2-20">\[\begin{align}
 \left(
 \begin{array}{c}
 1 \\
@@ -467,7 +480,7 @@ y=\beta_1x+u \tag{2.16}
 0 \\
 2
 \end{array}
-\right) \tag{2.18}
+\right) \tag{2.20}
 \end{align}\]</span></p>
 <p>记向量<span class="math inline">\(\vec{y}=(1,2)&#39;,\vec{x}=(2,0)&#39;,\vec{u}=(0,2)&#39;\)</span>。把这些向量画在二维图中：</p>
 <div class="figure"><span style="display:block;" id="fig:chap2fig10"></span>
@@ -490,8 +503,7 @@ y=\beta_1x+u \tag{2.16}
 对于任一施肥量，别的信息对此的条件期望是一个常数，即零条件均值假设成立。</p>
 <p>问题在于，在经济学里，很难开展随机实验，原因有二：其一，经济学领域的随机实验的成本可能较高，如为了解基础设施对经济增长的影响，随机实验的思路选择100个村子，随机分成2组，给一组修路，对另一组不做处理。修路成本高昂显而易见。其二，为估计教育回报率，随机实验的思路是随机地给不同小孩不同的受教育程度。但为什么有的小孩就能得到高学历，而有的小孩初中毕业就不得不进入电子厂？这是伦理压力。</p>
 <p><strong><em>检验零条件均值假设是否成立</em></strong></p>
-<p>定理：<span class="math inline">\(E[u|x]=0=&gt;Cov(x,u)=0,Corr(x,u)=0\)</span>。</p>
-<p>证明见斯托克和沃森（2012）《计量经济学》第二版第27页。</p>
+<p>定理：<span class="math inline">\(E[u|x]=0=&gt;Cov(x,u)=0,Corr(x,u)=0\)</span>。证明见斯托克和沃森（2012）《计量经济学》第二版第27页。</p>
 <p>反过来，如果相关，零条件均值假设不成立。这为我们提供了一个判断零条件均值假设成不成立的思路：一般来说，很难直接判断零条件均值假设是否成立，因其抽象。但容易判断x和u是不是相关的。如果有理由认为x和u相关，则有理由认为零条件均值假设不成立。</p>
 <p>例1：<span class="math inline">\(y=\beta_0+\beta_1educ+u\)</span>。干扰项包含除教育以外其他影响收入的因素，包括IQ。IQ和受教育程度x应是正相关的。而IQ是u的一个组成部分，因此我们有理由认为u和educ也是相关的。进而有理由认为零条件均值假设不成立。这里存在所谓的遗漏变量问题：遗漏掉IQ，它与educ相关。既如此，OLS估计量不满足无偏性，平均而言不能反映因果关系。</p>
 <p>例2：<span class="math inline">\(cons=\beta_0+\beta_1transfer+u\)</span>(消费&lt;-转移支付)。Q：u是哪些因素的综合影响？这些因素各自与transfer相关吗？如果相关, 是正相关还是负相关？0条件均值假设成立吗？</p>
@@ -524,14 +536,14 @@ y=\beta_1x+u \tag{2.16}
 <a href="mlr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

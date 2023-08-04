@@ -212,17 +212,17 @@
 <div id="panel" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">第 10 章</span> 面板数据模型：计量方法及应用<a href="panel.html#panel" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>再次考虑教育回报率的例子。如果我们有IQ的数据，直接把它放到回归模型中，作为一个额外的自变量就可以了。相当于比较具有相同IQ、不同受教育程度的人（回忆多元回归模型中系数的含义）。</p>
-<p>问题是，我们可能没钱度量IQ。在没钱度量IQ的情况下，有什么别的思路控制IQ的影响以准确地估计教育回报率吗？提示：搜索世纪佳缘创始人龚海燕的简历。</p>
-<p>龚海燕辍学到电子厂打工，收入微薄，重拾学业毕业后，收入大幅增加。收入增加不是IQ引起的，因为同一个人（青少年之后）IQ不变，更可能是再教育之于她的回报。这里的关键在于，我们关注同一个人收入的变化，从而排除了其不变的IQ的影响。</p>
-<p>总之，如果知道IQ，比较具有相同IQ的不同个体的收入；如果不知道IQ，比较同一个IQ不变的人再教育前后的收入。后者是我们接下来要学习的面板数据估计的关键。</p>
-<p>斯托克和沃森（2012，第10章）结合例子对面板数据做了精彩的介绍。本章以降援引了其内容，并做了精炼和拓展。</p>
+<p>问题是，我们可能没钱度量IQ。在没钱度量IQ的情况下，有什么别的思路控制IQ的影响以准确地估计教育回报率吗？</p>
+<p>世纪佳缘创始人龚海燕高二辍学到电子厂打工，收入微薄，后重拾学业，自复旦毕业后收入大幅提高。收入增加不是IQ引起的，因为同一个人（青少年之后）IQ不变，更可能是再教育之于她的回报。这里的关键在于，我们关注同一个人收入的变化，从而排除了其不变的IQ的影响。</p>
+<p>总之，如果知道IQ，可比较具有相同IQ的不同个体的收入；如果不知道IQ，可比较同一个IQ不变的人再教育前后的收入。后者是我们接下来要学习的面板数据估计的关键。</p>
+<p>斯托克和沃森（2012，第10章）结合例子对面板数据做了精彩的介绍。参考其文，本章做了精炼和拓展。</p>
 <div id="panel-sec1" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> 面板数据的定义<a href="panel.html#panel-sec1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>简单来说，n个个体在T个时期的数据构成面板数据。有两个维度，一个时间维度，一个空间维度。可以表示成下面的形式：</p>
+<p>简单来说，n个个体在T个时期的数据构成面板数据。有两个维度：一个时间维度，一个空间维度。可以写成下面的形式：</p>
 <p><span class="math display">\[
 (X_{it},Y_{it})\ \ i=1,2,…,n\ \ t=1,2,…,T
 \]</span></p>
-<p>X和Y是变量（如自变量和因变量）。两个下标：i表示个体，t表示时间。因此，样本总量为<span class="math inline">\(n\times T\)</span>。</p>
+<p>X和Y是变量。两个下标中，i表示个体，t表示时间。因此，样本总量为<span class="math inline">\(n\times T\)</span>。</p>
 <p>例：江苏省13个地级市2016-2018年的经济数据构成1个面板数据。这里共有13个个体，n=13；三年，T=3。观测值数量就是<span class="math inline">\(13\times 3=39\)</span>。</p>
 </div>
 <div id="panel-sec2" class="section level2 hasAnchor" number="10.2">
@@ -230,7 +230,7 @@
 <p>斯托克和沃森（2012，第10章）基于美国州面板数据，研究啤酒税对交通死亡率的影响。预期为负向影响，因为啤酒税提高，啤酒消费量降低，酒驾减少，交通事故减少，交通死亡率降低。</p>
 <p>啤酒税的单位为dollars per case，记为X。交通死亡率定义为每万人中因交通事事故死亡的人数，记为Y。</p>
 <p>如果像以前一样，使用一年的横截面数据，如1982年的数据，结果显示：啤酒税的估计系数为0.15，符号与预期不符；换用1988年的数据进行回归，啤酒税的估计系数为0.44，依然是正的，不太合理。</p>
-<p>为什么会这样？一个可能的原因是，模型遗漏了重要的因素，导致高估。一个可能的遗漏因素是酒驾的社会接受度。各州对对酒驾的接受度不一样。酒驾的社会接受度（正向）影响交通死亡率。同时，有可能酒驾的社会接受度高的地方，政府缺钱，对啤酒征重税。由此，偏误为正，高估。</p>
+<p>为什么会这样？一个可能的解释是，模型遗漏了重要的因素，导致高估。一个可能的遗漏因素是酒驾的社会接受度。各州对酒驾的接受程度不一样。酒驾的社会接受度（正向）影响交通死亡率。同时，有可能酒驾的社会接受度高的地方，政府缺钱，对啤酒征重税。因此，偏误为正（高估）。</p>
 <p>如果能度量酒驾的社会接受度, 将之加入计量模型：</p>
 <p><span class="math display" id="eq:10-1">\[\begin{align}
 Y_{i1982}=\beta_0+\beta_1X_{i1982}+\beta_2Z_i+u_{i1982} \tag{10.1}
@@ -238,15 +238,14 @@ Y_{i1982}=\beta_0+\beta_1X_{i1982}+\beta_2Z_i+u_{i1982} \tag{10.1}
 <p><span class="math display" id="eq:10-2">\[\begin{align}
 Y_{i1988}=\beta_0+\beta_1X_{i1988}+\beta_2Z_i+u_{i1988} \tag{10.2}
 \end{align}\]</span></p>
-<p><span class="math inline">\(Z_i\)</span>表示酒驾的社会接受度，只有个体（州）下标，反映在任一给定的州内不随时间变化。它是啤酒税之外的另一个解释变量。社会态度变化缓慢，可能会几十上百年年才会有明显的转变。而研究者收集到的数据的时间段往往较短。在较短的时间段内，可以认为社会态度保持不变。注意，在样本时间段内，尽管同一个州的<span class="math inline">\(Z_i\)</span>保持不变，不同州的<span class="math inline">\(Z_i\)</span>一般不一样。</p>
-<p>用交通死亡率对啤酒税和酒驾的社会接受度回归，可以解决原来由<span class="math inline">\(Z_i\)</span>造成的遗漏变量问题。可惜问题在于，很难度量酒驾的社会接受度。Q：在观测不到<span class="math inline">\(Z_i\)</span>但知它不随时间变化的清醒下，如何估计<span class="math inline">\(\beta_1\)</span>？我们不知道<span class="math inline">\(Z_i\)</span>，又希望控制<span class="math inline">\(Z_i\)</span>的影响。注：我们不关心<span class="math inline">\(\beta_2\)</span>。提示：回顾本章开头的例子。</p>
+<p><span class="math inline">\(Z_i\)</span>表示酒驾的社会接受度，只有个体（州）下标，反映为在任一给定的州内它不随时间变化。它是啤酒税之外的另一个解释变量。社会态度变化缓慢，可能几十上百年才会有明显的转变。而研究者收集到的数据的时间段往往较短。在较短的时间段内，可以认为社会态度保持不变。注意，在样本时间段内，尽管同一个州的<span class="math inline">\(Z_i\)</span>保持不变，不同州的<span class="math inline">\(Z_i\)</span>一般不一样。</p>
+<p>用交通死亡率对啤酒税和酒驾的社会接受度回归，可以解决原来由<span class="math inline">\(Z_i\)</span>造成的遗漏变量问题。可惜问题在于，很难度量酒驾的社会接受度。Q：在观测不到<span class="math inline">\(Z_i\)</span>但知它不随时间变化的情况下，如何估计<span class="math inline">\(\beta_1\)</span>？我们不知道<span class="math inline">\(Z_i\)</span>，又希望控制<span class="math inline">\(Z_i\)</span>的影响。注：我们不关心<span class="math inline">\(\beta_2\)</span>。[提示：回顾本章开头的例子]</p>
 <p>在本章开头的例子中，我们关注同一个人收入的变化，排除了其不变的IQ的影响，用再教育之后的收入减去之前的收入作为教育回报率的估计。这里，无非是个体变了，不再是个人，而是州。我们想控制的变量从不变的IQ变成了不变的<span class="math inline">\(Z_i\)</span>。类似地，我们关注同一个州交通死亡率的变化，排除了其不变的<span class="math inline">\(Z_i\)</span>的影响，用后边1988年的交通死亡率减去前边1982年的交通死亡率：</p>
 <p><span class="math display" id="eq:10-3">\[\begin{align}
 (Y_{i1988}-Y_{i1982})=\beta_1(X_{i1988}-X_{i1982})+(u_{i1988}-u_{i1982}) \tag{10.3}
 \end{align}\]</span></p>
-<p>变成不含常数项的的简单回归模型。因变量是1982-1988年交通死亡率的变化。自变量是1982-1988年啤酒税的变化。应用§<a href="blr.html#blr-sec5">2.5</a>的OLS估计量计算公式，<span class="math inline">\(\beta_1\)</span>的估计系数为-1.04，变成负的，符号符合预期。</p>
-<p>What if T&gt;2？</p>
-<p>计量模型：</p>
+<p>变成不含常数项的的简单回归模型。因变量是1982-1988年交通死亡率的变化。自变量是1982-1988年啤酒税的变化。应用<a href="blr.html#blr-sec5">2.5</a>OLS估计量的计算公式，<span class="math inline">\(\beta_1\)</span>的估计系数为-1.04，变成负的，符号符合预期。</p>
+<p>What if T&gt;2？计量模型写作：</p>
 <p><span class="math display" id="eq:10-4">\[\begin{align}
 Y_{it}=\beta_0+\beta_1X_{it}+\beta_2Z_i+u_{it} \tag{10.4}
 \end{align}\]</span></p>
@@ -254,11 +253,11 @@ Y_{it}=\beta_0+\beta_1X_{it}+\beta_2Z_i+u_{it} \tag{10.4}
 <p><span class="math display" id="eq:10-5">\[\begin{align}
 Y_{it}=\beta_1X_{it}+\alpha_i+u_{it},\ \alpha_i\equiv\beta_0+\beta_2Z_i \tag{10.5}
 \end{align}\]</span></p>
-<p>实际上，除了酒驾的社会接受度以外，地理（记为G）也会影响交通死亡率。山路十八弯更容易就发生交通事故。地理也可能跟啤酒税相关。并且，地理不随时间变化。考虑地理等影响交通死亡率、可能和啤酒税相关又不随时间变化的因素，模型拓展为：</p>
+<p>实际上，除了酒驾的社会接受度以外，地理（记为G）也会影响交通死亡率。山路十八弯更容易发生交通事故。地理也可能跟啤酒税相关。并且，地理不随时间变化。考虑地理等影响交通死亡率、可能和啤酒税相关又不随时间变化的因素，模型拓展为：</p>
 <p><span class="math display" id="eq:10-6">\[\begin{align}
 Y_{it}=\beta_1X_{it}+\alpha_i+u_{it},\ \alpha_i\equiv\beta_0+\beta_2Z_i+\beta_3G_i+... \tag{10.6}
 \end{align}\]</span></p>
-<p>称<span class="math inline">\(\alpha_i\)</span>为个体固定效应，表示所有观测不到、不随时间变化的因素对因变量的综合影响。只有一个下标i，没有时间下标，反映它不随时间变化（同一个个体各期取值相同），随个体变化（不同个体的值不一样）。</p>
+<p>称<span class="math inline">\(\alpha_i\)</span>为个体固定效应，表示所有观测不到、不随时间变化的因素对因变量的综合影响。它只有一个下标i，没有时间下标，反映它不随时间变化（同一个体各期取值相同）、随个体变化（不同个体的值不一样）。</p>
 <p>原则上来讲，我们可以关注同一个州各期相比前一期的变化：</p>
 <p><span class="math display" id="eq:10-7">\[\begin{align}
 (Y_{it}-Y_{it-1})=\beta_1(X_{it}-X_{it-1})+(u_{it}-u_{it-1}) \tag{10.7}
@@ -266,23 +265,22 @@ Y_{it}=\beta_1X_{it}+\alpha_i+u_{it},\ \alpha_i\equiv\beta_0+\beta_2Z_i+\beta_3G
 </div>
 <div id="panel-sec3" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> 去均值法<a href="panel.html#panel-sec3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>除了关注同一个州各期相比前一期的变化，我们还可以关注同一个州各期相比该州平均值的变化。后一种处理应用更广。</p>
-<p>估计分成两步：第一步，每个变量减去个体均值；第二步，利用“个体中心化”变量进行估计。具体如下：</p>
+<p>除了关注同一个州各期相比前一期的变化，我们还可以关注同一个州各期相比该州平均值的变化。后一种处理应用更广。它将估计分成两步：第一步，每个变量减去个体均值；第二步，利用“个体中心化”的变量进行估计。具体操作如下：</p>
 <div class="figure"><span style="display:block;" id="fig:chap10fig1"></span>
 <img src="figs/chap10-fig1.png" alt="去均值法"  />
 <p class="caption">
 图 10.1: 去均值法
 </p>
 </div>
-<p>最后，模型退化为一个不含常数项的简单回归，OLS估计量的计算公式见§<a href="blr.html#blr-sec5">2.5</a>。</p>
-<p>除了按照图<a href="panel.html#fig:chap10fig1">10.1</a>中的步骤构造<span class="math inline">\(\widetilde{Y_{it}}\)</span>和<span class="math inline">\(\widetilde{X_{it}}\)</span>，然后使用§<a href="blr.html#blr-sec5">2.5</a>中OLS估计量的计算公式外，Stata提供了一个命令完成这一系列工作，是为：</p>
-<p><span class="math inline">\(\underline{xtreg\ Y\ X,\ fe}\)</span></p>
+<p>最后，模型退化为一个不含常数项的简单回归，此情形下OLS估计量的计算公式见<a href="blr.html#blr-sec5">2.5</a>，可据此估计参数。</p>
+<p>Stata提供了一个命令来完成这一系列工作，是为：</p>
+<p><font color=red>xtreg Y X, fe</font></p>
 <p>应用于美国各州1982-1988年的数据，啤酒税的估计系数为-0.66，符号符合预期（斯托克和沃森，2012，第10章）。</p>
 </div>
 <div id="panel-sec4" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> 固定效应模型<a href="panel.html#panel-sec4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>对于式<a href="panel.html#eq:10-6">(10.6)</a>，无论是差分法还是去均值法均允许<span class="math inline">\(\alpha_i\)</span>与<span class="math inline">\(X_{it}\)</span>相关。<span class="math inline">\(\alpha_i\)</span>最终被消掉了，它与<span class="math inline">\(X_{it}\)</span>相关性不构成问题。</p>
-<p>称允许<span class="math inline">\(\alpha_i\)</span>与<span class="math inline">\(X_{it}\)</span>相关的式<a href="panel.html#eq:10-6">(10.6)</a>为固定效应模型。需要强调的是，不是有个体固定效应就是固定效应模型，有个体固定效应且可以和自变量相关的才是。</p>
+<p>对于式<a href="panel.html#eq:10-6">(10.6)</a>，无论是应用差分法还是去均值法均允许<span class="math inline">\(\alpha_i\)</span>与<span class="math inline">\(X_{it}\)</span>相关——<span class="math inline">\(\alpha_i\)</span>最终被消掉了，它与<span class="math inline">\(X_{it}\)</span>相关性不构成问题。</p>
+<p>称允许<span class="math inline">\(\alpha_i\)</span>与<span class="math inline">\(X_{it}\)</span>相关的式<a href="panel.html#eq:10-6">(10.6)</a>为固定效应模型。需要强调的是，不是有个体固定效应就是固定效应模型，有个体固定效应且它可以和自变量相关才是。</p>
 </div>
 <div id="panel-sec5" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> LSDV法<a href="panel.html#panel-sec5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -290,7 +288,7 @@ Y_{it}=\beta_1X_{it}+\alpha_i+u_{it},\ \alpha_i\equiv\beta_0+\beta_2Z_i+\beta_3G
 <p><span class="math display" id="eq:10-8">\[\begin{align}
 \alpha_i=\alpha_1D_1+\alpha_2D_2+...+\alpha_nD_n \tag{10.8}
 \end{align}\]</span></p>
-<p><span class="math inline">\(D_1\)</span>是第一个州的虚拟变量：</p>
+<p>其中，<span class="math inline">\(D_1\)</span>是第一个州的虚拟变量：</p>
 <p><span class="math display">\[
 D_1=
 \begin{cases}
@@ -298,61 +296,124 @@ D_1=
 0&amp; \text{其他州（所有时期）}
 \end{cases}
 \]</span></p>
-<p><span class="math inline">\(D_2\)</span>是第二个州的虚拟变量。依此类推。请自行验证式<a href="panel.html#eq:10-8">(10.8)</a>成立。</p>
-<p>式<a href="panel.html#eq:10-6">(10.6)</a>可以写成:</p>
+<p><span class="math inline">\(D_2\)</span>是第二个州的虚拟变量。以此类推。请自行验证式<a href="panel.html#eq:10-8">(10.8)</a>成立。</p>
+<p>于是，式<a href="panel.html#eq:10-6">(10.6)</a>可以写成:</p>
 <p><span class="math display" id="eq:10-9">\[\begin{align}
 Y_{it}=\beta_1X_{it}+\alpha_1D_1+\alpha_2D_2+...+\alpha_nD_n+u_{it} \tag{10.9}
 \end{align}\]</span></p>
-<p>这是一个多元回归。自变量包括X和n个虚拟变量。</p>
-<p>用如下的多元回归命令估计：</p>
-<p><span class="math inline">\(\underline{regress\ Y\ X\ D2\ ...\ Dn}\)</span></p>
-<p>将得到与去均值法相同<span class="math inline">\(\beta_1\)</span>的估计系数。</p>
-<p>该法称为LSDV法。LS指最小二乘，DV指虚拟变量。该法有一个缺点：当n很大时，自变量的个数(在本例中为1+n)很大，增大运算量。差分法和去均值法不存在这一问题。</p>
+<p>这是一个多元回归。自变量包括X和n个虚拟变量。可用如下的多元回归命令估计：</p>
+<p><font color=red>regress Y X D2 … Dn</font></p>
+<p>这一估计得到的<span class="math inline">\(\hat{\beta_1}\)</span>与由去均值法算得的<span class="math inline">\(\hat{\beta_1}\)</span>相同。</p>
+<p>称该法为LSDV法。LS指最小二乘，DV指虚拟变量。该法有一个缺点：当n很大时，自变量的个数（在本例中为1+n）很大，会增大运算量。差分法和去均值法不存在这一问题。</p>
 </div>
 <div id="panel-sec6" class="section level2 hasAnchor" number="10.6">
 <h2><span class="header-section-number">10.6</span> 时间固定效应<a href="panel.html#panel-sec6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>斯托克和沃森（2012，第10章）认为，除了上面提到的影响交通死亡率的因素外，汽车行业全国安全标准也会影响交通死亡率。随着时间推移，汽车行业全国安全标准的提高（如从无安全气囊到要求安装安全气囊），有利于降低交通事故的死亡率。</p>
-<p>汽车行业全国安全标准提高既发生在全国范围内，能减少所有州的交通死亡事故。假设汽车行业全国标准提高引起的所有州交通死亡率的降幅相同是合理的。</p>
+<p>斯托克和沃森（2012，第10章）认为，除了上面提到的影响交通死亡率的因素外，汽车行业全国安全标准也会影响交通死亡率。随着时间推移，汽车行业全国安全标准提高（如从不要求配备安全气囊到要求配备安全气囊），有利于降低交通事故的死亡率。</p>
+<p>汽车行业全国安全标准提高发生在全国范围内，能减少所有州的交通死亡率。假设汽车行业全国标准提高使所有州交通死亡率降低相同幅度是合理的。</p>
 <p>记汽车行业全国安全标准为<span class="math inline">\(S_t\)</span>。它只有一个时间下标t，没有个体下标，反映安全标准随时间变化，但在任一个时间点对所有州都是一样的。将其纳入计量模型：</p>
 <p><span class="math display" id="eq:10-10">\[\begin{align}
 Y_{it}=\beta_1X_{it}+\beta_3S_t+\alpha_i+u_{it} \tag{10.10}
 \end{align}\]</span></p>
-<p>汽车行业全国安全标准对所有州的影响都为<span class="math inline">\(\beta_3S_t\)</span>。<span class="math inline">\(\beta_3\)</span>的系数应该是负的。注意如果<span class="math inline">\(S_t\)</span>和<span class="math inline">\(X_{it}\)</span>相关，不将<span class="math inline">\(S_t\)</span>加入计量模型将导致OLS估计量出现偏误。</p>
-<p>如果<span class="math inline">\(S_t\)</span>可观测，无非就是增加了一个解释变量。但，很可能<span class="math inline">\(S_t\)</span>不可观测。Q：怎么处理？</p>
+<p>汽车行业全国安全标准对所有州的影响都为<span class="math inline">\(\beta_3S_t\)</span>。预期<span class="math inline">\(\beta_3\)</span>的系数为负。注意如果<span class="math inline">\(S_t\)</span>和<span class="math inline">\(X_{it}\)</span>相关，不将<span class="math inline">\(S_t\)</span>加入计量模型将导致OLS估计量出现偏误。</p>
+<p>如果<span class="math inline">\(S_t\)</span>可观测，无非就是增加一个解释变量。但，很可能<span class="math inline">\(S_t\)</span>不可观测。Q：怎么处理？</p>
 <p>将计量模型写成：</p>
 <p><span class="math display" id="eq:10-11">\[\begin{align}
 Y_{it}=\beta_1X_{it}+\alpha_i+\lambda_t+u_{it},\ \lambda_t\equiv\beta_3S_t \tag{10.11}
 \end{align}\]</span></p>
 <p>除了汽车行业全国安全标准，全国石油价格也影响交通死亡率，因为油价贵了，大家开车少，事故少。等等。一般地，<span class="math inline">\(\lambda_t\)</span>包含所有随时间变化但不随个体变化的影响因素，称为时间固定效应。</p>
-<p>思考：将时间固定效应与个体固定效应进行比较。</p>
 <p>Q：Y为经济增长率，个体固定效应包含哪些因素？时间固定效应又包含哪些因素？</p>
 <p>类似<a href="panel.html#panel-sec5">10.5</a>，<span class="math inline">\(\lambda_t\)</span>可以写成：</p>
 <p><span class="math display" id="eq:10-12">\[\begin{align}
 \lambda_t=\lambda_1E_1+\lambda_2E_2+...+\lambda_TE_T \tag{10.12}
 \end{align}\]</span></p>
-<p><span class="math inline">\(E_1\)</span>是第1期的虚拟变量。<span class="math inline">\(E_2\)</span>是第2期的虚拟变量。依此类推。</p>
-<p>式<a href="panel.html#eq:10-11">(10.11)</a>可以写成:</p>
+<p><span class="math inline">\(E_1\)</span>是第1期的虚拟变量。<span class="math inline">\(E_2\)</span>是第2期的虚拟变量。以此类推。</p>
+<p>于是，式<a href="panel.html#eq:10-11">(10.11)</a>可以写成:</p>
 <p><span class="math display" id="eq:10-13">\[\begin{align}
 Y_{it}=\beta_1X_{it}+\alpha_i+\lambda_1E_1+\lambda_2E_2+...+\lambda_TE_T+u_{it} \tag{10.13}
 \end{align}\]</span></p>
-<p>因此，Stata命令：</p>
-<p><span class="math inline">\(\underline{xtreg\ Y\ X\ E2\ ...\ ET,\ fe}\)</span></p>
-<p>如果在Stata数据中，有一个名为year的变量，记录时期，那么，更简便的Stata命令是</p>
-<p><span class="math inline">\(\underline{xtreg\ Y\ X\ i.year,\ fe}\)</span></p>
-<p>“i.year”表示为变量year中的每一年生成一个虚拟变量，即生成E2, …, ET。</p>
-<p>估计结果显示，<span class="math inline">\(\beta_1\)</span>的估计系数是-0.64，符合符合预期。</p>
+<p>为估计该式，可使用如下的Stata命令：</p>
+<p><font color=red>xtreg Y X E2 … ET, fe</font></p>
+<p>如果在Stata数据中，有一个名为year的变量，记录年份，那么，更简便的Stata命令是</p>
+<p><font color=red>xtreg Y X i.year, fe</font></p>
+<p>“i.year”将为变量year中的每一年生成一个虚拟变量，即生成E2、…、ET。</p>
+<p>估计结果显示，<span class="math inline">\(\beta_1\)</span>的估计系数是-0.64，符合预期。</p>
 <p><strong>控制变量</strong></p>
-<p>除了啤酒税，还有其他因素影响交通死亡率。例如，斯托克和沃森（2012，第10章）指出，一个可能的影响因素平均而言司机开车熟练程度，可用司机平均驾驶里程度量。把诸如此类的变量加进来能够尽可能地减少遗漏变量问题。</p>
+<p>尚有其他因素影响交通死亡率。例如，斯托克和沃森（2012，第10章）指出，一个可能的影响因素是平均而言司机开车熟练程度，可用司机平均驾驶里程度量。把诸如此类的变量加进来能够尽可能地缓解遗漏变量问题。</p>
 <p>注意：加入的控制变量须随时间变化，因为凡不随时间变化的因素都在差分或去均值时被减掉了。也就是说，固定效应模型无法估计不随时间变化的变量的作用。</p>
 </div>
 <div id="panel-sec7" class="section level2 hasAnchor" number="10.7">
 <h2><span class="header-section-number">10.7</span> 应用：财政联邦主义的文献<a href="panel.html#panel-sec7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>讲解Davoodi and Zou (1998)。讲解亦涉及用计量方法验证理论、合理选择控制变量、进行异质性分析、对结果做出合理解释等。</p>
-<p>讲解Jin et al. (2005)。讲解亦涉及用计量方法讲一个完整的故事。</p>
-<p>对这两篇文献的讲解见录屏（链接）。</p>
-<p><strong>总结</strong></p>
+<p><strong><em>第一代财政联邦主义</em></strong></p>
+<p>财政联邦主义研究财权和事权在各级政府之间如何分配。第一代财政联邦主义认为，全国性公共品，应作为中央政府的事权；而地方性公共品，应作为地方政府的事权，因为地方政府掌握更多信息，包括当地居民的偏好和公共品供给的成本。进一步引申提出，适度分权能提高效率，进而促进经济增长。</p>
+<p>大量文献从经验层面检验财政分权与经济增长的关系。</p>
+<p>Davoodi and Zou (1998) use a panel data set of 46 countries over the 1970-1989 period to investigate the relationship between fiscal decentralization and economic growth.</p>
+<p>他们使用如下的固定效应模型：</p>
+<p><span class="math display">\[
+g_{it}=\delta_1+\delta_2\theta_{it}+\delta_3\tau_{it}+\delta_4^{&#39;}D_i+\delta_5{&#39;}N_t+\delta_6{&#39;}X_{it}+\epsilon_{it}
+\]</span></p>
+<ul>
+<li>i and t refer to country i at time t。i=1,2…,46。t=1对应1970-79年，=2对应1980-89年。注意一期是十年；</li>
+<li>g is the average growth of real per capita output over ten-year periods。注意作者关注长期（十年）经济增长。实际值=名义值/价格指数；</li>
+<li><span class="math inline">\(\theta\)</span> is the measure of fiscal decentralization, defined as the subnational share of total government spending。这是核心解释变量。以一个例子说明其取值：如果一国各级政府支出为100，其中40由地方政府支出，则该变量等于0.4；</li>
+<li><span class="math inline">\(\tau\)</span> is the tax rate, defined as the ratio of total tax revenues to GDP；</li>
+<li><span class="math inline">\(D_i\)</span>是个体（国）虚拟变量构成的一个向量，<span class="math inline">\(\delta_4^{&#39;}D_i\)</span>就等于个体固定效应；</li>
+<li>与上一点类似，<span class="math inline">\(\delta_5{&#39;}N_t\)</span>等于时间固定效应；</li>
+<li>X是控制变量, 包括: the average growth rate of population；initial human capital；initial per capita GDP; and the average real investment share of GDP。这些常被认为是经济增长的决定因素。</li>
+</ul>
+<p>作者区分发达国家和发展中国家进行了估计，即使用发达国家的数据做一次估计，同时使用发展中国家的数据做一次估计。这是异质性分析（见<a href="mech.html#mech-sec2">7.2</a>）。</p>
+<p>发达国家的估计结果见图<a href="panel.html#fig:chap10fig2">10.2</a>，发展中国家的估计结果见图<a href="panel.html#fig:chap10fig3">10.3</a>。两表中，首列是变量名，列（1）-（5）每一列是一个回归，区别在于控制变量逐渐增多。对估计结果总结如下：We find a negative relationship between fiscal decentralization and growth in developing countries, but none in developed countries。</p>
+<div class="figure"><span style="display:block;" id="fig:chap10fig2"></span>
+<img src="figs/chap10-fig2.png" alt="Results for developed countries"  />
+<p class="caption">
+图 10.2: Results for developed countries
+</p>
+</div>
+<p>资料来源：Davoodi and Zou（1998）表2。</p>
+<div class="figure"><span style="display:block;" id="fig:chap10fig3"></span>
+<img src="figs/chap10-fig3.png" alt="Results for developing countries"  />
+<p class="caption">
+图 10.3: Results for developing countries
+</p>
+</div>
+<p>资料来源：Davoodi and Zou（1998）表2。</p>
+<p>除这篇文章以外，还有大量研究财政分权和经济增长关系的经验文献。这些文献的结果各异，有的发现财政分权促进了经济增长，有的则得出相反的结论。这些相悖的经验结果不支持上述理论。这引人反思：上述理论正确吗？</p>
+<p>第一代财政联邦主义隐含地假设：地方政府是良善的（最大化辖区居民的福利）。惟其如此，将地方公共品交由地方政府提供，才能期望它们利用信息优势，提高效率。现实中，地方政府可能扮演两种不同的角色：扶持之手（helping hand），如改革开放后中国地方政府不断改善营商环境；攫取之手（predatory hand），如索马里地方政府所做的那样。</p>
+<p>地方政府的行为取决于地方政府面临的激励。在此认识的基础上发展出第二代财政联邦主义，它强调财政激励。</p>
+<p><strong><em>第二代财政联邦主义</em></strong></p>
+<p>第二代财政联邦主义强调财政激励，尤其是边际收入分成率（marginal revenue retention rate），它指政府收入在边际上增加1单位，地方能存留多大比例。如某省从某企业收上来1单位税收，其中0.3单位上缴中央国库，剩下的0.7存留几用，则该省的边际收入分成率为0.7。预期边际收入分成率越高，地方政府越有激励发展地方经济，扮演扶持之手的角色。</p>
+<p>Jin et al.（2005）检验了中国财政包干制时期财政激励对经济发展的影响。该时期央地之间的财政包干制有多种安排，故不同省份有不尽相同的边际收入分成率。基于此，构建如下的固定效应模型：</p>
+<p><span class="math display">\[
+Y_{it}=\alpha_i+\gamma_t+\delta^{&#39;}Z_{it}+\sigma^{&#39;}W_{it-1}+u_{it}
+\]</span></p>
+<ul>
+<li>i表示省份；</li>
+<li>t表示年份，从1982到1992年；</li>
+<li><span class="math inline">\(Y_{it}\)</span> is a vector of variables measuring the development of the non-state sector and reform in the state sector in a province</li>
+<li><span class="math inline">\(Z_{it}\)</span> 包括边际收入分成率和财政分权指标；</li>
+<li><span class="math inline">\(\alpha_i\)</span>是省份固定效应；</li>
+<li><span class="math inline">\(\gamma_t\)</span> are the year dummies, which are intended to capture the effects of nationwide macroeconomic fluctuation；</li>
+<li><span class="math inline">\(W_{it-1}\)</span> is the lagged per capita GDP；</li>
+<li><span class="math inline">\(u_{it}\)</span>是干扰项。</li>
+</ul>
+<p>作者首先考察财政激励对非国有部门的影响，结果如图<a href="panel.html#fig:chap10fig4">10.4</a>所示。在Panel A中，因变量为growth of rural enterprise employment；在Panel B中，因变量为growth of non-state-non-agricultural employment。以列（2）为例，自变量包括边际收入分成率、滞后一期的人均GDP、省份固定效应和年份虚拟变量。结果表明，边际收入分成率越高，非国有部门就业增长越快。</p>
+<div class="figure"><span style="display:block;" id="fig:chap10fig4"></span>
+<img src="figs/chap10-fig4.png" alt="Fiscal incentives and the development of the non-state sector"  />
+<p class="caption">
+图 10.4: Fiscal incentives and the development of the non-state sector
+</p>
+</div>
+<p>资料来源：Jin et al.（2005）表5。</p>
+<p>非国有部门的发展是否倒逼国有企业改革？带着这个问题，作者进一步考察财政激励对国有部门改革的影响，结果如图<a href="panel.html#fig:chap10fig5">10.5</a>所示。在Panel A中，因变量为change in the share of contract workers in total state employment；在Panel B中，因变量为change in the share of bonuses in total employee wages。仍以列（2）为例，结果表明，边际收入分成率提高使得国有部门的合同工占比提高，奖金占比提高，即促进了国有部门的市场化改革。</p>
+<div class="figure"><span style="display:block;" id="fig:chap10fig5"></span>
+<img src="figs/chap10-fig5.png" alt="Fiscal incentives and the reform of the state sector"  />
+<p class="caption">
+图 10.5: Fiscal incentives and the reform of the state sector
+</p>
+</div>
+<p>资料来源：Jin et al.（2005）表6。</p>
+<p><strong>本章小结</strong></p>
 <p>固定效应模型控制了不可观测、但不随时间变化的影响因素（如酒驾的社会接受度）以及不可观测、但不随个体变化的影响因素（如汽车行业的全国安全标准），进一步缓解了遗漏变量问题。但是，它不能处理不可观测、既随时间变化又随个体变化的因素。比如，在交通死亡率的例子中，雨雪天气容易引发交通事故，出现频率高，交通死亡率就高。这未被纳入计量模型。诸如此类的遗漏因素可能与（核心）解释变量相关，导致OLS估计量有偏。</p>
-<p>总之，固定效应模型缓解了遗漏变量问题，但不能保证解决遗留变量问题，估计量依然可能是有偏的。但存在一种特殊的情形，在满足一定可验证的条件时，可以确定估计量能够识别因果关系，这就是接下来要讲的双重差分法，它是固定效应模型的一个特例。</p>
+<p>总之，固定效应模型缓解了遗漏变量问题，但不能保证彻底解决遗留变量问题，OLS估计量依然可能是有偏的。但存在一种特殊的情形，在满足一定可验证的条件时，可以确定OLS估计量能够识别因果关系，这就是接下来要讲的双重差分法，它是固定效应模型的一个特例。</p>
 <p><strong>参考文献</strong></p>
 <ul>
 <li>斯托克, 沃森. 计量经济学(第三版)[J]. 格致出版社, 2012, 第10章.</li>
