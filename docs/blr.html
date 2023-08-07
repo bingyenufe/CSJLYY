@@ -31,15 +31,15 @@
   
 <link rel="prev" href="intro.html"/>
 <link rel="next" href="mlr.html"/>
-<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
@@ -238,8 +238,7 @@ wage=\beta_0+\beta_1educ+u \tag{2.2}
 <div id="blr-sec2" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> 普通最小二乘法的推导<a href="blr.html#blr-sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong><em>最小二乘（OLS）法的直观理解</em></strong></p>
-<p>从总体中随机抽取N个观测值。记号：{<span class="math inline">\(((x_i,y_i):i=1,...,N)\)</span>}。画散点图，如图<a href="blr.html#fig:chap2fig1">2.1</a>所示。</p>
-<p>设计量模型为式<a href="blr.html#eq:2-1">(2.1)</a>。</p>
+<p>假设总体模型为<a href="blr.html#eq:2-1">(2.1)</a>，从中随机抽取N个观测值，记为{<span class="math inline">\(((x_i,y_i):i=1,...,N)\)</span>}。绘制散点图，即为图<a href="blr.html#fig:chap2fig1">2.1</a>。</p>
 <p>问题：基于这些数据，如何估计总体参数？之前，我们估计的总体参数只有总体均值一个；这里，有两个待估计的总体参数：<span class="math inline">\(\beta_0\)</span>和<span class="math inline">\(\beta_1\)</span>。怎么估计<span class="math inline">\(\beta_0\)</span>和<span class="math inline">\(\beta_1\)</span>？</p>
 <p>记<span class="math inline">\(\beta_0\)</span>的估计量为<span class="math inline">\(\hat{\beta_0}\)</span>，<span class="math inline">\(\beta_1\)</span>的估计量记为<span class="math inline">\(\hat{\beta_1}\)</span>。如果确定了<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>，就可以确定一条直线：<span class="math inline">\(y=\hat{\beta_0}+\hat{\beta_1}x\)</span>。<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>变化，直线也跟着变化。反过来，直线确定了，<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>也确定了。即：<span class="math inline">\({\hat{\beta_0},\hat{\beta_1}}\)</span>与直线是一一对应的关系。那么，确定<span class="math inline">\(\hat{\beta_0}\)</span>和<span class="math inline">\(\hat{\beta_1}\)</span>，等价于找直线为<span class="math inline">\(y=\hat{\beta_0}+\hat{\beta_1}x\)</span>。</p>
 <p>问题：直线有无限条，需要我们找出其中一条，它在某种意义上是最优的。直观上，该怎么去找？</p>
@@ -536,14 +535,14 @@ y=\beta_1x+u \tag{2.18}
 <a href="mlr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/clipboard.min.js"></script>
-<script src="libs/gitbook/js/plugin-search.js"></script>
-<script src="libs/gitbook/js/plugin-sharing.js"></script>
-<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook/js/jquery.highlight.js"></script>
-<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
